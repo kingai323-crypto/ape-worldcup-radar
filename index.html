@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>APE世足預測雷達 | World Cup Prediction Radar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__image"></div>
+      <div class="hero__shade"></div>
+      <nav class="topbar" aria-label="主選單">
+        <a class="brand" href="#">
+          <span class="brand__mark">APE</span>
+          <span>
+            <strong>APE世足預測雷達</strong>
+            <small>World Cup Prediction Radar</small>
+          </span>
+        </a>
+        <div class="topbar__actions">
+          <a href="#today">盤口選擇</a>
+          <a href="#portfolio">推薦組合</a>
+          <a href="#review">判讀規則</a>
+        </div>
+      </nav>
+
+      <section class="hero__content" aria-labelledby="page-title">
+        <p class="eyebrow" id="editionLabel">2026-06-23 每日更新版</p>
+        <h1 id="page-title">APE世足預測雷達</h1>
+        <p class="hero__copy">用電子盤房視角掃描每一場：讓分、大小、比分與市場熱度，快速選出今天最值得看的方向。</p>
+        <div class="hero__panel" aria-label="今日主推摘要">
+          <div>
+            <span>主推</span>
+            <strong id="heroPrimary">哥倫比亞 -0.75</strong>
+          </div>
+          <div>
+            <span>副推</span>
+            <strong id="heroSecondary">克羅埃西亞 小2.75</strong>
+          </div>
+          <div>
+            <span>避開</span>
+            <strong id="heroAvoid">熱門深讓追高</strong>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="ticker" id="ticker" aria-label="盤口狀態跑馬">
+        <div>APE Alert</div>
+      </section>
+
+      <section id="today" class="section">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow">Daily Board</p>
+            <h2>今日四場盤口選擇</h2>
+          </div>
+          <div class="filters" role="group" aria-label="篩選賽事">
+            <button class="filter is-active" data-filter="all">全部賽事</button>
+            <button class="filter" data-filter="A">A級主推</button>
+            <button class="filter" data-filter="side">讓分推薦</button>
+            <button class="filter" data-filter="total">大小球推薦</button>
+          </div>
+        </div>
+        <div class="match-grid" id="matchGrid"></div>
+      </section>
+
+      <section id="portfolio" class="section section--split">
+        <div>
+          <p class="eyebrow">Portfolio</p>
+          <h2>今日下注組合</h2>
+          <div class="portfolio" id="portfolioList"></div>
+        </div>
+        <aside class="bankroll">
+          <h3>資金配置</h3>
+          <div id="bankrollList"></div>
+          <p>單日總曝險建議控制在本金 3% 以內，正確比分只做高賠小注。</p>
+        </aside>
+      </section>
+
+      <section id="review" class="section">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow">Model Notes</p>
+            <h2>操盤判讀規則</h2>
+          </div>
+        </div>
+        <div class="rules">
+          <article>
+            <strong>01</strong>
+            <h3>強隊不等於可追</h3>
+            <p>熱門隊若同時有名氣、反彈、媒體共識，讓深盤常被開貴。</p>
+          </article>
+          <article>
+            <strong>02</strong>
+            <h3>讓淺才有訊號</h3>
+            <p>基本面明顯較好但盤口仍克制，通常比大熱深讓更值得研究。</p>
+          </article>
+          <article>
+            <strong>03</strong>
+            <h3>大小球看節奏</h3>
+            <p>必勝戰不一定大球，弱隊低位防守會把比賽拖進 1-0、2-0 區間。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>本頁為世足盤口分析參考，不保證獲利。請理性控管資金。</p>
+      <p id="lastUpdated">Last updated: 2026-06-23 亞太時間</p>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
