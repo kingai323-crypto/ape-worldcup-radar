@@ -22,9 +22,12 @@
           </span>
         </a>
         <div class="topbar__actions">
-          <button class="nav-tab is-active" data-view="matches">今日對戰</button>
+          <button class="nav-tab is-active" data-view="dashboard">戰情總覽</button>
+          <button class="nav-tab" data-view="matches">今日對戰</button>
+          <button class="nav-tab" data-view="scenarios">晉級模擬</button>
           <button class="nav-tab" data-view="standings">小組積分</button>
           <button class="nav-tab" data-view="qualified">晉級路線</button>
+          <button class="nav-tab" data-view="review">賽後復盤</button>
           <button class="nav-tab" data-view="news">新聞權重</button>
         </div>
       </nav>
@@ -48,7 +51,26 @@
         <p>本網站內容僅為個人資料整理與賽事分析參考，不代表保證命中，也不構成投資或投注建議。盤口、陣容與賽果都可能臨場變動，請勿重注、借貸下注或超出自己可承受的範圍。賽果若與預測不同，屬運動賽事正常風險，請理性復盤，不以單場結果歸責任何分析。</p>
       </section>
 
-      <section class="section view is-active" id="view-matches">
+      <section class="section view is-active" id="view-dashboard">
+        <div class="section__head">
+          <div><p class="eyebrow">Command Deck</p><h2>今日總覽儀表板</h2></div>
+        </div>
+        <div class="dashboard-grid" id="dashboardGrid"></div>
+        <div class="radar-layout">
+          <section class="radar-card">
+            <p class="eyebrow">Sharp Board</p>
+            <h3>今日主推雷達</h3>
+            <div class="radar-picks" id="radarPicks"></div>
+          </section>
+          <section class="radar-card">
+            <p class="eyebrow">Risk Control</p>
+            <h3>風險控管</h3>
+            <div class="risk-grid" id="riskGrid"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section view" id="view-matches">
         <div class="section__head">
           <div><p class="eyebrow">Match Center</p><h2>今日對戰分析</h2></div>
           <div class="filters">
@@ -59,6 +81,13 @@
           </div>
         </div>
         <div class="match-grid" id="matchGrid"></div>
+      </section>
+
+      <section class="section view" id="view-scenarios">
+        <div class="section__head">
+          <div><p class="eyebrow">Qualification Simulator</p><h2>晉級情境模擬</h2></div>
+        </div>
+        <div class="scenario-grid" id="scenarioGrid"></div>
       </section>
 
       <section class="section view" id="view-standings">
@@ -100,6 +129,13 @@
           <div><p class="eyebrow">News Weight</p><h2>即時新聞與盤口影響</h2></div>
         </div>
         <div class="news-grid" id="newsGrid"></div>
+      </section>
+
+      <section class="section view" id="view-review">
+        <div class="section__head">
+          <div><p class="eyebrow">Post Match Review</p><h2>賽後復盤區</h2></div>
+        </div>
+        <div class="review-layout" id="reviewLayout"></div>
       </section>
 
       <section class="section section--split">
