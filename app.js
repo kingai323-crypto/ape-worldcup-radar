@@ -24,13 +24,64 @@ function teamLabel(team) {
   return `<span class="flag">${team.flag}</span><span>${team.name}</span>`;
 }
 
+function confidenceScore(label = "") {
+  if (label.includes("A")) return 90;
+  if (label.includes("B+")) return 78;
+  if (label.includes("B")) return 68;
+  return 58;
+}
+
 function renderHero(data) {
   setText("#editionLabel", data.edition);
   setText("#heroPrimary", data.hero.primary);
   setText("#heroSecondary", data.hero.secondary);
   setText("#heroAvoid", data.hero.avoid);
   setText("#lastUpdated", `Last updated: ${data.updatedAt}`);
-  $("#ticker").innerHTML = `<div>APE Alert</div>${data.alerts.map((item) => `<p>${item}</p>`).join("")}`;
+  $("#ticker").innerHTML = `
+    <div>APE Alert</div>
+    <section class="alert-board">
+      ${data.alerts.map((item) => `<p>${item}</p>`).join("")}
+    </section>
+  `;
+}
+
+function renderDashboard() {
+  const matches = boardData.matches;
+  const aLevel = matches.filter((m) => m.confidence.includes("A")).length;
+  const totalPicks = matches.filter((m) => m.totalPick.includes("小") || m.totalPick.includes("大")).length;
+  const qualified = boardData.qualified.length;
+  const avoid = boardData.hero.avoid;
+
+  $("#dashboardGrid").innerHTML = [
+    { label: "今日賽事", value: `${matches.length} 場`, text: boardData.edition },
+    { label: "A級方向", value: `${aLevel} 場`, text: "信心較高，但仍以控注為優先" },
+    { label: "大小球雷達", value: `${totalPicks} 場`, text: "末輪戰意讓小球權重提高" },
+    { label: "已晉級隊伍", value: `${qualified} 隊`, text: "名次仍會改變下一輪路線" }
+  ].map((item) => `
+    <article class="dash-card">
+      <span>${item.label}</span>
+      <strong>${item.value}</strong>
+      <p>${item.text}</p>
+    </article>
+  `).join("");
+
+  const topMatches = [...matches]
+    .sort((a, b) => confidenceScore(b.confidence) - confidenceScore(a.confidence))
+    .slice(0, 3);
+
+  $("#radarPicks").innerHTML = topMatches.map((m) => `
+    <article class="radar-pick">
+      <div><strong>${m.home.flag} ${m.home.name} vs ${m.away.flag} ${m.away.name}</strong><span>${m.group} · ${m.confidence}</span></div>
+      <p>${m.side}｜${m.totalPick}｜${m.score}</p>
+      <meter min="0" max="100" value="${confidenceScore(m.confidence)}"></meter>
+    </article>
+  `).join("");
+
+  $("#riskGrid").innerHTML = `
+    <article><span>避開盤</span><strong>${avoid}</strong><p>熱門深讓盤只看方向，不追高。</p></article>
+    <article><span>主推資金</span><strong>35%</strong><p>單場最高配置，避免滿倉。</p></article>
+    <article><span>正確比分</span><strong>10%</strong><p>只適合小注娛樂，不當主軸。</p></article>
+  `;
 }
 
 function renderMatches(filter = "all") {
@@ -74,6 +125,32 @@ function renderMatches(filter = "all") {
       <div class="chips">${m.chips.map((c) => `<span class="tag ${tagClass(c)}">${c}</span>`).join("")}</div>
     </article>
   `).join("");
+}
+
+function renderScenarios() {
+  const groupsByName = Object.fromEntries(boardData.groups.map((g) => [g.group, g]));
+  $("#scenarioGrid").innerHTML = boardData.matches.map((m) => {
+    const group = groupsByName[m.group];
+    const leaders = group ? [...group.teams].sort((a, b) => b.points - a.points).slice(0, 3) : [];
+    return `
+      <article class="scenario-card">
+        <div class="scenario-card__match">
+          <strong>${m.home.flag} ${m.home.name}</strong>
+          <span>VS</span>
+          <strong>${m.away.flag} ${m.away.name}</strong>
+        </div>
+        <div class="scenario-branches">
+          <div><span>${m.home.name}贏</span><p>${m.home.note}方升級，若為必勝盤會拉高讓分風險。</p></div>
+          <div><span>和局</span><p>${m.context.scenario}</p></div>
+          <div><span>${m.away.name}贏</span><p>${m.away.note}方路線更穩，熱門方若深讓需降注。</p></div>
+        </div>
+        <div class="scenario-table">
+          ${leaders.map((t) => `<p><b>${t.flag} ${t.name}</b><span>${t.points}分 · ${t.status}</span></p>`).join("")}
+        </div>
+        <p class="read">${m.read}</p>
+      </article>
+    `;
+  }).join("");
 }
 
 function renderStandings() {
@@ -122,6 +199,43 @@ function renderNews() {
   `).join("");
 }
 
+function renderReview() {
+  const review = boardData.review || {
+    summary: "賽後待更新：比賽結束後補上命中、錯盤原因、盤口變化與下一輪修正。",
+    hitRate: "待統計",
+    lessons: [
+      "確認開賽前陣容與輪換後，再校正讓分深度。",
+      "已晉級球隊不盲追深讓，優先看戰意與節奏。",
+      "正確比分只列參考，不納入主資金配置。"
+    ],
+    matches: boardData.matches.map((m) => ({
+      match: `${m.home.flag} ${m.home.name} vs ${m.away.flag} ${m.away.name}`,
+      pick: `${m.side}｜${m.totalPick}`,
+      result: "待開賽",
+      note: "賽後補上比分與盤口復盤"
+    }))
+  };
+
+  $("#reviewLayout").innerHTML = `
+    <section class="review-summary">
+      <p class="eyebrow">Review Board</p>
+      <h3>${review.hitRate}</h3>
+      <p>${review.summary}</p>
+      <div class="lesson-list">${review.lessons.map((item) => `<span>${item}</span>`).join("")}</div>
+    </section>
+    <section class="review-list">
+      ${review.matches.map((item) => `
+        <article>
+          <strong>${item.match}</strong>
+          <p>${item.pick}</p>
+          <span>${item.result}</span>
+          <small>${item.note}</small>
+        </article>
+      `).join("")}
+    </section>
+  `;
+}
+
 function renderPortfolio() {
   $("#portfolioList").innerHTML = boardData.portfolio.map((item) => `
     <article><span class="tag tag--${item.tagTone}">${item.tag}</span><h3>${item.title}</h3><p>${item.description}</p><meter min="0" max="100" value="${item.confidence}"></meter></article>
@@ -133,18 +247,29 @@ function renderPortfolio() {
 
 function switchView(name) {
   $$(".view").forEach((v) => v.classList.remove("is-active"));
-  $(`#view-${name}`).classList.add("is-active");
+  const target = $(`#view-${name}`);
+  if (target) target.classList.add("is-active");
   $$(".nav-tab").forEach((b) => b.classList.toggle("is-active", b.dataset.view === name));
 }
 
 async function init() {
-  boardData = await (await fetch("./data.json", { cache: "no-store" })).json();
-  renderHero(boardData);
-  renderMatches();
-  renderStandings();
-  renderQualified();
-  renderNews();
-  renderPortfolio();
+  try {
+    boardData = await (await fetch("./data.json", { cache: "no-store" })).json();
+    renderHero(boardData);
+    renderDashboard();
+    renderMatches();
+    renderScenarios();
+    renderStandings();
+    renderQualified();
+    renderNews();
+    renderReview();
+    renderPortfolio();
+  } catch (error) {
+    console.error(error);
+    setText("#heroPrimary", "data.json 格式需檢查");
+    setText("#heroSecondary", "請確認 JSON 沒有多餘文字");
+    setText("#heroAvoid", "修正後重新整理");
+  }
 }
 
 $$(".nav-tab").forEach((button) => button.addEventListener("click", () => switchView(button.dataset.view)));
