@@ -295,3 +295,4 @@
     { "label": "正確比分小注", "value": 10 }
   ]
 }
+trigger pages deploy
