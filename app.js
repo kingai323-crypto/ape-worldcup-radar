@@ -93,6 +93,10 @@ function renderStandings() {
 }
 
 function renderQualified() {
+  $("#qualifiedChips").innerHTML = boardData.qualified.map((q) => `
+    <span class="qualified-chip">${q.flag} ${q.name}<small>${q.group}</small></span>
+  `).join("");
+  setText("#qualifiedNote", boardData.qualificationNote);
   $("#qualifiedGrid").innerHTML = boardData.qualified.map((q) => `
     <article class="qualified-card">
       <span class="flag-xl">${q.flag}</span>
