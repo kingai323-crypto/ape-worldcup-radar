@@ -84,6 +84,74 @@ function renderDashboard() {
   `;
 }
 
+function movementTone(text = "") {
+  if (text.includes("不追") || text.includes("追高") || text.includes("升盤")) return "hot";
+  if (text.includes("小") || text.includes("降注") || text.includes("保守")) return "cool";
+  return "watch";
+}
+
+function renderProReport() {
+  const portfolio = boardData.portfolio || [];
+  const main = portfolio[0] || { title: boardData.hero.primary, description: "今日主推方向" };
+  const total = portfolio.find((item) => item.title.includes("小") || item.description.includes("小")) || { title: boardData.hero.secondary, description: "今日大小球方向" };
+  const avoid = boardData.hero.avoid;
+  const scoreMatch = boardData.matches.find((m) => m.score) || boardData.matches[0];
+  const quickItems = boardData.quickSlip || [
+    { label: "今日最穩", value: main.title, note: main.description },
+    { label: "今日小分", value: total.title, note: total.description },
+    { label: "今日避開", value: avoid, note: "熱門深讓盤不追高，等臨場盤或跳過。" },
+    { label: "正確比分", value: scoreMatch ? `${scoreMatch.home.name} vs ${scoreMatch.away.name}｜${scoreMatch.score}` : "待更新", note: "比分只做小注參考，不納入主資金。" }
+  ];
+
+  $("#quickSlip").innerHTML = quickItems.map((item) => `
+    <article>
+      <span>${item.label}</span>
+      <strong>${item.value}</strong>
+      <p>${item.note}</p>
+    </article>
+  `).join("");
+
+  const oddsMoves = boardData.oddsMoves || boardData.matches.map((m) => ({
+    match: `${m.home.flag} ${m.home.name} vs ${m.away.flag} ${m.away.name}`,
+    open: m.taiwanLine.asiaFormat,
+    current: `${m.taiwanLine.handicap}｜${m.taiwanLine.total}`,
+    move: movementTone(`${m.side} ${m.read}`) === "hot" ? "市場偏熱" : movementTone(`${m.totalPick} ${m.read}`) === "cool" ? "節奏降速" : "觀察盤",
+    read: m.read
+  }));
+
+  $("#oddsBoard").innerHTML = oddsMoves.map((item) => `
+    <article class="odds-row odds-row--${movementTone(`${item.move} ${item.read}`)}">
+      <div><strong>${item.match}</strong><span>${item.move}</span></div>
+      <p><b>初盤</b>${item.open}</p>
+      <p><b>目前</b>${item.current}</p>
+      <small>${item.read}</small>
+    </article>
+  `).join("");
+
+  const form = boardData.form7d || {
+    summary: "新站啟用，今日賽後開始累積近7日樣本。",
+    metrics: [
+      { label: "主推命中", value: "待統計", note: "賽後更新" },
+      { label: "大小球", value: "待統計", note: "賽後更新" },
+      { label: "避開盤", value: "待統計", note: "賽後更新" },
+      { label: "正比接近", value: "待統計", note: "只看方向" }
+    ]
+  };
+
+  $("#streakBoard").innerHTML = `
+    <p>${form.summary}</p>
+    <div class="streak-metrics">
+      ${form.metrics.map((item) => `
+        <article>
+          <span>${item.label}</span>
+          <strong>${item.value}</strong>
+          <small>${item.note}</small>
+        </article>
+      `).join("")}
+    </div>
+  `;
+}
+
 function renderMatches(filter = "all") {
   const matches = boardData.matches.filter((m) => filter === "all" || m.filters.includes(filter));
   $("#matchGrid").innerHTML = matches.map((m) => `
@@ -257,6 +325,7 @@ async function init() {
     boardData = await (await fetch("./data.json", { cache: "no-store" })).json();
     renderHero(boardData);
     renderDashboard();
+    renderProReport();
     renderMatches();
     renderScenarios();
     renderStandings();
