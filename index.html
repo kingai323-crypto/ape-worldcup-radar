@@ -1,28 +1,106 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>APE世足預測雷達 | 台灣盤口版</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__image"></div>
+      <div class="hero__shade"></div>
+      <nav class="topbar" aria-label="主選單">
+        <a class="brand" href="#">
+          <span class="brand__mark">APE</span>
+          <span>
+            <strong>APE世足預測雷達</strong>
+            <small>台灣盤口 · 戰力分析 · 晉級情境</small>
+          </span>
+        </a>
+        <div class="topbar__actions">
+          <a href="#today">今日推薦</a>
+          <a href="#bracket">晉級圖</a>
+          <a href="#portfolio">組合單</a>
+        </div>
+      </nav>
 
+      <section class="hero__content" aria-labelledby="page-title">
+        <p class="eyebrow" id="editionLabel">每日更新版</p>
+        <h1 id="page-title">台灣盤口世足戰情室</h1>
+        <p class="hero__copy">用台灣玩家熟悉的讓分與大小格式，整合即時新聞、球員動向、戰術安排、勝率與晉級情境。</p>
+        <div class="hero__panel" aria-label="今日主推摘要">
+          <div>
+            <span>今日主推</span>
+            <strong id="heroPrimary">載入中</strong>
+          </div>
+          <div>
+            <span>大小球</span>
+            <strong id="heroSecondary">載入中</strong>
+          </div>
+          <div>
+            <span>避開盤</span>
+            <strong id="heroAvoid">載入中</strong>
+          </div>
+        </div>
+      </section>
+    </header>
 
-APE APE世足預測雷達 台灣盤口 · 戰力分析 · 晉級情境
-今日推薦 晉級圖 組合單
-每日更新版
-台灣盤口世足戰情室
-用台灣玩家熟悉的讓分與大小格式，整合即時新聞、球員動向、戰術安排、勝率與晉級情境。
-今日主推 載入中
-大小球 載入中
-避開盤 載入中
-APE Alert
-Taiwan Board
-今日台灣盤口推薦
-全部 A級 讓分 大小
+    <main>
+      <section class="ticker" id="ticker" aria-label="即時盤口提醒">
+        <div>APE Alert</div>
+      </section>
 
-Qualification Map
-小組晉級圖
+      <section id="today" class="section">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow">Taiwan Board</p>
+            <h2>今日台灣盤口推薦</h2>
+          </div>
+          <div class="filters" role="group" aria-label="篩選賽事">
+            <button class="filter is-active" data-filter="all">全部</button>
+            <button class="filter" data-filter="A">A級</button>
+            <button class="filter" data-filter="side">讓分</button>
+            <button class="filter" data-filter="total">大小</button>
+          </div>
+        </div>
+        <div class="match-grid" id="matchGrid"></div>
+      </section>
 
-即時新聞權重
+      <section id="bracket" class="section section--split">
+        <div>
+          <p class="eyebrow">Qualification Map</p>
+          <h2>小組晉級圖</h2>
+          <div class="bracket" id="bracketList"></div>
+        </div>
+        <aside class="news-panel">
+          <h3>即時新聞權重</h3>
+          <div id="newsList"></div>
+        </aside>
+      </section>
 
-Portfolio
-今日組合單
+      <section id="portfolio" class="section section--split">
+        <div>
+          <p class="eyebrow">Portfolio</p>
+          <h2>今日組合單</h2>
+          <div class="portfolio" id="portfolioList"></div>
+        </div>
+        <aside class="bankroll">
+          <h3>資金配置</h3>
+          <div id="bankrollList"></div>
+          <p>本頁為分析參考，不保證獲利。請控制本金，避免追單。</p>
+        </aside>
+      </section>
+    </main>
 
-資金配置
+    <footer>
+      <p>APE世足預測雷達 · 台灣盤口參考版</p>
+      <p id="lastUpdated">Last updated</p>
+    </footer>
 
-本頁為分析參考，不保證獲利。請控制本金，避免追單。
-APE世足預測雷達 · 台灣盤口參考版
-Last updated
+    <script src="./app.js"></script>
+  </body>
+</html>
