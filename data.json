@@ -1,3 +1,153 @@
+{
+  "updatedAt": "2026-06-24 亞太時間，6/24 六場完整賽前版",
+  "edition": "2026-06-24 六場完整賽事",
+  "hero": {
+    "primary": "摩洛哥 讓1/1.5",
+    "secondary": "加拿大 vs 瑞士 小2.5/3",
+    "avoid": "巴西 讓1/1.5 追高"
+  },
+  "alerts": [
+    "6/24 共六場：C組2場、B組2場、A組2場，已修正為完整每日賽事",
+    "C組：巴西/摩洛哥/蘇格蘭爭名次，海地已淘汰",
+    "B組：加拿大與瑞士爭第一，波士尼亞與卡達爭第三名機會",
+    "A組：墨西哥已晉級，韓國/捷克/南非仍在搶前二與最佳第三名",
+    "台灣盤口以讓1/1.5、讓0.5/1、大小2/2.5、大小2.5/3顯示"
+  ],
+  "qualificationNote": "截至 2026-06-24 即時整理：32強由12組前二名加8支最佳第三名組成。6/24 是 A/B/C 三組最後一輪，已晉級或接近晉級隊伍仍可能因小組第一/第二而改變下一輪對手，請以賽後官方結果再校正。",
+  "groups": [
+    {
+      "group": "Group A",
+      "note": "墨西哥已鎖定出線；韓國、捷克、南非爭前二與最佳第三名",
+      "teams": [
+        { "flag": "🇲🇽", "name": "墨西哥", "played": 2, "points": 6, "gd": "+2", "status": "已晉級", "tone": "green" },
+        { "flag": "🇰🇷", "name": "韓國", "played": 2, "points": 3, "gd": "0", "status": "爭前二", "tone": "gold" },
+        { "flag": "🇨🇿", "name": "捷克", "played": 2, "points": 1, "gd": "-1", "status": "需贏球", "tone": "blue" },
+        { "flag": "🇿🇦", "name": "南非", "played": 2, "points": 1, "gd": "-1", "status": "需贏球", "tone": "blue" }
+      ]
+    },
+    {
+      "group": "Group B",
+      "note": "加拿大與瑞士爭第一；波士尼亞與卡達需勝才保留希望",
+      "teams": [
+        { "flag": "🇨🇦", "name": "加拿大", "played": 2, "points": 4, "gd": "+6", "status": "爭第一", "tone": "green" },
+        { "flag": "🇨🇭", "name": "瑞士", "played": 2, "points": 4, "gd": "+3", "status": "爭第一", "tone": "green" },
+        { "flag": "🇧🇦", "name": "波士尼亞", "played": 2, "points": 1, "gd": "-3", "status": "必須贏", "tone": "gold" },
+        { "flag": "🇶🇦", "name": "卡達", "played": 2, "points": 1, "gd": "-6", "status": "必須贏", "tone": "red" }
+      ]
+    },
+    {
+      "group": "Group C",
+      "note": "巴西、摩洛哥、蘇格蘭爭晉級順位；海地已淘汰",
+      "teams": [
+        { "flag": "🇧🇷", "name": "巴西", "played": 2, "points": 4, "gd": "+3", "status": "爭第一", "tone": "green" },
+        { "flag": "🇲🇦", "name": "摩洛哥", "played": 2, "points": 4, "gd": "+1", "status": "爭第一", "tone": "green" },
+        { "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f", "name": "蘇格蘭", "played": 2, "points": 3, "gd": "0", "status": "守平有利", "tone": "gold" },
+        { "flag": "🇭🇹", "name": "海地", "played": 2, "points": 0, "gd": "-4", "status": "已淘汰", "tone": "red" }
+      ]
+    },
+    {
+      "group": "Group D",
+      "note": "美國已鎖定第一；澳洲與巴拉圭正面爭第二，土耳其已淘汰",
+      "teams": [
+        { "flag": "🇺🇸", "name": "美國", "played": 2, "points": 6, "gd": "+5", "status": "已晉級", "tone": "green" },
+        { "flag": "🇦🇺", "name": "澳洲", "played": 2, "points": 3, "gd": "0", "status": "爭第二", "tone": "gold" },
+        { "flag": "🇵🇾", "name": "巴拉圭", "played": 2, "points": 3, "gd": "-2", "status": "爭第二", "tone": "gold" },
+        { "flag": "🇹🇷", "name": "土耳其", "played": 2, "points": 0, "gd": "-3", "status": "已淘汰", "tone": "red" }
+      ]
+    },
+    {
+      "group": "Group E",
+      "note": "德國已鎖定第一；象牙海岸平局可守第二，厄瓜多與庫拉索需勝",
+      "teams": [
+        { "flag": "🇩🇪", "name": "德國", "played": 2, "points": 6, "gd": "+7", "status": "已晉級", "tone": "green" },
+        { "flag": "🇨🇮", "name": "象牙海岸", "played": 2, "points": 3, "gd": "0", "status": "平局有利", "tone": "gold" },
+        { "flag": "🇪🇨", "name": "厄瓜多", "played": 2, "points": 1, "gd": "-1", "status": "必須贏", "tone": "red" },
+        { "flag": "🇨🇼", "name": "庫拉索", "played": 2, "points": 1, "gd": "-6", "status": "必須贏", "tone": "red" }
+      ]
+    },
+    {
+      "group": "Group F",
+      "note": "荷蘭與日本同分爭第一；瑞典仍有前二希望，突尼西亞已淘汰",
+      "teams": [
+        { "flag": "🇳🇱", "name": "荷蘭", "played": 2, "points": 4, "gd": "+4", "status": "爭第一", "tone": "green" },
+        { "flag": "🇯🇵", "name": "日本", "played": 2, "points": 4, "gd": "+4", "status": "拿分即穩", "tone": "green" },
+        { "flag": "🇸🇪", "name": "瑞典", "played": 2, "points": 3, "gd": "0", "status": "需搶分", "tone": "gold" },
+        { "flag": "🇹🇳", "name": "突尼西亞", "played": 2, "points": 0, "gd": "-8", "status": "已淘汰", "tone": "red" }
+      ]
+    },
+    {
+      "group": "Group G",
+      "note": "全組仍開放；埃及與紐西蘭少賽一場，6/26末輪決定排序",
+      "teams": [
+        { "flag": "🇧🇪", "name": "比利時", "played": 2, "points": 2, "gd": "0", "status": "全組開放", "tone": "gold" },
+        { "flag": "🇮🇷", "name": "伊朗", "played": 2, "points": 2, "gd": "0", "status": "全組開放", "tone": "gold" },
+        { "flag": "🇪🇬", "name": "埃及", "played": 1, "points": 1, "gd": "0", "status": "少賽一場", "tone": "blue" },
+        { "flag": "🇳🇿", "name": "紐西蘭", "played": 1, "points": 1, "gd": "0", "status": "少賽一場", "tone": "blue" }
+      ]
+    },
+    {
+      "group": "Group H",
+      "note": "西班牙暫居第一；烏拉圭與維德角平局多，沙烏地需末輪反彈",
+      "teams": [
+        { "flag": "🇪🇸", "name": "西班牙", "played": 2, "points": 4, "gd": "+4", "status": "爭第一", "tone": "green" },
+        { "flag": "🇺🇾", "name": "烏拉圭", "played": 2, "points": 2, "gd": "0", "status": "爭前二", "tone": "gold" },
+        { "flag": "🇨🇻", "name": "維德角", "played": 2, "points": 2, "gd": "0", "status": "爭前二", "tone": "gold" },
+        { "flag": "🇸🇦", "name": "沙烏地", "played": 2, "points": 1, "gd": "-4", "status": "需勝", "tone": "red" }
+      ]
+    },
+    {
+      "group": "Group I",
+      "note": "法國與挪威已晉級，直接對決決定小組第一",
+      "teams": [
+        { "flag": "🇫🇷", "name": "法國", "played": 2, "points": 6, "gd": "+5", "status": "已晉級", "tone": "green" },
+        { "flag": "🇳🇴", "name": "挪威", "played": 2, "points": 6, "gd": "+4", "status": "已晉級", "tone": "green" },
+        { "flag": "🇸🇳", "name": "塞內加爾", "played": 2, "points": 0, "gd": "-3", "status": "微弱希望", "tone": "red" },
+        { "flag": "🇮🇶", "name": "伊拉克", "played": 2, "points": 0, "gd": "-6", "status": "微弱希望", "tone": "red" }
+      ]
+    },
+    {
+      "group": "Group J",
+      "note": "阿根廷已鎖定第一；奧地利與阿爾及利亞正面爭第二，約旦已淘汰",
+      "teams": [
+        { "flag": "🇦🇷", "name": "阿根廷", "played": 2, "points": 6, "gd": "+5", "status": "已晉級", "tone": "green" },
+        { "flag": "🇦🇹", "name": "奧地利", "played": 2, "points": 3, "gd": "0", "status": "爭第二", "tone": "gold" },
+        { "flag": "🇩🇿", "name": "阿爾及利亞", "played": 2, "points": 3, "gd": "-2", "status": "爭第二", "tone": "gold" },
+        { "flag": "🇯🇴", "name": "約旦", "played": 2, "points": 0, "gd": "-3", "status": "已淘汰", "tone": "red" }
+      ]
+    },
+    {
+      "group": "Group K",
+      "note": "哥倫比亞已晉級；葡萄牙爭第一，剛果民主共和國與烏茲別克爭第三",
+      "teams": [
+        { "flag": "🇨🇴", "name": "哥倫比亞", "played": 2, "points": 6, "gd": "+3", "status": "已晉級", "tone": "green" },
+        { "flag": "🇵🇹", "name": "葡萄牙", "played": 2, "points": 4, "gd": "+5", "status": "爭第一", "tone": "green" },
+        { "flag": "🇨🇩", "name": "剛果民主共和國", "played": 2, "points": 1, "gd": "-1", "status": "需勝", "tone": "blue" },
+        { "flag": "🇺🇿", "name": "烏茲別克", "played": 2, "points": 0, "gd": "-7", "status": "危險", "tone": "red" }
+      ]
+    },
+    {
+      "group": "Group L",
+      "note": "英格蘭與迦納同分，克羅埃西亞仍可爭第二；巴拿馬已淘汰",
+      "teams": [
+        { "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "name": "英格蘭", "played": 2, "points": 4, "gd": "+2", "status": "爭第一", "tone": "green" },
+        { "flag": "🇬🇭", "name": "迦納", "played": 2, "points": 4, "gd": "+1", "status": "爭第一", "tone": "green" },
+        { "flag": "🇭🇷", "name": "克羅埃西亞", "played": 2, "points": 3, "gd": "-1", "status": "爭第二", "tone": "gold" },
+        { "flag": "🇵🇦", "name": "巴拿馬", "played": 2, "points": 0, "gd": "-2", "status": "已淘汰", "tone": "red" }
+      ]
+    }
+  ],
+  "qualified": [
+    { "flag": "🇲🇽", "name": "墨西哥", "group": "A", "status": "Group A 已晉級", "next": "若第一：對 C/E/F/H/I 組第三名之一" },
+    { "flag": "🇺🇸", "name": "美國", "group": "D", "status": "Group D 已晉級", "next": "等待D組最後名次與第三名路線" },
+    { "flag": "🇩🇪", "name": "德國", "group": "E", "status": "Group E 已晉級", "next": "32強路線待E組最後輪次確認" },
+    { "flag": "🇫🇷", "name": "法國", "group": "I", "status": "Group I 已晉級", "next": "與挪威爭第一，名次決定32強路線" },
+    { "flag": "🇳🇴", "name": "挪威", "group": "I", "status": "Group I 已晉級", "next": "與法國爭第一，敗方多半第二" },
+    { "flag": "🇦🇷", "name": "阿根廷", "group": "J", "status": "Group J 已晉級", "next": "名次仍影響32強落點" },
+    { "flag": "🇨🇴", "name": "哥倫比亞", "group": "K", "status": "Group K 已晉級", "next": "對葡萄牙決定小組第一" }
+  ],
+  "bracket": [
+    { "seed": "A1", "path": "墨西哥若守住第一，將打 C/E/F/H/I 組第三名之一" },
+    { "seed": "A2", "path": "A組第二將對 B組第二，韓國若第二可能碰瑞士/加拿大" },
     { "seed": "B1", "path": "B組第一對 E/F/G/I/J 組第三名之一，加拿大與瑞士都會避免輸球掉位" },
     { "seed": "C1", "path": "C組第一將對 F組第二，巴西/摩洛哥都想避開較硬路線" },
     { "seed": "3rd", "path": "最佳第三名共8隊晉級，末輪平局價值提高，小球盤要加權" }
@@ -31,7 +181,7 @@
     {
       "time": "6/24 北美賽程",
       "group": "Group C",
-      "home": { "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "name": "蘇格蘭", "note": "守平戰意" },
+      "home": { "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f", "name": "蘇格蘭", "note": "守平戰意" },
       "away": { "flag": "🇧🇷", "name": "巴西", "note": "名氣熱盤" },
       "confidence": "B",
       "filters": ["side", "total"],
