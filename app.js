@@ -97,6 +97,14 @@ function renderQualified() {
     <span class="qualified-chip">${q.flag} ${q.name}<small>${q.group}</small></span>
   `).join("");
   setText("#qualifiedNote", boardData.qualificationNote);
+  const overlay = $("#bracketOverlay");
+  if (overlay && boardData.bracketSlots) {
+    overlay.innerHTML = boardData.bracketSlots.map((s) => `
+      <div class="bracket-fill bracket-fill--${s.tone}" style="left:${s.x}%;top:${s.y}%">
+        <b>${s.seed}</b><span>${s.flag} ${s.team}</span><small>${s.status}</small>
+      </div>
+    `).join("");
+  }
   $("#qualifiedGrid").innerHTML = boardData.qualified.map((q) => `
     <article class="qualified-card">
       <span class="flag-xl">${q.flag}</span>
