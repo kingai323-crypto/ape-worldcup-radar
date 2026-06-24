@@ -151,6 +151,15 @@ function renderMatches(filter = "all") {
             <div class="pick-row"><span>備選</span><strong>${match.totalPick}</strong></div>
             <div class="pick-row pick-row--score"><span>比分</span><strong>${match.score}</strong></div>
           </div>
+          ${
+            match.context
+              ? `<div class="context-list" aria-label="進階分析">
+                  <div><span>晉級情境</span><p>${match.context.scenario}</p></div>
+                  <div><span>球員動向</span><p>${match.context.players}</p></div>
+                  <div><span>戰術安排</span><p>${match.context.tactics}</p></div>
+                </div>`
+              : ""
+          }
           <p class="read">${match.read}</p>
           <div class="chips">
             ${match.chips.map((chip) => `<span class="tag ${tagClass(chip)}">${chip}</span>`).join("")}
