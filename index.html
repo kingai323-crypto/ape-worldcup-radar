@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>APE世足預測雷達 | 台灣盤口版</title>
+    <title>APE世足戰情室</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet" />
@@ -13,54 +13,45 @@
     <header class="hero">
       <div class="hero__image"></div>
       <div class="hero__shade"></div>
-      <nav class="topbar" aria-label="主選單">
+      <nav class="topbar">
         <a class="brand" href="#">
           <span class="brand__mark">APE</span>
           <span>
-            <strong>APE世足預測雷達</strong>
-            <small>台灣盤口 · 戰力分析 · 晉級情境</small>
+            <strong>APE世足戰情室</strong>
+            <small>積分 · 晉級 · 台灣盤口 · 戰術新聞</small>
           </span>
         </a>
         <div class="topbar__actions">
-          <a href="#today">今日推薦</a>
-          <a href="#bracket">晉級圖</a>
-          <a href="#portfolio">組合單</a>
+          <button class="nav-tab is-active" data-view="matches">今日對戰</button>
+          <button class="nav-tab" data-view="standings">小組積分</button>
+          <button class="nav-tab" data-view="qualified">晉級路線</button>
+          <button class="nav-tab" data-view="news">新聞權重</button>
         </div>
       </nav>
-
-      <section class="hero__content" aria-labelledby="page-title">
-        <p class="eyebrow" id="editionLabel">每日更新版</p>
-        <h1 id="page-title">台灣盤口世足戰情室</h1>
-        <p class="hero__copy">用台灣玩家熟悉的讓分與大小格式，整合即時新聞、球員動向、戰術安排、勝率與晉級情境。</p>
-        <div class="hero__panel" aria-label="今日主推摘要">
-          <div>
-            <span>今日主推</span>
-            <strong id="heroPrimary">載入中</strong>
-          </div>
-          <div>
-            <span>大小球</span>
-            <strong id="heroSecondary">載入中</strong>
-          </div>
-          <div>
-            <span>避開盤</span>
-            <strong id="heroAvoid">載入中</strong>
-          </div>
+      <section class="hero__content">
+        <p class="eyebrow" id="editionLabel">每日更新</p>
+        <h1>APE世足戰情室</h1>
+        <p class="hero__copy">點選分頁看目前積分、誰已晉級、下一輪可能對手、國旗對戰、台灣盤口、正確比分、球員新聞和戰術安排。</p>
+        <div class="hero__panel">
+          <div><span>主推</span><strong id="heroPrimary">載入中</strong></div>
+          <div><span>大小球</span><strong id="heroSecondary">載入中</strong></div>
+          <div><span>避開</span><strong id="heroAvoid">載入中</strong></div>
         </div>
       </section>
     </header>
 
     <main>
-      <section class="ticker" id="ticker" aria-label="即時盤口提醒">
-        <div>APE Alert</div>
+      <section class="ticker" id="ticker"><div>APE Alert</div></section>
+
+      <section class="risk-note" aria-label="特別提醒">
+        <strong>特別提醒</strong>
+        <p>本網站內容僅為個人資料整理與賽事分析參考，不代表保證命中，也不構成投資或投注建議。盤口、陣容與賽果都可能臨場變動，請勿重注、借貸下注或超出自己可承受的範圍。賽果若與預測不同，屬運動賽事正常風險，請理性復盤，不以單場結果歸責任何分析。</p>
       </section>
 
-      <section id="today" class="section">
+      <section class="section view is-active" id="view-matches">
         <div class="section__head">
-          <div>
-            <p class="eyebrow">Taiwan Board</p>
-            <h2>今日台灣盤口推薦</h2>
-          </div>
-          <div class="filters" role="group" aria-label="篩選賽事">
+          <div><p class="eyebrow">Match Center</p><h2>今日對戰分析</h2></div>
+          <div class="filters">
             <button class="filter is-active" data-filter="all">全部</button>
             <button class="filter" data-filter="A">A級</button>
             <button class="filter" data-filter="side">讓分</button>
@@ -70,19 +61,31 @@
         <div class="match-grid" id="matchGrid"></div>
       </section>
 
-      <section id="bracket" class="section section--split">
-        <div>
-          <p class="eyebrow">Qualification Map</p>
-          <h2>小組晉級圖</h2>
-          <div class="bracket" id="bracketList"></div>
+      <section class="section view" id="view-standings">
+        <div class="section__head">
+          <div><p class="eyebrow">Live Tables</p><h2>目前小組積分與晉級狀態</h2></div>
         </div>
-        <aside class="news-panel">
-          <h3>即時新聞權重</h3>
-          <div id="newsList"></div>
-        </aside>
+        <div class="standings-grid" id="standingsGrid"></div>
       </section>
 
-      <section id="portfolio" class="section section--split">
+      <section class="section view" id="view-qualified">
+        <div class="section__head">
+          <div><p class="eyebrow">Road to Round of 32</p><h2>已晉級與下一輪可能對手</h2></div>
+        </div>
+        <div class="qualified-layout">
+          <div class="qualified-grid" id="qualifiedGrid"></div>
+          <div class="bracket-panel" id="bracketPanel"></div>
+        </div>
+      </section>
+
+      <section class="section view" id="view-news">
+        <div class="section__head">
+          <div><p class="eyebrow">News Weight</p><h2>即時新聞與盤口影響</h2></div>
+        </div>
+        <div class="news-grid" id="newsGrid"></div>
+      </section>
+
+      <section class="section section--split">
         <div>
           <p class="eyebrow">Portfolio</p>
           <h2>今日組合單</h2>
@@ -91,16 +94,15 @@
         <aside class="bankroll">
           <h3>資金配置</h3>
           <div id="bankrollList"></div>
-          <p>本頁為分析參考，不保證獲利。請控制本金，避免追單。</p>
+          <p>本頁為分析參考，不保證獲利。請理性控管資金，避免追單。</p>
         </aside>
       </section>
     </main>
 
     <footer>
-      <p>APE世足預測雷達 · 台灣盤口參考版</p>
-      <p id="lastUpdated">Last updated</p>
+      <p>APE世足戰情室 · 台灣盤口參考版</p>
+      <p><span id="lastUpdated">Last updated</span> · 小注娛樂，理性看球。</p>
     </footer>
-
     <script src="./app.js"></script>
   </body>
 </html>
