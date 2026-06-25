@@ -1,83 +1,99 @@
-{
-  "updatedAt": "2026-06-24 亞太時間，6/24 六場完整賽前版",
-  "edition": "2026-06-24 六場完整賽事",
+ {
+  "updatedAt": "2026-06-25 台灣時間，6/25 六場完整賽前版",
+  "edition": "2026-06-25 六場完整賽事｜台灣時間版",
   "hero": {
-    "primary": "摩洛哥 讓1/1.5",
-    "secondary": "加拿大 vs 瑞士 小2.5/3",
-    "avoid": "巴西 讓1/1.5 追高"
+    "primary": "象牙海岸 讓0.5/1",
+    "secondary": "日本 vs 瑞典 小2/2.5",
+    "avoid": "德國與美國深讓追高"
   },
   "alerts": [
-    "6/24 共六場：C組2場、B組2場、A組2場，已修正為完整每日賽事",
-    "C組：巴西/摩洛哥/蘇格蘭爭名次，海地已淘汰",
-    "B組：加拿大與瑞士爭第一，波士尼亞與卡達爭第三名機會",
-    "A組：墨西哥已晉級，韓國/捷克/南非仍在搶前二與最佳第三名",
-    "台灣盤口以讓1/1.5、讓0.5/1、大小2/2.5、大小2.5/3顯示"
+    "6/25 今日完整六場：E組2場、F組2場、D組2場；D組兩場台灣時間跨到 6/26 00:30",
+    "E組：德國已晉級並可能輪換，象牙海岸贏球可穩第二，庫拉索與厄瓜多仍要搶分",
+    "F組：荷蘭與日本同分爭第一，瑞典必須搶分，突尼西亞退路很小",
+    "D組：美國已晉級，澳洲與巴拉圭正面爭第二，土耳其仍可能影響盤口",
+    "第三輪重點：已晉級隊伍可能保主力，爭第一隊伍多半先控風險，必須贏球隊伍下半場才會更激進",
+    "台灣盤口用讓0.5/1、讓1/1.5、大小2/2.5、大小2.5/3格式呈現；本頁僅為個人分析參考"
   ],
-  "qualificationNote": "截至 2026-06-24 即時整理：32強由12組前二名加8支最佳第三名組成。6/24 是 A/B/C 三組最後一輪，已晉級或接近晉級隊伍仍可能因小組第一/第二而改變下一輪對手，請以賽後官方結果再校正。",
+  "qualificationNote": "截至 2026-06-25 台灣時間賽前整理：32強由12組前二名加8支最佳第三名組成。A/B/C 三組已完成，D/E/F 今日收官。已晉級隊伍仍可能因小組第一或第二而改變32強對手，請以賽後官方結果再校正。",
+  "quickSlip": [
+    { "label": "今日最穩", "value": "象牙海岸 讓0.5/1", "note": "戰意明確、對手庫拉索必須冒險，象牙海岸單邊方向比德國深讓更乾淨。" },
+    { "label": "今日小分", "value": "日本 vs 瑞典 小2/2.5", "note": "日本平局可接受，瑞典不能亂攻，末輪名次壓力讓前段節奏偏緊。" },
+    { "label": "今日避開", "value": "德國與美國深讓追高", "note": "兩隊都已晉級，若盤口升到讓1/1.5以上，輪換風險會吃掉賠率價值。" },
+    { "label": "正確比分", "value": "象牙海岸 2-0 / 日本瑞典 1-1", "note": "比分只做小注娛樂，不納入主資金配置。" }
+  ],
+  "form7d": {
+    "summary": "新站從 6/25 起正式建立近7日戰績板，賽後更新命中率、錯盤原因與下一日修正。",
+    "metrics": [
+      { "label": "主推命中", "value": "待統計", "note": "今日主推：象牙海岸" },
+      { "label": "大小球", "value": "待統計", "note": "今日主軸：小球盤" },
+      { "label": "避開盤", "value": "待統計", "note": "德國/美國深讓觀察" },
+      { "label": "正比接近", "value": "待統計", "note": "只看方向，不重注" }
+    ]
+  },
   "groups": [
     {
       "group": "Group A",
-      "note": "墨西哥已鎖定出線；韓國、捷克、南非爭前二與最佳第三名",
+      "note": "已完成：墨西哥第一，南非第二，韓國第三待最佳第三名排序，捷克淘汰",
       "teams": [
-        { "flag": "🇲🇽", "name": "墨西哥", "played": 2, "points": 6, "gd": "+2", "status": "已晉級", "tone": "green" },
-        { "flag": "🇰🇷", "name": "韓國", "played": 2, "points": 3, "gd": "0", "status": "爭前二", "tone": "gold" },
-        { "flag": "🇨🇿", "name": "捷克", "played": 2, "points": 1, "gd": "-1", "status": "需贏球", "tone": "blue" },
-        { "flag": "🇿🇦", "name": "南非", "played": 2, "points": 1, "gd": "-1", "status": "需贏球", "tone": "blue" }
+        { "flag": "🇲🇽", "name": "墨西哥", "played": 3, "points": 9, "gd": "+5", "status": "已晉級第一", "tone": "green" },
+        { "flag": "🇿🇦", "name": "南非", "played": 3, "points": 4, "gd": "0", "status": "已晉級第二", "tone": "green" },
+        { "flag": "🇰🇷", "name": "韓國", "played": 3, "points": 3, "gd": "-1", "status": "第三名待定", "tone": "gold" },
+        { "flag": "🇨🇿", "name": "捷克", "played": 3, "points": 1, "gd": "-4", "status": "已淘汰", "tone": "red" }
       ]
     },
     {
       "group": "Group B",
-      "note": "加拿大與瑞士爭第一；波士尼亞與卡達需勝才保留希望",
+      "note": "已完成：瑞士第一，加拿大第二，波士尼亞第三保留最佳第三名希望",
       "teams": [
-        { "flag": "🇨🇦", "name": "加拿大", "played": 2, "points": 4, "gd": "+6", "status": "爭第一", "tone": "green" },
-        { "flag": "🇨🇭", "name": "瑞士", "played": 2, "points": 4, "gd": "+3", "status": "爭第一", "tone": "green" },
-        { "flag": "🇧🇦", "name": "波士尼亞", "played": 2, "points": 1, "gd": "-3", "status": "必須贏", "tone": "gold" },
-        { "flag": "🇶🇦", "name": "卡達", "played": 2, "points": 1, "gd": "-6", "status": "必須贏", "tone": "red" }
+        { "flag": "🇨🇭", "name": "瑞士", "played": 3, "points": 7, "gd": "+4", "status": "已晉級第一", "tone": "green" },
+        { "flag": "🇨🇦", "name": "加拿大", "played": 3, "points": 4, "gd": "+5", "status": "已晉級第二", "tone": "green" },
+        { "flag": "🇧🇦", "name": "波士尼亞", "played": 3, "points": 4, "gd": "-1", "status": "第三名待定", "tone": "gold" },
+        { "flag": "🇶🇦", "name": "卡達", "played": 3, "points": 1, "gd": "-8", "status": "已淘汰", "tone": "red" }
       ]
     },
     {
       "group": "Group C",
-      "note": "巴西、摩洛哥、蘇格蘭爭晉級順位；海地已淘汰",
+      "note": "已完成：巴西第一，摩洛哥第二，蘇格蘭第三保留最佳第三名希望，海地淘汰",
       "teams": [
-        { "flag": "🇧🇷", "name": "巴西", "played": 2, "points": 4, "gd": "+3", "status": "爭第一", "tone": "green" },
-        { "flag": "🇲🇦", "name": "摩洛哥", "played": 2, "points": 4, "gd": "+1", "status": "爭第一", "tone": "green" },
-        { "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f", "name": "蘇格蘭", "played": 2, "points": 3, "gd": "0", "status": "守平有利", "tone": "gold" },
-        { "flag": "🇭🇹", "name": "海地", "played": 2, "points": 0, "gd": "-4", "status": "已淘汰", "tone": "red" }
+        { "flag": "🇧🇷", "name": "巴西", "played": 3, "points": 7, "gd": "+4", "status": "已晉級第一", "tone": "green" },
+        { "flag": "🇲🇦", "name": "摩洛哥", "played": 3, "points": 5, "gd": "+3", "status": "已晉級第二", "tone": "green" },
+        { "flag": "🏴", "name": "蘇格蘭", "played": 3, "points": 4, "gd": "0", "status": "第三名待定", "tone": "gold" },
+        { "flag": "🇭🇹", "name": "海地", "played": 3, "points": 0, "gd": "-7", "status": "已淘汰", "tone": "red" }
       ]
     },
     {
       "group": "Group D",
-      "note": "美國已鎖定第一；澳洲與巴拉圭正面爭第二，土耳其已淘汰",
+      "note": "今日收官：美國已晉級；澳洲與巴拉圭正面爭第二，土耳其需奇蹟",
       "teams": [
         { "flag": "🇺🇸", "name": "美國", "played": 2, "points": 6, "gd": "+5", "status": "已晉級", "tone": "green" },
-        { "flag": "🇦🇺", "name": "澳洲", "played": 2, "points": 3, "gd": "0", "status": "爭第二", "tone": "gold" },
-        { "flag": "🇵🇾", "name": "巴拉圭", "played": 2, "points": 3, "gd": "-2", "status": "爭第二", "tone": "gold" },
-        { "flag": "🇹🇷", "name": "土耳其", "played": 2, "points": 0, "gd": "-3", "status": "已淘汰", "tone": "red" }
+        { "flag": "🇦🇺", "name": "澳洲", "played": 2, "points": 3, "gd": "0", "status": "守平有利", "tone": "gold" },
+        { "flag": "🇵🇾", "name": "巴拉圭", "played": 2, "points": 3, "gd": "-2", "status": "需搶勝", "tone": "gold" },
+        { "flag": "🇹🇷", "name": "土耳其", "played": 2, "points": 0, "gd": "-3", "status": "淘汰邊緣", "tone": "red" }
       ]
     },
     {
       "group": "Group E",
-      "note": "德國已鎖定第一；象牙海岸平局可守第二，厄瓜多與庫拉索需勝",
+      "note": "今日收官：德國已晉級並可能輪換；象牙海岸第二最穩，厄瓜多與庫拉索需搶分",
       "teams": [
         { "flag": "🇩🇪", "name": "德國", "played": 2, "points": 6, "gd": "+7", "status": "已晉級", "tone": "green" },
-        { "flag": "🇨🇮", "name": "象牙海岸", "played": 2, "points": 3, "gd": "0", "status": "平局有利", "tone": "gold" },
-        { "flag": "🇪🇨", "name": "厄瓜多", "played": 2, "points": 1, "gd": "-1", "status": "必須贏", "tone": "red" },
+        { "flag": "🇨🇮", "name": "象牙海岸", "played": 2, "points": 3, "gd": "0", "status": "贏球晉級", "tone": "green" },
+        { "flag": "🇪🇨", "name": "厄瓜多", "played": 2, "points": 1, "gd": "-1", "status": "必須搶分", "tone": "gold" },
         { "flag": "🇨🇼", "name": "庫拉索", "played": 2, "points": 1, "gd": "-6", "status": "必須贏", "tone": "red" }
       ]
     },
     {
       "group": "Group F",
-      "note": "荷蘭與日本同分爭第一；瑞典仍有前二希望，突尼西亞已淘汰",
+      "note": "今日收官：荷蘭與日本同分爭第一，瑞典仍有前二希望，突尼西亞需奇蹟",
       "teams": [
         { "flag": "🇳🇱", "name": "荷蘭", "played": 2, "points": 4, "gd": "+4", "status": "爭第一", "tone": "green" },
         { "flag": "🇯🇵", "name": "日本", "played": 2, "points": 4, "gd": "+4", "status": "拿分即穩", "tone": "green" },
         { "flag": "🇸🇪", "name": "瑞典", "played": 2, "points": 3, "gd": "0", "status": "需搶分", "tone": "gold" },
-        { "flag": "🇹🇳", "name": "突尼西亞", "played": 2, "points": 0, "gd": "-8", "status": "已淘汰", "tone": "red" }
+        { "flag": "🇹🇳", "name": "突尼西亞", "played": 2, "points": 0, "gd": "-8", "status": "淘汰邊緣", "tone": "red" }
       ]
     },
     {
       "group": "Group G",
-      "note": "全組仍開放；埃及與紐西蘭少賽一場，6/26末輪決定排序",
+      "note": "6/26 收官：比利時、伊朗、埃及、紐西蘭仍開放",
       "teams": [
         { "flag": "🇧🇪", "name": "比利時", "played": 2, "points": 2, "gd": "0", "status": "全組開放", "tone": "gold" },
         { "flag": "🇮🇷", "name": "伊朗", "played": 2, "points": 2, "gd": "0", "status": "全組開放", "tone": "gold" },
@@ -87,7 +103,7 @@
     },
     {
       "group": "Group H",
-      "note": "西班牙暫居第一；烏拉圭與維德角平局多，沙烏地需末輪反彈",
+      "note": "6/26 收官：西班牙暫居第一，烏拉圭與維德角爭前二",
       "teams": [
         { "flag": "🇪🇸", "name": "西班牙", "played": 2, "points": 4, "gd": "+4", "status": "爭第一", "tone": "green" },
         { "flag": "🇺🇾", "name": "烏拉圭", "played": 2, "points": 2, "gd": "0", "status": "爭前二", "tone": "gold" },
@@ -97,7 +113,7 @@
     },
     {
       "group": "Group I",
-      "note": "法國與挪威已晉級，直接對決決定小組第一",
+      "note": "6/26 收官：法國與挪威已晉級，直接對決決定小組第一",
       "teams": [
         { "flag": "🇫🇷", "name": "法國", "played": 2, "points": 6, "gd": "+5", "status": "已晉級", "tone": "green" },
         { "flag": "🇳🇴", "name": "挪威", "played": 2, "points": 6, "gd": "+4", "status": "已晉級", "tone": "green" },
@@ -107,7 +123,7 @@
     },
     {
       "group": "Group J",
-      "note": "阿根廷已鎖定第一；奧地利與阿爾及利亞正面爭第二，約旦已淘汰",
+      "note": "6/27 收官：阿根廷已鎖定第一，奧地利與阿爾及利亞爭第二",
       "teams": [
         { "flag": "🇦🇷", "name": "阿根廷", "played": 2, "points": 6, "gd": "+5", "status": "已晉級", "tone": "green" },
         { "flag": "🇦🇹", "name": "奧地利", "played": 2, "points": 3, "gd": "0", "status": "爭第二", "tone": "gold" },
@@ -117,7 +133,7 @@
     },
     {
       "group": "Group K",
-      "note": "哥倫比亞已晉級；葡萄牙爭第一，剛果民主共和國與烏茲別克爭第三",
+      "note": "6/27 收官：哥倫比亞已晉級，葡萄牙爭第一",
       "teams": [
         { "flag": "🇨🇴", "name": "哥倫比亞", "played": 2, "points": 6, "gd": "+3", "status": "已晉級", "tone": "green" },
         { "flag": "🇵🇹", "name": "葡萄牙", "played": 2, "points": 4, "gd": "+5", "status": "爭第一", "tone": "green" },
@@ -127,9 +143,9 @@
     },
     {
       "group": "Group L",
-      "note": "英格蘭與迦納同分，克羅埃西亞仍可爭第二；巴拿馬已淘汰",
+      "note": "6/27 收官：英格蘭與迦納同分，克羅埃西亞仍可爭第二",
       "teams": [
-        { "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "name": "英格蘭", "played": 2, "points": 4, "gd": "+2", "status": "爭第一", "tone": "green" },
+        { "flag": "🏴", "name": "英格蘭", "played": 2, "points": 4, "gd": "+2", "status": "爭第一", "tone": "green" },
         { "flag": "🇬🇭", "name": "迦納", "played": 2, "points": 4, "gd": "+1", "status": "爭第一", "tone": "green" },
         { "flag": "🇭🇷", "name": "克羅埃西亞", "played": 2, "points": 3, "gd": "-1", "status": "爭第二", "tone": "gold" },
         { "flag": "🇵🇦", "name": "巴拿馬", "played": 2, "points": 0, "gd": "-2", "status": "已淘汰", "tone": "red" }
@@ -137,161 +153,192 @@
     }
   ],
   "qualified": [
-    { "flag": "🇲🇽", "name": "墨西哥", "group": "A", "status": "Group A 已晉級", "next": "若第一：對 C/E/F/H/I 組第三名之一" },
-    { "flag": "🇺🇸", "name": "美國", "group": "D", "status": "Group D 已晉級", "next": "等待D組最後名次與第三名路線" },
-    { "flag": "🇩🇪", "name": "德國", "group": "E", "status": "Group E 已晉級", "next": "32強路線待E組最後輪次確認" },
-    { "flag": "🇫🇷", "name": "法國", "group": "I", "status": "Group I 已晉級", "next": "與挪威爭第一，名次決定32強路線" },
-    { "flag": "🇳🇴", "name": "挪威", "group": "I", "status": "Group I 已晉級", "next": "與法國爭第一，敗方多半第二" },
+    { "flag": "🇲🇽", "name": "墨西哥", "group": "A", "status": "Group A 第一晉級", "next": "對 C/E/F/H/I 組第三名之一" },
+    { "flag": "🇿🇦", "name": "南非", "group": "A", "status": "Group A 第二晉級", "next": "32強對 B組第二或相鄰路線" },
+    { "flag": "🇨🇭", "name": "瑞士", "group": "B", "status": "Group B 第一晉級", "next": "對 E/F/G/I/J 組第三名之一" },
+    { "flag": "🇨🇦", "name": "加拿大", "group": "B", "status": "Group B 第二晉級", "next": "可能對 A組第二南非" },
+    { "flag": "🇧🇷", "name": "巴西", "group": "C", "status": "Group C 第一晉級", "next": "對 F組第二" },
+    { "flag": "🇲🇦", "name": "摩洛哥", "group": "C", "status": "Group C 第二晉級", "next": "對 F組第一" },
+    { "flag": "🇺🇸", "name": "美國", "group": "D", "status": "Group D 已晉級", "next": "今日對土耳其決定名次穩定度" },
+    { "flag": "🇩🇪", "name": "德國", "group": "E", "status": "Group E 已晉級", "next": "大概率第一，但輪換仍影響今日盤口" },
+    { "flag": "🇫🇷", "name": "法國", "group": "I", "status": "Group I 已晉級", "next": "與挪威爭第一" },
+    { "flag": "🇳🇴", "name": "挪威", "group": "I", "status": "Group I 已晉級", "next": "與法國爭第一" },
     { "flag": "🇦🇷", "name": "阿根廷", "group": "J", "status": "Group J 已晉級", "next": "名次仍影響32強落點" },
     { "flag": "🇨🇴", "name": "哥倫比亞", "group": "K", "status": "Group K 已晉級", "next": "對葡萄牙決定小組第一" }
   ],
   "bracket": [
-    { "seed": "A1", "path": "墨西哥若守住第一，將打 C/E/F/H/I 組第三名之一" },
-    { "seed": "A2", "path": "A組第二將對 B組第二，韓國若第二可能碰瑞士/加拿大" },
-    { "seed": "B1", "path": "B組第一對 E/F/G/I/J 組第三名之一，加拿大與瑞士都會避免輸球掉位" },
-    { "seed": "C1", "path": "C組第一將對 F組第二，巴西/摩洛哥都想避開較硬路線" },
-    { "seed": "3rd", "path": "最佳第三名共8隊晉級，末輪平局價值提高，小球盤要加權" }
+    { "seed": "D1", "path": "美國若守住第一，將進入小組第一路線；但已晉級下深讓盤不宜追" },
+    { "seed": "E1", "path": "德國大概率第一，但輪換使讓分價值下降" },
+    { "seed": "E2", "path": "象牙海岸贏球即可把第二名握在手上，是今日最清楚戰意盤" },
+    { "seed": "F1/F2", "path": "荷蘭、日本、瑞典仍在重排，F組第一/第二會直接影響巴西與摩洛哥路線" },
+    { "seed": "3rd", "path": "最佳第三名排序會受韓國、波士尼亞、蘇格蘭與今日D/E/F第三名牽動" }
   ],
   "bracketSlots": [
-    { "seed": "1E", "flag": "🇩🇪", "team": "德國", "status": "已定", "tone": "confirmed", "x": 14, "y": 18 },
-    { "seed": "1I", "flag": "🇫🇷/🇳🇴", "team": "法/挪", "status": "未定", "tone": "pending", "x": 14, "y": 27 },
-    { "seed": "2A", "flag": "🇰🇷", "team": "韓國", "status": "預測", "tone": "projected", "x": 14, "y": 38 },
-    { "seed": "2B", "flag": "🇨🇦/🇨🇭", "team": "加/瑞", "status": "未定", "tone": "pending", "x": 14, "y": 42 },
-    { "seed": "1F", "flag": "🇳🇱/🇯🇵", "team": "荷/日", "status": "未定", "tone": "pending", "x": 14, "y": 47 },
-    { "seed": "2C", "flag": "🇧🇷/🇲🇦", "team": "巴/摩", "status": "未定", "tone": "pending", "x": 14, "y": 51 },
-    { "seed": "2K", "flag": "🇨🇴/🇵🇹", "team": "哥/葡", "status": "未定", "tone": "pending", "x": 14, "y": 57 },
-    { "seed": "1D", "flag": "🇺🇸", "team": "美國", "status": "已定", "tone": "confirmed", "x": 14, "y": 72 },
-    { "seed": "1C", "flag": "🇧🇷/🇲🇦", "team": "巴/摩", "status": "未定", "tone": "pending", "x": 86, "y": 18 },
-    { "seed": "2F", "flag": "🇳🇱/🇯🇵", "team": "荷/日", "status": "未定", "tone": "pending", "x": 86, "y": 22 },
-    { "seed": "2E", "flag": "🇨🇮/🇪🇨", "team": "象/厄", "status": "未定", "tone": "pending", "x": 86, "y": 27 },
-    { "seed": "2I", "flag": "🇫🇷/🇳🇴", "team": "法/挪", "status": "未定", "tone": "pending", "x": 86, "y": 31 },
     { "seed": "1A", "flag": "🇲🇽", "team": "墨西哥", "status": "已定", "tone": "confirmed", "x": 86, "y": 38 },
+    { "seed": "2A", "flag": "🇿🇦", "team": "南非", "status": "已定", "tone": "confirmed", "x": 14, "y": 38 },
+    { "seed": "1B", "flag": "🇨🇭", "team": "瑞士", "status": "已定", "tone": "confirmed", "x": 86, "y": 73 },
+    { "seed": "2B", "flag": "🇨🇦", "team": "加拿大", "status": "已定", "tone": "confirmed", "x": 14, "y": 42 },
+    { "seed": "1C", "flag": "🇧🇷", "team": "巴西", "status": "已定", "tone": "confirmed", "x": 86, "y": 18 },
+    { "seed": "2C", "flag": "🇲🇦", "team": "摩洛哥", "status": "已定", "tone": "confirmed", "x": 14, "y": 51 },
+    { "seed": "1D", "flag": "🇺🇸", "team": "美國", "status": "大概率", "tone": "projected", "x": 14, "y": 72 },
+    { "seed": "2D", "flag": "🇦🇺/🇵🇾", "team": "澳/巴", "status": "今日決定", "tone": "pending", "x": 86, "y": 64 },
+    { "seed": "1E", "flag": "🇩🇪", "team": "德國", "status": "大概率", "tone": "projected", "x": 14, "y": 18 },
+    { "seed": "2E", "flag": "🇨🇮/🇪🇨/🇨🇼", "team": "E組二", "status": "今日決定", "tone": "pending", "x": 86, "y": 27 },
+    { "seed": "1F", "flag": "🇳🇱/🇯🇵", "team": "荷/日", "status": "今日決定", "tone": "pending", "x": 14, "y": 47 },
+    { "seed": "2F", "flag": "🇯🇵/🇸🇪", "team": "日/瑞", "status": "今日決定", "tone": "pending", "x": 86, "y": 22 },
+    { "seed": "1I", "flag": "🇫🇷/🇳🇴", "team": "法/挪", "status": "未定", "tone": "pending", "x": 14, "y": 27 },
+    { "seed": "2I", "flag": "🇫🇷/🇳🇴", "team": "法/挪", "status": "未定", "tone": "pending", "x": 86, "y": 31 },
     { "seed": "1J", "flag": "🇦🇷", "team": "阿根廷", "status": "已定", "tone": "confirmed", "x": 86, "y": 56 },
-    { "seed": "2D", "flag": "🇦🇺/🇵🇾", "team": "澳/巴", "status": "未定", "tone": "pending", "x": 86, "y": 64 },
-    { "seed": "1B", "flag": "🇨🇦/🇨🇭", "team": "加/瑞", "status": "未定", "tone": "pending", "x": 86, "y": 73 },
     { "seed": "1K", "flag": "🇨🇴/🇵🇹", "team": "哥/葡", "status": "未定", "tone": "pending", "x": 86, "y": 81 }
   ],
   "newsWeights": [
-    { "weight": "高", "title": "C組三隊爭位", "text": "巴西、摩洛哥、蘇格蘭都還有名次與路線壓力；巴西熱度高，讓1/1.5要降權。" },
-    { "weight": "高", "title": "加拿大 vs 瑞士", "text": "雙方同分爭第一，不敗價值很高；若盤口開到大小2.5/3，小分是比較順的台灣盤方向。" },
-    { "weight": "中", "title": "韓國出線壓力", "text": "韓國贏球最穩，平局仍可能看第三名排名；讓0/0.5可接受，升到讓0.5/1不追。" },
-    { "weight": "中", "title": "墨西哥輪換風險", "text": "墨西哥已晉級，仍可能守第一，但末輪若輪換較多，深讓與大球都要降低信心。" }
+    { "weight": "高", "title": "德國輪換風險", "text": "德國已晉級且有機會保留主力，勝面仍高，但讓1/1.5以上不宜追高。" },
+    { "weight": "高", "title": "象牙海岸戰意清楚", "text": "象牙海岸贏球可穩第二，庫拉索必須冒險，讓0.5/1是今日最乾淨的單邊盤。" },
+    { "weight": "高", "title": "F組重排影響巴西與摩洛哥", "text": "F組第一/第二會影響C組晉級隊路線，日本、荷蘭、瑞典都不會把節奏打得太鬆。" },
+    { "weight": "高", "title": "第三輪戰術盤", "text": "已晉級隊伍通常先保體能與避免停賽，爭第一隊伍會等另一場比分再調整強度，落後或必須贏的隊伍下半場才會全面打開。" },
+    { "weight": "中", "title": "美國已晉級", "text": "美國仍有主場聲量，但輪換與土耳其搏命心態會讓深讓盤風險升高。" },
+    { "weight": "中", "title": "澳洲守平有利", "text": "澳洲與巴拉圭正面爭第二，澳洲不敗價值高，巴拉圭必攻但反而可能被反擊。" }
+  ],
+  "oddsMoves": [
+    { "match": "🇨🇼 庫拉索 vs 🇨🇮 象牙海岸", "open": "象牙海岸 -0.5 / 大小2.25", "current": "象牙海岸 讓0.5/1｜大小2/2.5", "move": "升盤但未過熱", "read": "象牙海岸戰意與實力都較完整，若升到讓1才降注。" },
+    { "match": "🇪🇨 厄瓜多 vs 🇩🇪 德國", "open": "德國 -0.75 / 大小2.5", "current": "德國 讓0.5/1｜大小2.5", "move": "輪換降溫", "read": "德國勝面仍在，但已晉級輪換，深讓不追。" },
+    { "match": "🇯🇵 日本 vs 🇸🇪 瑞典", "open": "平手盤 / 大小2.25", "current": "日本 讓0/0.5｜大小2/2.5", "move": "節奏偏緊", "read": "日本拿分即穩，瑞典需搶但不能亂攻，小球較順。" },
+    { "match": "🇹🇳 突尼西亞 vs 🇳🇱 荷蘭", "open": "荷蘭 -1.25 / 大小2.75", "current": "荷蘭 讓1/1.5｜大小2.5/3", "move": "熱門深讓", "read": "荷蘭方向可看，但突尼西亞若低位死守，讓分勝不宜重注。" },
+    { "match": "🇹🇷 土耳其 vs 🇺🇸 美國", "open": "美國 -0.75 / 大小2.5", "current": "美國 讓0.5/1｜大小2.5", "move": "輪換觀察", "read": "美國已晉級，主場熱度高但深讓價值不足。" },
+    { "match": "🇵🇾 巴拉圭 vs 🇦🇺 澳洲", "open": "平手盤 / 大小2.25", "current": "澳洲 讓0/0.5｜大小2/2.5", "move": "不敗盤", "read": "澳洲守平有利，巴拉圭必須贏，小2/2.5與澳洲不敗更合理。" }
   ],
   "matches": [
     {
-      "time": "6/24 北美賽程",
-      "group": "Group C",
-      "home": { "flag": "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f", "name": "蘇格蘭", "note": "守平戰意" },
-      "away": { "flag": "🇧🇷", "name": "巴西", "note": "名氣熱盤" },
-      "confidence": "B",
-      "filters": ["side", "total"],
-      "winRate": { "home": 18, "draw": 27, "away": 55 },
-      "power": { "home": 63, "away": 86 },
-      "taiwanLine": { "handicap": "巴西 讓1/1.5", "total": "大小 2.5/3", "sportsLottery": "巴西勝可參考，讓分勝不追高", "asiaFormat": "巴西 -1.25 / 大小 2.75" },
-      "side": "巴西勝，讓1/1.5 不追",
-      "totalPick": "小2.5/3",
-      "score": "0-1 / 1-2",
-      "context": { "players": "巴西攻擊端可用人多，但市場熱度偏高；蘇格蘭會把防守與定位球價值放大。", "tactics": "巴西控球壓迫但未必全場衝，蘇格蘭低位防守，目標是把比賽拖進小比分。", "scenario": "巴西爭第一，蘇格蘭拿平即可提高第三名晉級率。" },
-      "read": "台灣盤讓1/1.5已把巴西名氣算進去，方向可看巴西勝，但更推薦小2.5/3。",
-      "chips": ["避開深讓", "小球優先", "戰意盤"]
-    },
-    {
-      "time": "6/24 北美賽程",
-      "group": "Group C",
-      "home": { "flag": "🇲🇦", "name": "摩洛哥", "note": "爭第一" },
-      "away": { "flag": "🇭🇹", "name": "海地", "note": "已淘汰" },
+      "time": "6/25 18:30 台灣時間",
+      "group": "Group E",
+      "home": { "flag": "🇨🇼", "name": "庫拉索", "note": "必須贏才有線" },
+      "away": { "flag": "🇨🇮", "name": "象牙海岸", "note": "贏球穩第二" },
       "confidence": "A",
       "filters": ["A", "side"],
-      "winRate": { "home": 70, "draw": 19, "away": 11 },
-      "power": { "home": 82, "away": 52 },
-      "taiwanLine": { "handicap": "摩洛哥 讓1/1.5", "total": "大小 2/2.5", "sportsLottery": "摩洛哥讓分勝 / 摩洛哥進球大1.5", "asiaFormat": "摩洛哥 -1.25 / 大小 2.25" },
-      "side": "摩洛哥 讓1/1.5",
-      "totalPick": "摩洛哥進球大1.5",
-      "score": "2-0 / 3-0",
-      "context": { "players": "摩洛哥主力邊路與中場仍有出場動機；領先後才可能輪換。", "tactics": "摩洛哥邊路壓迫與高位回收，主打海地後場出球失誤。", "scenario": "摩洛哥仍要爭第一，海地已淘汰，戰意差距大。" },
-      "read": "今日主推。讓1/1.5可接受，升到讓1.5/2才降注。",
-      "chips": ["主推A級", "讓分", "戰意優勢"]
+      "winRate": { "home": 18, "draw": 27, "away": 55 },
+      "power": { "home": 58, "away": 77 },
+      "taiwanLine": { "handicap": "象牙海岸 讓0.5/1", "total": "大小 2/2.5", "sportsLottery": "象牙海岸勝 / 象牙海岸不敗", "asiaFormat": "象牙海岸 -0.75 / 大小 2.25" },
+      "side": "象牙海岸 讓0.5/1",
+      "totalPick": "小2/2.5",
+      "score": "0-1 / 0-2",
+      "context": { "players": "象牙海岸身體對抗與前場個人能力佔優；庫拉索首屆世界盃韌性強，但陣地戰火力有限。", "tactics": "第三輪戰術：象牙海岸不需要冒進，只要先把中場對抗和邊路壓制做滿，等庫拉索因必須贏球而拉開防線；庫拉索前60分鐘多半保守，若另一場厄瓜多有利才會更早壓上。", "scenario": "象牙海岸贏球幾乎鎖定前二，平局仍要看厄瓜多與德國結果；庫拉索只有贏球才有較實際的晉級路線。" },
+      "read": "今日主推。讓0.5/1可接受，若臨場升到讓1以上就降注。",
+      "chips": ["主推A級", "讓分", "戰意清楚"]
     },
     {
-      "time": "6/24 北美賽程",
-      "group": "Group B",
-      "home": { "flag": "🇨🇭", "name": "瑞士", "note": "控節奏" },
-      "away": { "flag": "🇨🇦", "name": "加拿大", "note": "主場不敗" },
+      "time": "6/25 18:30 台灣時間",
+      "group": "Group E",
+      "home": { "flag": "🇪🇨", "name": "厄瓜多", "note": "必須搶分" },
+      "away": { "flag": "🇩🇪", "name": "德國", "note": "已晉級輪換" },
+      "confidence": "B",
+      "filters": ["side", "total"],
+      "winRate": { "home": 24, "draw": 29, "away": 47 },
+      "power": { "home": 70, "away": 86 },
+      "taiwanLine": { "handicap": "德國 讓0.5/1", "total": "大小 2.5", "sportsLottery": "德國不敗 / 德國勝降注", "asiaFormat": "德國 -0.75 / 大小 2.5" },
+      "side": "德國不敗，讓分降注",
+      "totalPick": "小2.5 或 2/2.5觀察",
+      "score": "1-1 / 1-2",
+      "context": { "players": "德國已出線，替補能量仍強；厄瓜多進攻效率偏低，但戰意更強。", "tactics": "第三輪戰術：德國大概率保留部分主力，控球與壓迫強度會分段，不一定全場追大勝；厄瓜多必須搶分，但前段不能被打穿，預期先守中路、下半場再加大邊路推進。", "scenario": "德國大概率守第一，厄瓜多需要搶分保留第三名或前二機會；若庫拉索落後，厄瓜多平局價值會下降。" },
+      "read": "德國勝面仍在，但輪換讓深讓失去價值；更適合看德國不敗或小分方向。",
+      "chips": ["避開深讓", "輪換風險", "小球觀察"]
+    },
+    {
+      "time": "6/25 21:30 台灣時間",
+      "group": "Group F",
+      "home": { "flag": "🇯🇵", "name": "日本", "note": "拿分即穩" },
+      "away": { "flag": "🇸🇪", "name": "瑞典", "note": "需搶分" },
       "confidence": "A-",
       "filters": ["A", "total"],
-      "winRate": { "home": 30, "draw": 34, "away": 36 },
-      "power": { "home": 75, "away": 77 },
-      "taiwanLine": { "handicap": "加拿大 讓0/0.5 或平手盤", "total": "大小 2.5/3", "sportsLottery": "小分 / 加拿大不敗", "asiaFormat": "加拿大 -0.25 / 大小 2.75" },
-      "side": "加拿大不敗",
-      "totalPick": "小2.5/3",
-      "score": "1-1 / 0-1",
-      "context": { "players": "加拿大主力仍在，但前場衝刺和邊後衛推進會更謹慎；瑞士經驗派控節奏。", "tactics": "加拿大高壓，瑞士降速控球；前30分鐘沒球，小分更有價值。", "scenario": "雙方都在爭小組第一，不敗價值高。" },
-      "read": "小2.5/3是副推，勝負只看加拿大不敗，不重壓單邊勝。",
-      "chips": ["副推大小", "小球", "不敗"]
+      "winRate": { "home": 34, "draw": 34, "away": 32 },
+      "power": { "home": 76, "away": 74 },
+      "taiwanLine": { "handicap": "日本 讓0/0.5 或平手盤", "total": "大小 2/2.5", "sportsLottery": "日本不敗 / 小分", "asiaFormat": "日本 -0.25 / 大小 2.25" },
+      "side": "日本不敗",
+      "totalPick": "小2/2.5",
+      "score": "1-1 / 1-0",
+      "context": { "players": "日本整體連動與控球穩，瑞典身材與定位球有威脅。", "tactics": "第三輪戰術：日本已掌握前二主動權，會以控球降速、避免中路失誤為優先，必要時接受平局；瑞典需要搶分但不能早早失守，定位球和高點會是主要破局方式。", "scenario": "日本拿分即可穩住前二並仍有爭第一機會；瑞典若不勝就可能掉到第三或淘汰邊緣。" },
+      "read": "今日大小球主推。平手或日本讓0/0.5可接受，小2/2.5是更順的盤。",
+      "chips": ["副推大小", "小球", "日本不敗"]
     },
     {
-      "time": "6/24 北美賽程",
-      "group": "Group B",
-      "home": { "flag": "🇧🇦", "name": "波士尼亞", "note": "必須贏" },
-      "away": { "flag": "🇶🇦", "name": "卡達", "note": "必須贏" },
+      "time": "6/25 21:30 台灣時間",
+      "group": "Group F",
+      "home": { "flag": "🇹🇳", "name": "突尼西亞", "note": "必須爆冷" },
+      "away": { "flag": "🇳🇱", "name": "荷蘭", "note": "爭第一" },
       "confidence": "B+",
       "filters": ["side", "total"],
-      "winRate": { "home": 44, "draw": 29, "away": 27 },
-      "power": { "home": 70, "away": 62 },
-      "taiwanLine": { "handicap": "波士尼亞 讓0.5/1", "total": "大小 2/2.5", "sportsLottery": "波士尼亞不敗 / 小分", "asiaFormat": "波士尼亞 -0.75 / 大小 2.25" },
-      "side": "波士尼亞 讓0/0.5 或不敗",
-      "totalPick": "小2/2.5",
-      "score": "1-0 / 1-1",
-      "context": { "players": "卡達前兩場防線問題明顯，波士尼亞中前場對抗較好，但終結效率仍需保守看。", "tactics": "波士尼亞會用高點與二點球製造壓力，卡達反擊速度有威脅。", "scenario": "兩隊都需要勝利才保留最佳第三名希望，先失球代價大。" },
-      "read": "波士尼亞方向較好，但讓0.5/1以上不宜重注；小2/2.5可搭配。",
-      "chips": ["必須贏", "小球", "不敗"]
+      "winRate": { "home": 13, "draw": 23, "away": 64 },
+      "power": { "home": 59, "away": 84 },
+      "taiwanLine": { "handicap": "荷蘭 讓1/1.5", "total": "大小 2.5/3", "sportsLottery": "荷蘭勝 / 荷蘭進球大1.5", "asiaFormat": "荷蘭 -1.25 / 大小 2.75" },
+      "side": "荷蘭勝，讓1/1.5降注",
+      "totalPick": "荷蘭進球大1.5",
+      "score": "0-2 / 1-2",
+      "context": { "players": "荷蘭鋒線與中場推進品質優於突尼西亞，但若提前領先可能保守控盤。", "tactics": "第三輪戰術：荷蘭會一邊爭第一一邊看日本瑞典比分，若早段領先可能轉成控球消耗，不一定持續追第三球；突尼西亞必須爆冷，但前段仍會低位防守，等下半場或另一場不利才全線壓上。", "scenario": "荷蘭爭第一，日本與瑞典結果會影響荷蘭後段是否繼續壓進；這也是讓1/1.5不宜重壓的原因。" },
+      "read": "荷蘭方向合理，但讓1/1.5已偏熱門；不建議重壓讓分勝。",
+      "chips": ["熱門盤", "讓分降注", "進球盤"]
     },
     {
-      "time": "6/24 北美賽程",
-      "group": "Group A",
-      "home": { "flag": "🇨🇿", "name": "捷克", "note": "需勝搶線" },
-      "away": { "flag": "🇲🇽", "name": "墨西哥", "note": "已晉級" },
+      "time": "6/26 00:30 台灣時間",
+      "group": "Group D",
+      "home": { "flag": "🇹🇷", "name": "土耳其", "note": "淘汰邊緣" },
+      "away": { "flag": "🇺🇸", "name": "美國", "note": "已晉級" },
       "confidence": "B",
-      "filters": ["total"],
-      "winRate": { "home": 23, "draw": 31, "away": 46 },
-      "power": { "home": 67, "away": 80 },
-      "taiwanLine": { "handicap": "墨西哥 讓0.5/1", "total": "大小 2/2.5", "sportsLottery": "墨西哥不敗 / 小分", "asiaFormat": "墨西哥 -0.75 / 大小 2.25" },
-      "side": "墨西哥不敗，讓分降注",
-      "totalPick": "小2/2.5",
-      "score": "0-1 / 1-1",
-      "context": { "players": "墨西哥已晉級，可能微調輪換；捷克需要勝分但進攻端創造力不穩。", "tactics": "墨西哥控球降速，捷克靠高球與定位球找機會。", "scenario": "墨西哥守第一，捷克必須搶分；比賽後段可能看另一場形勢調整。" },
-      "read": "墨西哥勝面仍在，但已晉級的輪換風險讓小2/2.5更值得看。",
-      "chips": ["輪換風險", "小球", "不敗"]
+      "filters": ["side"],
+      "winRate": { "home": 24, "draw": 27, "away": 49 },
+      "power": { "home": 67, "away": 78 },
+      "taiwanLine": { "handicap": "美國 讓0.5/1", "total": "大小 2.5", "sportsLottery": "美國不敗 / 美國勝降注", "asiaFormat": "美國 -0.75 / 大小 2.5" },
+      "side": "美國不敗，讓分不追深",
+      "totalPick": "小2.5",
+      "score": "1-1 / 1-2",
+      "context": { "players": "美國主場聲量高，但已晉級後可能保留部分主力；土耳其只能拚最後機會。", "tactics": "第三輪戰術：美國已晉級，合理策略是控制轉換失誤、保護主力體能，不會無條件追大勝；土耳其前段會先提高對抗避免早失球，若澳洲巴拉圭比分不利，下半場才會更冒險。", "scenario": "美國已晉級但仍想守名次，土耳其若早段失球可能崩盤；若撐到下半場，讓分盤風險變高。" },
+      "read": "美國方向可看，但不適合追深讓；小2.5或美國不敗較穩。",
+      "chips": ["避開深讓", "主場熱度", "不敗"]
     },
     {
-      "time": "6/24 北美賽程",
-      "group": "Group A",
-      "home": { "flag": "🇿🇦", "name": "南非", "note": "後段必攻" },
-      "away": { "flag": "🇰🇷", "name": "韓國", "note": "不敗優先" },
+      "time": "6/26 00:30 台灣時間",
+      "group": "Group D",
+      "home": { "flag": "🇵🇾", "name": "巴拉圭", "note": "必須贏" },
+      "away": { "flag": "🇦🇺", "name": "澳洲", "note": "守平有利" },
       "confidence": "B+",
       "filters": ["side", "total"],
-      "winRate": { "home": 25, "draw": 32, "away": 43 },
-      "power": { "home": 64, "away": 74 },
-      "taiwanLine": { "handicap": "韓國 讓0/0.5 或讓0.5", "total": "大小 2.5/3", "sportsLottery": "韓國不敗 / 小分", "asiaFormat": "韓國 -0.25 至 -0.5 / 大小 2.75" },
-      "side": "韓國不敗 / 讓0/0.5",
-      "totalPick": "小2.5/3",
-      "score": "0-1 / 1-1",
-      "context": { "players": "Son 狀態和位置仍是變數；韓國若中前場連動順，控球與反擊都優於南非。", "tactics": "韓國避免中路孤立，南非先守後反，落後才打開。", "scenario": "韓國贏球最穩，平局仍有機會；南非輸球危險。" },
-      "read": "韓國方向合理，但升到讓0.5/1不追，小2.5/3可搭配。",
-      "chips": ["韓國不敗", "小球", "不追深"]
+      "winRate": { "home": 31, "draw": 33, "away": 36 },
+      "power": { "home": 69, "away": 72 },
+      "taiwanLine": { "handicap": "澳洲 讓0/0.5 或平手盤", "total": "大小 2/2.5", "sportsLottery": "澳洲不敗 / 小分", "asiaFormat": "澳洲 -0.25 / 大小 2.25" },
+      "side": "澳洲不敗",
+      "totalPick": "小2/2.5",
+      "score": "0-0 / 1-1",
+      "context": { "players": "澳洲身體對抗與定位球穩，巴拉圭進攻需要主動但效率不穩。", "tactics": "第三輪戰術：澳洲守平有利，預期先用低位、長傳和定位球控風險；巴拉圭必須贏，但不會一開場就全壓，真正加速多半在60分鐘後，這會讓小2/2.5有價值。", "scenario": "澳洲守平有利，巴拉圭必須贏；如果美國早早領先土耳其，澳洲更可能接受保守節奏。" },
+      "read": "澳洲不敗和小2/2.5是同方向，巴拉圭若升熱不追。",
+      "chips": ["不敗盤", "小球", "晉級戰"]
     }
   ],
   "portfolio": [
-    { "tag": "主推單場", "tagTone": "green", "title": "摩洛哥 讓1/1.5", "description": "海地已淘汰，摩洛哥仍有爭第一動機；台灣盤讓1/1.5是今日最有價值區間。", "confidence": 80 },
-    { "tag": "副推大小", "tagTone": "gold", "title": "加拿大 vs 瑞士 小2.5/3", "description": "雙方同分爭第一，不敗需求高，瑞士節奏穩，加拿大不必打成開放戰。", "confidence": 74 },
-    { "tag": "避險單", "tagTone": "blue", "title": "墨西哥 vs 捷克 小2/2.5", "description": "墨西哥已晉級有輪換風險，捷克必須搶但進攻效率不穩，小球權重提高。", "confidence": 70 },
-    { "tag": "保守串", "tagTone": "blue", "title": "摩洛哥勝 × 加拿大不敗 × 韓國不敗", "description": "避開巴西深讓，把組合放在戰意清楚且盤口不過熱的方向。", "confidence": 68 }
+    { "tag": "主推單場", "tagTone": "green", "title": "象牙海岸 讓0.5/1", "description": "E組戰意最清楚，庫拉索必須冒險，象牙海岸邊路與對抗優勢可轉化成勝勢。", "confidence": 78 },
+    { "tag": "副推大小", "tagTone": "gold", "title": "日本 vs 瑞典 小2/2.5", "description": "日本拿分即穩，瑞典不能亂攻，末輪壓力使節奏偏緊。", "confidence": 74 },
+    { "tag": "避險單", "tagTone": "blue", "title": "澳洲不敗", "description": "澳洲守平有利，巴拉圭必須主動，澳洲受讓或平手區間有價值。", "confidence": 69 },
+    { "tag": "避開盤", "tagTone": "red", "title": "德國與美國深讓追高", "description": "兩隊已晉級，輪換與戰意差讓深讓盤風險提高。", "confidence": 64 }
   ],
   "bankroll": [
-    { "label": "摩洛哥讓分", "value": 35 },
-    { "label": "加拿大瑞士小分", "value": 25 },
-    { "label": "墨西哥捷克小分", "value": 15 },
-    { "label": "韓國不敗", "value": 15 },
+    { "label": "象牙海岸讓分", "value": 32 },
+    { "label": "日本瑞典小分", "value": 24 },
+    { "label": "澳洲不敗", "value": 18 },
+    { "label": "德國/美國不敗小注", "value": 16 },
     { "label": "正確比分小注", "value": 10 }
-  ]
+  ],
+  "review": {
+    "summary": "今日尚未開賽，賽後更新命中、錯盤原因、盤口變化與下一輪修正。",
+    "hitRate": "6/25 待開賽",
+    "lessons": [
+      "已晉級球隊不盲追深讓，先看輪換與戰意。",
+      "末輪同分或守平有利的比賽，小球權重提高。",
+      "主推只放在戰意與盤口都乾淨的方向，不用追熱門名氣隊。"
+    ],
+    "matches": [
+      { "match": "🇨🇼 庫拉索 vs 🇨🇮 象牙海岸", "pick": "象牙海岸 讓0.5/1｜小2/2.5", "result": "待開賽", "note": "主推盤，觀察是否升到讓1" },
+      { "match": "🇪🇨 厄瓜多 vs 🇩🇪 德國", "pick": "德國不敗｜小2.5", "result": "待開賽", "note": "輪換風險，不追深讓" },
+      { "match": "🇯🇵 日本 vs 🇸🇪 瑞典", "pick": "日本不敗｜小2/2.5", "result": "待開賽", "note": "大小球副推" },
+      { "match": "🇹🇳 突尼西亞 vs 🇳🇱 荷蘭", "pick": "荷蘭勝｜讓分降注", "result": "待開賽", "note": "熱門盤控注" },
+      { "match": "🇹🇷 土耳其 vs 🇺🇸 美國", "pick": "美國不敗｜小2.5", "result": "待開賽", "note": "美國已晉級，不追深" },
+      { "match": "🇵🇾 巴拉圭 vs 🇦🇺 澳洲", "pick": "澳洲不敗｜小2/2.5", "result": "待開賽", "note": "晉級戰偏小" }
+    ]
+  }
 }
