@@ -370,6 +370,131 @@
       height: 100%;
       background: linear-gradient(90deg, var(--pink), var(--cyan), var(--lime));
     }
+    .daily-three {
+      display: grid;
+      grid-template-columns: 1.15fr .92fr .92fr;
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .three-pick {
+      position: relative;
+      min-height: 310px;
+      padding: 22px;
+      border: 1px solid rgba(255, 56, 207, .42);
+      background:
+        linear-gradient(150deg, rgba(255, 56, 207, .22), rgba(66, 236, 255, .08) 48%, rgba(200, 255, 77, .06)),
+        rgba(18, 5, 34, .9);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .three-pick::after {
+      content: "";
+      position: absolute;
+      right: -42px;
+      bottom: -42px;
+      width: 150px;
+      height: 150px;
+      border: 1px solid rgba(66, 236, 255, .28);
+      transform: rotate(45deg);
+    }
+    .three-pick.main {
+      border-color: rgba(200, 255, 77, .65);
+      background:
+        linear-gradient(150deg, rgba(200, 255, 77, .2), rgba(66, 236, 255, .12) 45%, rgba(255, 56, 207, .16)),
+        rgba(18, 5, 34, .92);
+    }
+    .three-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .three-head span:first-child {
+      color: var(--cyan);
+      font-weight: 1000;
+      letter-spacing: .04em;
+    }
+    .three-pick h3 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: 1.05;
+    }
+    .three-pick p {
+      color: var(--muted);
+      line-height: 1.62;
+      font-weight: 740;
+    }
+    .three-details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .three-detail {
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.045);
+      min-height: 78px;
+    }
+    .three-detail small {
+      display: block;
+      color: var(--muted);
+      font-weight: 900;
+      margin-bottom: 7px;
+    }
+    .three-detail b { font-size: 17px; line-height: 1.3; }
+    .heat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .heat-card {
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.045);
+      padding: 16px;
+    }
+    .heat-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+      font-weight: 1000;
+    }
+    .heat-meter {
+      height: 13px;
+      background: rgba(255,255,255,.12);
+      margin: 10px 0 12px;
+      overflow: hidden;
+    }
+    .heat-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan), var(--pink), var(--gold));
+    }
+    .track-table {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .track-row {
+      display: grid;
+      grid-template-columns: 98px 1.1fr 1fr 96px;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.045);
+      font-weight: 850;
+    }
+    .track-row.header {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      background: rgba(66, 236, 255, .08);
+    }
 
     .matches {
       display: grid;
@@ -565,7 +690,7 @@
 
     @media (max-width: 1100px) {
       .nav, .section-head { align-items: flex-start; flex-direction: column; }
-      .hero-grid, .dashboard, .two, .three, .four, .matches, .standings { grid-template-columns: 1fr; }
+      .hero-grid, .dashboard, .two, .three, .four, .matches, .standings, .daily-three, .heat-grid { grid-template-columns: 1fr; }
       .ops-grid, .route-map { grid-template-columns: 1fr; }
       .hero-cards { grid-template-columns: 1fr; }
       .hero-card { border-right: 0; border-bottom: 1px solid var(--line); }
@@ -584,6 +709,8 @@
       .alert { grid-template-columns: 1fr; }
       .decision-card { grid-template-columns: 1fr; }
       .status-strip { grid-template-columns: 1fr; }
+      .three-details { grid-template-columns: 1fr; }
+      .track-row { grid-template-columns: 1fr; }
       .teams { grid-template-columns: 1fr; text-align: left; }
       .team.right { text-align: left; }
       .vs { text-align: left; }
@@ -682,6 +809,41 @@
             </div>
           </article>
         </div>
+        <div class="daily-three">
+          <article class="three-pick main">
+            <div class="three-head"><span>APE 今日三單｜主推單</span><span class="badge">A</span></div>
+            <h3>🇺🇾 烏拉圭 vs 🇪🇸 西班牙</h3>
+            <p>推薦：西班牙 讓0.5/1。西班牙仍有爭第一動機，控球與反壓迫能針對烏拉圭必攻後的空間。</p>
+            <div class="three-details">
+              <div class="three-detail"><small>信心分數</small><b>82 / 100</b></div>
+              <div class="three-detail"><small>可接受盤</small><b>讓0.5、讓0.5/1</b></div>
+              <div class="three-detail"><small>不可追盤</small><b>升讓1/1.5跳過</b></div>
+              <div class="three-detail"><small>正確比分</small><b>1-2 / 1-3</b></div>
+            </div>
+          </article>
+          <article class="three-pick">
+            <div class="three-head"><span>穩健單</span><span class="badge">A-</span></div>
+            <h3>🇳🇴 挪威 vs 🇫🇷 法國</h3>
+            <p>推薦：大2.5/3。兩隊已晉級但仍爭第一，若主力前場先發，進攻品質比一般第三輪消化賽高。</p>
+            <div class="three-details">
+              <div class="three-detail"><small>信心分數</small><b>78 / 100</b></div>
+              <div class="three-detail"><small>可接受盤</small><b>大2.5、大2.5/3</b></div>
+              <div class="three-detail"><small>不可追盤</small><b>升大3以上不追</b></div>
+              <div class="three-detail"><small>正確比分</small><b>1-2 / 2-2</b></div>
+            </div>
+          </article>
+          <article class="three-pick">
+            <div class="three-head"><span>避險單</span><span class="badge">B+</span></div>
+            <h3>🇳🇿 紐西蘭 vs 🇧🇪 比利時</h3>
+            <p>推薦：比利時勝，讓分深盤降級。比利時有硬實力優勢，但若早領先可能收節奏，防止卡讓1/1.5。</p>
+            <div class="three-details">
+              <div class="three-detail"><small>信心分數</small><b>72 / 100</b></div>
+              <div class="three-detail"><small>可接受盤</small><b>比利時勝 / 讓1內</b></div>
+              <div class="three-detail"><small>不可追盤</small><b>讓1/1.5以上降注</b></div>
+              <div class="three-detail"><small>正確比分</small><b>0-2 / 1-2</b></div>
+            </div>
+          </article>
+        </div>
 
         <div class="grid three" style="margin-top:20px">
           <article class="panel">
@@ -733,6 +895,37 @@
               <div class="unit-row"><span>避雷</span><div class="unit-bar"><div class="unit-fill" style="width:8%"></div></div><b>不碰</b></div>
             </div>
             <p class="muted" style="margin-bottom:0">單位只是風險權重，不是下注建議；越接近開賽，先發和盤口比賽前模型更重要。</p>
+          </article>
+        </div>
+        <div class="grid two" style="margin-top:20px">
+          <article class="panel">
+            <h3>熱門盤聲量雷達</h3>
+            <div class="heat-grid">
+              <div class="heat-card">
+                <div class="heat-top"><span>西班牙讓分</span><span class="pill green">綠</span></div>
+                <div class="heat-meter"><div class="heat-fill" style="width:76%"></div></div>
+                <p class="muted">聲量高但盤仍合理，讓0.5/1可參考；升到1/1.5代表市場過熱。</p>
+              </div>
+              <div class="heat-card">
+                <div class="heat-top"><span>法國大球</span><span class="pill gold">黃</span></div>
+                <div class="heat-meter"><div class="heat-fill" style="width:68%"></div></div>
+                <p class="muted">要等先發確認，若法國輪休前場，大球信心要下修。</p>
+              </div>
+              <div class="heat-card">
+                <div class="heat-top"><span>塞內加爾讓分</span><span class="pill pink">紅</span></div>
+                <div class="heat-meter"><div class="heat-fill" style="width:84%"></div></div>
+                <p class="muted">戰意明確導致市場容易追熱，讓0.5/1以上不漂亮。</p>
+              </div>
+            </div>
+          </article>
+          <article class="panel">
+            <h3>賽後三單追蹤表</h3>
+            <div class="track-table">
+              <div class="track-row header"><span>類型</span><span>推薦</span><span>賽後填寫</span><span>狀態</span></div>
+              <div class="track-row"><span class="pill">主推</span><span>西班牙 讓0.5/1</span><span>待賽後更新比分與盤路</span><span class="pill dark">待開賽</span></div>
+              <div class="track-row"><span class="pill cyan">穩健</span><span>法國 vs 挪威 大2.5/3</span><span>確認是否被輪休影響</span><span class="pill dark">待開賽</span></div>
+              <div class="track-row"><span class="pill gold">避險</span><span>比利時勝 / 讓1內</span><span>觀察是否卡深讓</span><span class="pill dark">待開賽</span></div>
+            </div>
           </article>
         </div>
       </div>
