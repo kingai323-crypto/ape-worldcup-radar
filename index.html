@@ -1,178 +1,850 @@
 <!doctype html>
 <html lang="zh-Hant">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>APE世足戰情室</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <header class="hero">
-      <div class="hero__image"></div>
-      <div class="hero__shade"></div>
-      <nav class="topbar">
-        <a class="brand" href="#">
-          <span class="brand__mark">APE</span>
-          <span>
-            <strong>APE世足戰情室</strong>
-            <small>積分 · 晉級 · 台灣盤口 · 戰術新聞</small>
-          </span>
-        </a>
-        <div class="topbar__actions">
-          <button class="nav-tab is-active" data-view="dashboard">戰情總覽</button>
-          <button class="nav-tab" data-view="matches">今日對戰</button>
-          <button class="nav-tab" data-view="scenarios">晉級模擬</button>
-          <button class="nav-tab" data-view="standings">小組積分</button>
-          <button class="nav-tab" data-view="qualified">晉級路線</button>
-          <button class="nav-tab" data-view="review">賽後復盤</button>
-          <button class="nav-tab" data-view="news">新聞權重</button>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>APE世足戰情室｜2026 今日賽事雷達</title>
+  <meta name="description" content="APE世足戰情室：台灣時間世足賽程、台灣盤口參考、小組積分、晉級情境、戰術動向與賽後復盤。">
+  <style>
+    :root {
+      --bg: #05020d;
+      --panel: rgba(24, 8, 42, .82);
+      --panel-2: rgba(45, 11, 72, .72);
+      --line: rgba(255, 64, 220, .35);
+      --cyan: #42ecff;
+      --pink: #ff38cf;
+      --violet: #9b5cff;
+      --lime: #c8ff4d;
+      --gold: #ffd66b;
+      --text: #fff7ff;
+      --muted: #cbb8de;
+      --danger: #ff5f8f;
+      --ok: #51ffb8;
+      --shadow: 0 0 36px rgba(255, 56, 207, .25), 0 0 60px rgba(66, 236, 255, .12);
+      color-scheme: dark;
+      font-family: Inter, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 8%, rgba(255, 56, 207, .32), transparent 28%),
+        radial-gradient(circle at 88% 18%, rgba(66, 236, 255, .22), transparent 30%),
+        radial-gradient(circle at 62% 88%, rgba(200, 255, 77, .14), transparent 28%),
+        linear-gradient(145deg, #05020d 0%, #15051f 42%, #090617 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 38px 38px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(120deg, rgba(255, 56, 207, .08), transparent 28%, rgba(66, 236, 255, .06) 55%, transparent 78%),
+        repeating-linear-gradient(0deg, transparent 0 9px, rgba(255,255,255,.025) 10px);
+      z-index: -1;
+    }
+
+    a { color: inherit; }
+    .wrap { width: min(1580px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(22px);
+      background: rgba(5, 2, 13, .78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 16px; min-width: 280px; }
+    .logo {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      font-weight: 1000;
+      font-size: 22px;
+      border: 1px solid var(--pink);
+      background: linear-gradient(135deg, rgba(255, 56, 207, .25), rgba(66, 236, 255, .14));
+      box-shadow: 0 0 28px rgba(255, 56, 207, .34);
+    }
+    .brand h1 { margin: 0; font-size: 22px; line-height: 1.1; }
+    .brand p { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+
+    .tabs { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .tab, .filter {
+      appearance: none;
+      border: 1px solid rgba(255, 56, 207, .45);
+      color: var(--text);
+      background: rgba(20, 5, 36, .72);
+      padding: 13px 16px;
+      font-weight: 850;
+      cursor: pointer;
+      transition: .18s ease;
+      min-height: 46px;
+    }
+    .tab:hover, .tab.active, .filter:hover, .filter.active {
+      border-color: var(--cyan);
+      color: white;
+      box-shadow: 0 0 24px rgba(66, 236, 255, .22), inset 0 0 18px rgba(255, 56, 207, .18);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 720px;
+      display: grid;
+      align-items: center;
+      padding: 80px 0 54px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(66, 236, 255, .2);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(5, 2, 13, .96), rgba(13, 4, 30, .64) 46%, rgba(5, 2, 13, .52)),
+        url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=2200&q=80") center/cover;
+      filter: saturate(1.3) contrast(1.12);
+      z-index: -2;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: 6%;
+      top: 12%;
+      width: min(560px, 45vw);
+      aspect-ratio: 1;
+      border: 1px solid rgba(255, 56, 207, .32);
+      background:
+        linear-gradient(90deg, transparent 48%, rgba(255,255,255,.22) 49% 51%, transparent 52%),
+        linear-gradient(0deg, transparent 48%, rgba(255,255,255,.22) 49% 51%, transparent 52%);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 78% 100%, 78% 18%, 0 18%);
+      opacity: .42;
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, .72fr);
+      gap: 34px;
+      align-items: end;
+    }
+    .kicker { color: var(--cyan); font-size: 18px; font-weight: 950; letter-spacing: .02em; }
+    .hero h2 {
+      margin: 18px 0 18px;
+      font-size: clamp(58px, 8vw, 132px);
+      line-height: .9;
+      letter-spacing: 0;
+      text-shadow: 0 0 30px rgba(255, 56, 207, .35);
+    }
+    .hero-lead {
+      max-width: 980px;
+      color: #f5e9ff;
+      font-size: clamp(20px, 2vw, 30px);
+      line-height: 1.55;
+      font-weight: 750;
+    }
+
+    .hero-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+      margin-top: 34px;
+      background: rgba(8, 4, 22, .76);
+      box-shadow: var(--shadow);
+    }
+    .hero-card { padding: 24px; border-right: 1px solid var(--line); }
+    .hero-card:last-child { border-right: 0; }
+    .hero-card small { color: var(--muted); font-weight: 900; }
+    .hero-card strong { display: block; margin-top: 10px; font-size: clamp(21px, 2vw, 30px); line-height: 1.2; }
+
+    .command {
+      background: rgba(9, 4, 25, .78);
+      border: 1px solid rgba(66, 236, 255, .25);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .command h3 { margin: 0 0 16px; font-size: 24px; }
+    .command-list { display: grid; gap: 14px; }
+    .signal {
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 13px;
+      background: rgba(255, 255, 255, .055);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .flag { font-size: 28px; line-height: 1; filter: drop-shadow(0 0 8px rgba(255,255,255,.16)); }
+    .signal b { display: block; font-size: 16px; }
+    .signal span { color: var(--muted); font-size: 12px; font-weight: 750; }
+    .badge {
+      display: inline-grid;
+      place-items: center;
+      min-width: 44px;
+      min-height: 34px;
+      padding: 0 10px;
+      color: #05020d;
+      font-weight: 1000;
+      background: linear-gradient(135deg, var(--pink), var(--cyan));
+    }
+
+    .alert {
+      margin: -18px auto 34px;
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      border: 1px solid rgba(66, 236, 255, .35);
+      background: rgba(7, 3, 20, .9);
+      box-shadow: var(--shadow);
+    }
+    .alert b {
+      display: grid;
+      place-items: center;
+      color: #05020d;
+      background: linear-gradient(135deg, var(--pink), var(--cyan));
+      font-size: 22px;
+      padding: 18px;
+    }
+    .alert div {
+      padding: 18px 22px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: #fff;
+      font-weight: 850;
+      line-height: 1.45;
+    }
+
+    section { padding: 58px 0; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+    .section-head h2 { margin: 0; font-size: clamp(34px, 4vw, 60px); line-height: 1; }
+    .section-head p { margin: 10px 0 0; color: var(--muted); font-weight: 700; max-width: 820px; }
+
+    .grid { display: grid; gap: 20px; }
+    .dashboard { grid-template-columns: 1.1fr .9fr .9fr; }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(53, 14, 82, .78), rgba(16, 6, 31, .88));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 3px;
+      background: linear-gradient(90deg, var(--pink), var(--cyan), var(--lime));
+    }
+    .panel h3 { margin: 0 0 16px; font-size: 24px; }
+    .muted { color: var(--muted); }
+    .big { font-size: clamp(30px, 4vw, 54px); line-height: 1; margin: 8px 0; font-weight: 1000; }
+    .metric-row { display: grid; gap: 10px; }
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-weight: 850;
+    }
+    .metric:last-child { border-bottom: 0; }
+    .metric strong { color: var(--cyan); }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #06020d;
+      background: var(--lime);
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 1000;
+      white-space: nowrap;
+    }
+    .pill.pink { background: var(--pink); color: white; }
+    .pill.cyan { background: var(--cyan); }
+    .pill.gold { background: var(--gold); }
+    .pill.dark { color: var(--text); background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.14); }
+
+    .matches {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .match {
+      background: linear-gradient(145deg, rgba(54, 11, 68, .9), rgba(14, 4, 31, .92));
+      border: 1px solid rgba(255, 56, 207, .42);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      min-height: 560px;
+    }
+    .match-top { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-weight: 900; }
+    .teams {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 64px minmax(0, 1fr);
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0 18px;
+    }
+    .team { min-width: 0; }
+    .team.right { text-align: right; }
+    .team .flag { font-size: 34px; }
+    .team h3 { margin: 8px 0 4px; font-size: clamp(26px, 3vw, 42px); line-height: 1.08; }
+    .team p { margin: 0; color: var(--muted); font-weight: 800; }
+    .vs {
+      color: var(--cyan);
+      font-size: 30px;
+      font-weight: 1000;
+      text-align: center;
+      text-shadow: 0 0 18px rgba(66, 236, 255, .55);
+    }
+    .prob {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .prob div { border: 1px solid rgba(255,255,255,.1); padding: 12px; background: rgba(255,255,255,.045); }
+    .prob small { color: var(--muted); font-weight: 900; }
+    .prob b { display: block; font-size: 24px; margin-top: 6px; }
+    .bar { display: grid; gap: 9px; margin: 15px 0; }
+    .power { display: grid; grid-template-columns: 120px 1fr 42px; gap: 10px; align-items: center; font-weight: 900; }
+    .track { height: 12px; background: rgba(255,255,255,.1); overflow: hidden; }
+    .fill { height: 100%; background: linear-gradient(90deg, var(--pink), var(--cyan), var(--gold)); }
+    .pick-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 16px; }
+    .pick {
+      padding: 14px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.1);
+      min-height: 92px;
+    }
+    .pick small { color: var(--muted); display: block; margin-bottom: 8px; font-weight: 900; }
+    .pick b { font-size: 19px; line-height: 1.3; }
+    .analysis {
+      margin-top: 16px;
+      color: #f2e7ff;
+      line-height: 1.72;
+      font-weight: 700;
+    }
+
+    .rank-list, .scenario-list, .news-list, .review-list { display: grid; gap: 12px; }
+    .row-card {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.045);
+      padding: 14px;
+    }
+    .row-card b { font-size: 18px; }
+    .row-card p { margin: 4px 0 0; color: var(--muted); font-weight: 700; }
+
+    .standings {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .group h3 { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+    table { width: 100%; border-collapse: collapse; font-weight: 800; }
+    th, td { padding: 10px 8px; border-bottom: 1px solid rgba(255,255,255,.09); text-align: left; }
+    th { color: var(--muted); font-size: 12px; }
+    td:last-child, th:last-child { text-align: right; }
+    .status { color: var(--cyan); font-weight: 1000; }
+
+    .bracket {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(160px, 1fr));
+      gap: 14px;
+    }
+    .slot {
+      border: 1px solid rgba(66, 236, 255, .25);
+      background: rgba(255,255,255,.045);
+      padding: 14px;
+      min-height: 110px;
+    }
+    .slot small { color: var(--muted); font-weight: 900; }
+    .slot b { display: block; margin-top: 8px; font-size: 18px; }
+
+    .disclaimer {
+      margin: 40px 0 0;
+      padding: 22px;
+      border: 1px solid rgba(255, 95, 143, .45);
+      background: rgba(255, 95, 143, .08);
+      color: #ffeaf2;
+      line-height: 1.7;
+      font-weight: 760;
+    }
+
+    footer {
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 28px 0 44px;
+      line-height: 1.7;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 1100px) {
+      .nav, .section-head { align-items: flex-start; flex-direction: column; }
+      .hero-grid, .dashboard, .two, .three, .four, .matches, .standings { grid-template-columns: 1fr; }
+      .hero-cards { grid-template-columns: 1fr; }
+      .hero-card { border-right: 0; border-bottom: 1px solid var(--line); }
+      .hero-card:last-child { border-bottom: 0; }
+      .bracket { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 20px, 1580px); }
+      .tabs { width: 100%; display: grid; grid-template-columns: repeat(2, 1fr); }
+      .tab { padding: 12px 8px; font-size: 14px; }
+      .hero { min-height: 690px; padding-top: 46px; }
+      .hero h2 { font-size: 58px; }
+      .hero-lead { font-size: 19px; }
+      .hero::after { display: none; }
+      .alert { grid-template-columns: 1fr; }
+      .teams { grid-template-columns: 1fr; text-align: left; }
+      .team.right { text-align: left; }
+      .vs { text-align: left; }
+      .prob, .pick-grid, .bracket { grid-template-columns: 1fr; }
+      .power { grid-template-columns: 84px 1fr 34px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo">APE</div>
+        <div>
+          <h1>APE世足戰情室</h1>
+          <p>台灣盤口・晉級情境・戰術新聞・賽後復盤</p>
         </div>
+      </div>
+      <nav class="tabs" aria-label="主選單">
+        <button class="tab active" data-target="overview">戰情總覽</button>
+        <button class="tab" data-target="matches">今日對戰</button>
+        <button class="tab" data-target="scenario">晉級模擬</button>
+        <button class="tab" data-target="standings">小組積分</button>
+        <button class="tab" data-target="review">復盤追蹤</button>
       </nav>
-      <section class="hero__content">
-        <p class="eyebrow" id="editionLabel">每日更新</p>
-        <h1>APE世足戰情室</h1>
-        <p class="hero__copy">點選分頁看目前積分、誰已晉級、下一輪可能對手、國旗對戰、台灣盤口、正確比分、球員新聞和戰術安排。</p>
-        <div class="hero__panel">
-          <div><span>主推</span><strong id="heroPrimary">載入中</strong></div>
-          <div><span>大小球</span><strong id="heroSecondary">載入中</strong></div>
-          <div><span>避開</span><strong id="heroAvoid">載入中</strong></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="overview">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="kicker">2026-06-26 FIFA賽事日｜台灣時間換算版</div>
+          <h2>APE世足<br>戰情室</h2>
+          <p class="hero-lead">今日鎖定 G / H / I 三組最後一輪共六場：已晉級隊伍拚小組第一，邊緣隊伍搶第三名門票。盤口用台灣玩家熟悉的讓分與大小格式呈現。</p>
+          <div class="hero-cards">
+            <div class="hero-card"><small>今日主推</small><strong>西班牙 讓0.5/1</strong></div>
+            <div class="hero-card"><small>大小球</small><strong>法國 vs 挪威 大2.5/3</strong></div>
+            <div class="hero-card"><small>避雷盤</small><strong>已晉級強隊深讓追高</strong></div>
+          </div>
         </div>
-      </section>
-    </header>
+        <aside class="command">
+          <h3>今日雷達</h3>
+          <div class="command-list">
+            <div class="signal"><span class="flag">🇪🇸</span><div><b>西班牙控場能力最佳</b><span>Group H 第一名戰</span></div><span class="badge">A</span></div>
+            <div class="signal"><span class="flag">🇫🇷</span><div><b>法國 / 挪威金靴對決</b><span>已晉級，但第一名價值高</span></div><span class="badge">A-</span></div>
+            <div class="signal"><span class="flag">🇧🇪</span><div><b>比利時必須處理紐西蘭低位</b><span>可勝但防深讓</span></div><span class="badge">B+</span></div>
+            <div class="signal"><span class="flag">🇸🇳</span><div><b>塞內加爾非贏不可</b><span>情緒盤強，注意反撲風險</span></div><span class="badge">B</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-    <main>
-      <section class="ticker" id="ticker"><div>APE Alert</div></section>
+    <div class="wrap alert">
+      <b>APE Alert</b>
+      <div>
+        <span>FIFA 6/26 賽事日共有六場，換成台灣時間多數在 6/27 凌晨至上午開踢。</span>
+        <span>第三輪重點：已晉級隊伍可能輪休，但若小組第一會影響淘汰賽路線，仍有戰意。</span>
+        <span>本頁為個人賽前分析參考，不保證結果，請勿重注、借貸下注或賽後情緒責備。</span>
+      </div>
+    </div>
 
-      <section class="risk-note" aria-label="特別提醒">
-        <strong>特別提醒</strong>
-        <p>本網站內容僅為個人資料整理與賽事分析參考，不代表保證命中，也不構成投資或投注建議。盤口、陣容與賽果都可能臨場變動，請勿重注、借貸下注或超出自己可承受的範圍。賽果若與預測不同，屬運動賽事正常風險，請理性復盤，不以單場結果歸責任何分析。</p>
-      </section>
-
-      <section class="section view is-active" id="view-dashboard">
-        <div class="section__head">
-          <div><p class="eyebrow">Command Deck</p><h2>今日總覽儀表板</h2></div>
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>今日總覽儀表板</h2>
+            <p>把今日六場拆成主推、可串、避雷、臨場檢查與昨日復盤，讓朋友一進來先抓重點。</p>
+          </div>
         </div>
-        <div class="dashboard-grid" id="dashboardGrid"></div>
-        <div class="quick-report">
-          <section class="quick-card">
-            <p class="eyebrow">Lazy Slip</p>
+        <div class="grid dashboard">
+          <article class="panel">
             <h3>今日快速懶人包</h3>
-            <div class="quick-slip" id="quickSlip"></div>
-          </section>
-          <section class="quick-card">
-            <p class="eyebrow">Line Movement</p>
-            <h3>盤口變動追蹤</h3>
-            <div class="odds-board" id="oddsBoard"></div>
-          </section>
-          <section class="quick-card">
-            <p class="eyebrow">7-Day Form</p>
-            <h3>近7日命中統計</h3>
-            <div class="streak-board" id="streakBoard"></div>
-          </section>
+            <div class="metric-row">
+              <div class="metric"><span>主推</span><strong>西班牙 讓0.5/1</strong></div>
+              <div class="metric"><span>副推</span><strong>法國 vs 挪威 大2.5/3</strong></div>
+              <div class="metric"><span>可串</span><strong>比利時勝 / 小心深讓</strong></div>
+              <div class="metric"><span>避開</span><strong>塞內加爾追高讓1以上</strong></div>
+            </div>
+          </article>
+          <article class="panel">
+            <h3>昨日戰績</h3>
+            <div class="big">主推 1中1</div>
+            <p class="muted">6/25：象牙海岸方向命中；巴拉圭 vs 澳洲小球邏輯成立。今日延續第三輪「戰意大於名氣」模型。</p>
+            <div class="metric-row">
+              <div class="metric"><span>近7日主推</span><strong>5中3</strong></div>
+              <div class="metric"><span>大小球</span><strong>偏保守</strong></div>
+            </div>
+          </article>
+          <article class="panel">
+            <h3>臨場提醒</h3>
+            <div class="rank-list">
+              <div class="row-card"><span class="pill pink">1</span><div><b>確認法國先發</b><p>若姆巴佩與主力輪休，大球信心下降一級。</p></div><span>90m</span></div>
+              <div class="row-card"><span class="pill cyan">2</span><div><b>看西班牙盤口</b><p>若升到讓1/1.5，改成西班牙勝或小注。</p></div><span>60m</span></div>
+              <div class="row-card"><span class="pill gold">3</span><div><b>塞內加爾情緒盤</b><p>非贏不可，但急攻容易被反擊，正比不宜重。</p></div><span>30m</span></div>
+            </div>
+          </article>
         </div>
-        <div class="radar-layout">
-          <section class="radar-card">
-            <p class="eyebrow">Sharp Board</p>
-            <h3>今日主推雷達</h3>
-            <div class="radar-picks" id="radarPicks"></div>
-          </section>
-          <section class="radar-card">
-            <p class="eyebrow">Risk Control</p>
-            <h3>風險控管</h3>
-            <div class="risk-grid" id="riskGrid"></div>
-          </section>
-        </div>
-      </section>
 
-      <section class="section view" id="view-matches">
-        <div class="section__head">
-          <div><p class="eyebrow">Match Center</p><h2>今日對戰分析</h2></div>
-          <div class="filters">
-            <button class="filter is-active" data-filter="all">全部</button>
+        <div class="grid three" style="margin-top:20px">
+          <article class="panel">
+            <h3>今日信心排行</h3>
+            <div class="rank-list">
+              <div class="row-card"><span class="pill">A</span><div><b>西班牙 讓0.5/1</b><p>烏拉圭傷停與必攻結構，利於西班牙控轉換。</p></div><span>82</span></div>
+              <div class="row-card"><span class="pill cyan">A-</span><div><b>法國 vs 挪威 大2.5/3</b><p>雙方已晉級但第一名重要，前場明星戰意仍高。</p></div><span>78</span></div>
+              <div class="row-card"><span class="pill gold">B+</span><div><b>比利時勝</b><p>紐西蘭會縮，但比利時個體差距仍明顯。</p></div><span>72</span></div>
+            </div>
+          </article>
+          <article class="panel">
+            <h3>盤口變動追蹤</h3>
+            <div class="metric-row">
+              <div class="metric"><span>西班牙</span><strong>讓0.5/1 可接受</strong></div>
+              <div class="metric"><span>法國 / 挪威</span><strong>2.5/3 看大</strong></div>
+              <div class="metric"><span>比利時</span><strong>讓1以上降注</strong></div>
+              <div class="metric"><span>塞內加爾</span><strong>讓0.5/1 以上慎追</strong></div>
+            </div>
+          </article>
+          <article class="panel">
+            <h3>避雷榜</h3>
+            <div class="rank-list">
+              <div class="row-card"><span class="pill pink">避</span><div><b>已晉級隊伍深讓</b><p>第三輪輪休與保牌風險高。</p></div><span>高</span></div>
+              <div class="row-card"><span class="pill pink">避</span><div><b>烏拉圭硬拚正比</b><p>傷停與盤路波動大，不適合重注。</p></div><span>高</span></div>
+              <div class="row-card"><span class="pill dark">觀</span><div><b>埃及 vs 伊朗</b><p>晉級壓力與政治情緒干擾，盤口不乾淨。</p></div><span>中</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="matches">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>今日對戰分析</h2>
+            <p>台灣時間顯示採「FIFA 6/26 賽事日換算」，實際開賽請以官方與轉播平台最終公告為準。</p>
+          </div>
+          <div class="tabs">
+            <button class="filter active" data-filter="all">全部</button>
             <button class="filter" data-filter="A">A級</button>
-            <button class="filter" data-filter="side">讓分</button>
+            <button class="filter" data-filter="handicap">讓分</button>
             <button class="filter" data-filter="total">大小</button>
           </div>
         </div>
-        <div class="match-grid" id="matchGrid"></div>
-      </section>
+        <div class="matches" id="matchList"></div>
+      </div>
+    </section>
 
-      <section class="section view" id="view-scenarios">
-        <div class="section__head">
-          <div><p class="eyebrow">Qualification Simulator</p><h2>晉級情境模擬</h2></div>
-        </div>
-        <div class="scenario-grid" id="scenarioGrid"></div>
-      </section>
-
-      <section class="section view" id="view-standings">
-        <div class="section__head">
-          <div><p class="eyebrow">Live Tables</p><h2>目前小組積分與晉級狀態</h2></div>
-        </div>
-        <div class="standings-grid" id="standingsGrid"></div>
-      </section>
-
-      <section class="section view" id="view-qualified">
-        <div class="section__head">
-          <div><p class="eyebrow">Road to Round of 32</p><h2>已晉級與下一輪可能對手</h2></div>
-        </div>
-        <div class="worldcup-map">
-          <div class="map-frame">
-            <img src="./assets/worldcup-48-bracket.jpg" alt="FIFA 2026 48隊小組與淘汰賽晉級圖" />
-            <div class="bracket-overlay" id="bracketOverlay" aria-label="32強籤位國旗"></div>
+    <section id="scenario">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>晉級情境模擬</h2>
+            <p>第三輪不只是輸贏，還要看第一名路線、第三名積分門檻、輪休與保牌。</p>
           </div>
-          <aside class="map-ledger">
-            <p class="eyebrow">Qualification Radar</p>
-            <h3>已確認晉級國家</h3>
-            <div class="qualified-chips" id="qualifiedChips"></div>
-            <div class="bracket-legend">
-              <span><i class="dot dot--confirmed"></i>已定</span>
-              <span><i class="dot dot--projected"></i>預測</span>
-              <span><i class="dot dot--pending"></i>未定</span>
+        </div>
+        <div class="grid two">
+          <article class="panel">
+            <h3>G組：埃及 / 比利時 / 伊朗 / 紐西蘭</h3>
+            <div class="scenario-list">
+              <div class="row-card"><span class="flag">🇪🇬</span><div><b>埃及</b><p>領先但仍需拿分確認排名，踢法偏控節奏，不急著互爆。</p></div><span class="pill cyan">爭第一</span></div>
+              <div class="row-card"><span class="flag">🇧🇪</span><div><b>比利時</b><p>面對紐西蘭應主導球權，但若早進球可能收節奏。</p></div><span class="pill">搶晉級</span></div>
+              <div class="row-card"><span class="flag">🇮🇷</span><div><b>伊朗</b><p>防守密度高，靠定位球與反擊，適合低比分劇本。</p></div><span class="pill dark">保命</span></div>
             </div>
-            <p id="qualifiedNote">32強由12組前二名加8支最佳第三名組成，名次會影響下一輪對手。</p>
-          </aside>
+          </article>
+          <article class="panel">
+            <h3>H組：西班牙 / 烏拉圭 / 維德角 / 沙烏地</h3>
+            <div class="scenario-list">
+              <div class="row-card"><span class="flag">🇪🇸</span><div><b>西班牙</b><p>第一名路線有價值，預期仍會派足夠主力控制比賽。</p></div><span class="pill cyan">爭第一</span></div>
+              <div class="row-card"><span class="flag">🇺🇾</span><div><b>烏拉圭</b><p>傷停與必勝壓力疊加，後場身後空間是最大風險。</p></div><span class="pill pink">高壓</span></div>
+              <div class="row-card"><span class="flag">🇨🇻</span><div><b>維德角</b><p>有機會創歷史晉級，若先進球會大幅轉保守。</p></div><span class="pill">黑馬</span></div>
+            </div>
+          </article>
+          <article class="panel">
+            <h3>I組：法國 / 挪威 / 塞內加爾 / 伊拉克</h3>
+            <div class="scenario-list">
+              <div class="row-card"><span class="flag">🇫🇷</span><div><b>法國</b><p>已晉級但要保第一，若主力先發，進攻端仍值得期待。</p></div><span class="pill cyan">爭第一</span></div>
+              <div class="row-card"><span class="flag">🇳🇴</span><div><b>挪威</b><p>哈蘭德狀態與第一名動機，讓比賽不容易變消化試合。</p></div><span class="pill">已晉級</span></div>
+              <div class="row-card"><span class="flag">🇸🇳</span><div><b>塞內加爾</b><p>必須贏球才有機會，攻勢會早開，但後段體能是變數。</p></div><span class="pill pink">非贏不可</span></div>
+            </div>
+          </article>
+          <article class="panel">
+            <h3>可能淘汰賽路線</h3>
+            <div class="bracket">
+              <div class="slot"><small>Group I 第一</small><b>法國 / 挪威</b><p class="muted">可能碰第三名隊，第一名價值明顯。</p></div>
+              <div class="slot"><small>Group H 第一</small><b>西班牙 / 維德角</b><p class="muted">西班牙仍會想避開更硬路線。</p></div>
+              <div class="slot"><small>Group G 第二</small><b>比利時 / 伊朗</b><p class="muted">最後一輪不適合只看名氣。</p></div>
+              <div class="slot"><small>最佳第三名</small><b>塞內加爾 / 烏拉圭</b><p class="muted">要看積分、淨勝球與其他組結果。</p></div>
+            </div>
+          </article>
         </div>
-        <div class="qualified-layout">
-          <div class="qualified-grid" id="qualifiedGrid"></div>
-          <div class="bracket-panel" id="bracketPanel"></div>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section view" id="view-news">
-        <div class="section__head">
-          <div><p class="eyebrow">News Weight</p><h2>即時新聞與盤口影響</h2></div>
+    <section id="standings">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>小組積分雷達</h2>
+            <p>完整顯示 A-L 全組別，已結束組別以晉級狀態為主；今日 G/H/I 為核心追蹤。</p>
+          </div>
         </div>
-        <div class="news-grid" id="newsGrid"></div>
-      </section>
+        <div class="standings" id="standingList"></div>
+      </div>
+    </section>
 
-      <section class="section view" id="view-review">
-        <div class="section__head">
-          <div><p class="eyebrow">Post Match Review</p><h2>賽後復盤區</h2></div>
+    <section id="review">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>賽後復盤區</h2>
+            <p>把每天幾中幾、錯在哪裡、隔天要修正什麼留下來，網站才會像真正戰情室。</p>
+          </div>
         </div>
-        <div class="review-layout" id="reviewLayout"></div>
-      </section>
-
-      <section class="section section--split">
-        <div>
-          <p class="eyebrow">Portfolio</p>
-          <h2>今日組合單</h2>
-          <div class="portfolio" id="portfolioList"></div>
+        <div class="grid three">
+          <article class="panel">
+            <h3>6/25 復盤</h3>
+            <div class="big">主推 1中1</div>
+            <p class="muted">象牙海岸戰意與晉級壓力符合模型；澳洲 / 巴拉圭小球劇本成立。第三輪要降低深讓追高。</p>
+          </article>
+          <article class="panel">
+            <h3>今日策略修正</h3>
+            <div class="review-list">
+              <div class="row-card"><span class="pill">1</span><div><b>先看戰意，再看名氣</b><p>已晉級隊伍若沒有第一名壓力，深讓降級。</p></div><span></span></div>
+              <div class="row-card"><span class="pill cyan">2</span><div><b>大小球跟節奏</b><p>第三輪同分、保第三名時，小球價值升高。</p></div><span></span></div>
+            </div>
+          </article>
+          <article class="panel">
+            <h3>推薦分級</h3>
+            <div class="metric-row">
+              <div class="metric"><span>A</span><strong>主推，小注參考</strong></div>
+              <div class="metric"><span>A-</span><strong>副推，等先發確認</strong></div>
+              <div class="metric"><span>B+</span><strong>可串，不追高</strong></div>
+              <div class="metric"><span>避</span><strong>盤口不漂亮就跳過</strong></div>
+            </div>
+          </article>
         </div>
-        <aside class="bankroll">
-          <h3>資金配置</h3>
-          <div id="bankrollList"></div>
-          <p>本頁為分析參考，不保證獲利。請理性控管資金，避免追單。</p>
-        </aside>
-      </section>
-    </main>
+        <div class="disclaimer">
+          <b>特別提醒：</b>本網站內容只是個人賽前分析與資料整理，不是穩贏訊號，也不保證命中。請量力而為，不建議重注、借貸下注、追輸或因結果不如預期而責怪任何人。看球可以熱血，資金管理要冷靜。
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <footer>
-      <p>APE世足戰情室 · 台灣盤口參考版</p>
-      <p><span id="lastUpdated">Last updated</span> · 小注娛樂，理性看球。</p>
-    </footer>
-    <script src="./app.js"></script>
-  </body>
+  <footer>
+    <div class="wrap">
+      資料更新：2026-06-26 亞太時間。賽程參考 FIFA 賽程整理、Economic Times 今日賽程、Guardian 即時戰情與公開新聞。盤口為台灣常見亞洲盤格式的分析參考，實際盤口請以你看到的平台為準。
+    </div>
+  </footer>
+
+  <script>
+    const matches = [
+      {
+        group: "Group I", time: "台灣時間 6/27 凌晨", grade: "A-", tags: ["all", "A", "total"],
+        home: { flag: "🇳🇴", name: "挪威", note: "已晉級，仍爭第一", power: 84 },
+        away: { flag: "🇫🇷", name: "法國", note: "已晉級，保第一", power: 90 },
+        probs: ["挪威勝 26%", "和局 27%", "法國勝 47%"],
+        handicap: "法國 讓0/0.5，升讓0.5降注",
+        total: "大小 2.5/3，看大優先",
+        score: "1-2 / 2-2",
+        asia: "法國 -0.25 / 大2.75",
+        text: "這場不是單純消化賽，第一名會影響淘汰賽路線。挪威有哈蘭德支點與轉換，法國有姆巴佩速度與邊路爆點，若雙方主力確認，節奏容易被前場個體拉高。"
+      },
+      {
+        group: "Group I", time: "台灣時間 6/27 凌晨", grade: "B", tags: ["all", "handicap"],
+        home: { flag: "🇸🇳", name: "塞內加爾", note: "非贏不可", power: 77 },
+        away: { flag: "🇮🇶", name: "伊拉克", note: "守反求生", power: 62 },
+        probs: ["塞內加爾勝 54%", "和局 25%", "伊拉克勝 21%"],
+        handicap: "塞內加爾 讓0.5/1，讓1以上不追",
+        total: "大小 2/2.5，偏小",
+        score: "1-0 / 1-1",
+        asia: "塞內加爾 -0.75 / 小2.25",
+        text: "塞內加爾戰意最明確，但越急越容易被伊拉克拖慢。若早段沒進球，讓分盤會變危險；比較適合看勝不追高，或等臨場回落。"
+      },
+      {
+        group: "Group G", time: "台灣時間 6/27 早上", grade: "B", tags: ["all", "total"],
+        home: { flag: "🇪🇬", name: "埃及", note: "爭排名與出線", power: 73 },
+        away: { flag: "🇮🇷", name: "伊朗", note: "低位與定位球", power: 70 },
+        probs: ["埃及勝 35%", "和局 32%", "伊朗勝 33%"],
+        handicap: "埃及 讓0/0.5，保守看不敗",
+        total: "大小 2，小球優先",
+        score: "1-1 / 1-0",
+        asia: "埃及 -0.25 / 小2",
+        text: "這組排名壓力大，兩隊都不會想先犯錯。埃及靠薩拉赫牽制，伊朗防守紀律與定位球威脅高，盤路更像一球勝負或和局。"
+      },
+      {
+        group: "Group G", time: "台灣時間 6/27 早上", grade: "B+", tags: ["all", "handicap"],
+        home: { flag: "🇳🇿", name: "紐西蘭", note: "低位防守", power: 58 },
+        away: { flag: "🇧🇪", name: "比利時", note: "搶晉級主導球權", power: 82 },
+        probs: ["紐西蘭勝 15%", "和局 24%", "比利時勝 61%"],
+        handicap: "比利時 讓1，升1/1.5降注",
+        total: "大小 2.5，偏小防2-0",
+        score: "0-2 / 1-2",
+        asia: "比利時 -1 / 小2.5",
+        text: "比利時個體與控球差距明顯，但第三輪若領先會更重視晉級而非刷分。紐西蘭守得久，比利時深讓就容易卡盤。"
+      },
+      {
+        group: "Group H", time: "台灣時間 6/27 上午", grade: "B+", tags: ["all", "handicap"],
+        home: { flag: "🇨🇻", name: "維德角", note: "黑馬晉級機會", power: 67 },
+        away: { flag: "🇸🇦", name: "沙烏地", note: "必須搶勝", power: 64 },
+        probs: ["維德角勝 39%", "和局 30%", "沙烏地勝 31%"],
+        handicap: "維德角 讓0/0.5，小注",
+        total: "大小 2/2.5，先小後大",
+        score: "1-1 / 2-1",
+        asia: "維德角 -0.25 / 小2.25",
+        text: "維德角有歷史晉級動力，沙烏地則必須冒險。若維德角先進球，比賽會轉成守反；若沙烏地先進，後段大球才會打開。"
+      },
+      {
+        group: "Group H", time: "台灣時間 6/27 上午", grade: "A", tags: ["all", "A", "handicap"],
+        home: { flag: "🇺🇾", name: "烏拉圭", note: "傷停與必勝壓力", power: 78 },
+        away: { flag: "🇪🇸", name: "西班牙", note: "爭第一，控場佳", power: 89 },
+        probs: ["烏拉圭勝 23%", "和局 27%", "西班牙勝 50%"],
+        handicap: "西班牙 讓0.5/1",
+        total: "大小 2.5，偏大但不追3",
+        score: "1-2 / 1-3",
+        asia: "西班牙 -0.75 / 大2.5",
+        text: "西班牙小組第一戰意仍在，控球與反壓迫能懲罰烏拉圭必攻後的空間。烏拉圭若後防傷停持續，西班牙讓0.5/1是今日最乾淨方向。"
+      }
+    ];
+
+    const groups = [
+      ["A", [["🇲🇽 墨西哥", 6, "已晉級"], ["🇰🇷 韓國", 4, "待確認"], ["🇨🇿 捷克", 4, "待確認"], ["🇿🇦 南非", 1, "淘汰邊緣"]]],
+      ["B", [["🇨🇦 加拿大", 5, "已晉級"], ["🇨🇭 瑞士", 5, "已晉級"], ["🇧🇦 波赫", 4, "第三名"], ["🇶🇦 卡達", 1, "淘汰"]]],
+      ["C", [["🇲🇦 摩洛哥", 7, "已晉級"], ["🇧🇷 巴西", 6, "已晉級"], ["🏴󠁧󠁢󠁳󠁣󠁴󠁿 蘇格蘭", 4, "第三名"], ["🇭🇹 海地", 0, "淘汰"]]],
+      ["D", [["🇺🇸 美國", 6, "第一"], ["🇦🇺 澳洲", 4, "已晉級"], ["🇵🇾 巴拉圭", 4, "第三名"], ["🇹🇷 土耳其", 3, "待確認"]]],
+      ["E", [["🇩🇪 德國", 6, "第一"], ["🇨🇮 象牙海岸", 6, "已晉級"], ["🇪🇨 厄瓜多", 4, "第三名有望"], ["🇨🇼 庫拉索", 0, "淘汰"]]],
+      ["F", [["🇳🇱 荷蘭", 7, "第一"], ["🇯🇵 日本", 5, "已晉級"], ["🇸🇪 瑞典", 4, "第三名有望"], ["🇹🇳 突尼西亞", 0, "淘汰"]]],
+      ["G", [["🇪🇬 埃及", 4, "爭第一"], ["🇧🇪 比利時", 3, "搶晉級"], ["🇮🇷 伊朗", 3, "搶晉級"], ["🇳🇿 紐西蘭", 1, "需奇蹟"]]],
+      ["H", [["🇪🇸 西班牙", 4, "爭第一"], ["🇨🇻 維德角", 4, "爭晉級"], ["🇺🇾 烏拉圭", 2, "必須搶分"], ["🇸🇦 沙烏地", 1, "必須贏"]]],
+      ["I", [["🇫🇷 法國", 6, "已晉級"], ["🇳🇴 挪威", 6, "已晉級"], ["🇸🇳 塞內加爾", 1, "必須贏"], ["🇮🇶 伊拉克", 1, "必須贏"]]],
+      ["J", [["🇦🇷 阿根廷", 6, "明日賽事"], ["🇦🇹 奧地利", 3, "明日賽事"], ["🇩🇿 阿爾及利亞", 3, "明日賽事"], ["🇯🇴 約旦", 0, "明日賽事"]]],
+      ["K", [["🇵🇹 葡萄牙", 6, "明日賽事"], ["🇨🇴 哥倫比亞", 4, "明日賽事"], ["🇨🇩 剛果民主共和國", 1, "明日賽事"], ["🇺🇿 烏茲別克", 0, "明日賽事"]]],
+      ["L", [["🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格蘭", 6, "明日賽事"], ["🇭🇷 克羅埃西亞", 4, "明日賽事"], ["🇬🇭 迦納", 1, "明日賽事"], ["🇵🇦 巴拿馬", 0, "明日賽事"]]]
+    ];
+
+    function renderMatches(filter = "all") {
+      const root = document.getElementById("matchList");
+      root.innerHTML = matches
+        .filter(match => match.tags.includes(filter))
+        .map(match => `
+          <article class="match">
+            <div class="match-top"><span>${match.time} · ${match.group}</span><span class="badge">${match.grade}</span></div>
+            <div class="teams">
+              <div class="team"><span class="flag">${match.home.flag}</span><h3>${match.home.name}</h3><p>${match.home.note}</p></div>
+              <div class="vs">VS</div>
+              <div class="team right"><span class="flag">${match.away.flag}</span><h3>${match.away.name}</h3><p>${match.away.note}</p></div>
+            </div>
+            <div class="prob">
+              ${match.probs.map(item => {
+                const [label, value] = item.split(" ");
+                return `<div><small>${label}</small><b>${value}</b></div>`;
+              }).join("")}
+            </div>
+            <div class="bar">
+              <div class="power"><span>${match.home.flag} ${match.home.name}</span><div class="track"><div class="fill" style="width:${match.home.power}%"></div></div><b>${match.home.power}</b></div>
+              <div class="power"><span>${match.away.flag} ${match.away.name}</span><div class="track"><div class="fill" style="width:${match.away.power}%"></div></div><b>${match.away.power}</b></div>
+            </div>
+            <div class="pick-grid">
+              <div class="pick"><small>台灣讓分</small><b>${match.handicap}</b></div>
+              <div class="pick"><small>台灣大小</small><b>${match.total}</b></div>
+              <div class="pick"><small>正確比分</small><b>${match.score}</b></div>
+              <div class="pick"><small>亞洲盤換算</small><b>${match.asia}</b></div>
+            </div>
+            <p class="analysis">${match.text}</p>
+          </article>
+        `).join("");
+    }
+
+    function renderStandings() {
+      const root = document.getElementById("standingList");
+      root.innerHTML = groups.map(([name, teams]) => `
+        <article class="panel group">
+          <h3>Group ${name}<span class="pill ${["G","H","I"].includes(name) ? "cyan" : "dark"}">${["G","H","I"].includes(name) ? "今日重點" : "追蹤"}</span></h3>
+          <table>
+            <thead><tr><th>隊伍</th><th>分</th><th>狀態</th></tr></thead>
+            <tbody>
+              ${teams.map(team => `<tr><td>${team[0]}</td><td>${team[1]}</td><td class="status">${team[2]}</td></tr>`).join("")}
+            </tbody>
+          </table>
+        </article>
+      `).join("");
+    }
+
+    document.querySelectorAll(".tab").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+        button.classList.add("active");
+        document.getElementById(button.dataset.target).scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    document.querySelectorAll(".filter").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".filter").forEach(tab => tab.classList.remove("active"));
+        button.classList.add("active");
+        renderMatches(button.dataset.filter);
+      });
+    });
+
+    renderMatches();
+    renderStandings();
+  </script>
+</body>
 </html>
