@@ -234,6 +234,137 @@
     .heat-meter, .unit-bar { height: 12px; background: rgba(255,255,255,.12); overflow: hidden; margin-top: 8px; }
     .heat-fill, .unit-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), var(--pink), var(--gold)); }
     .standings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .toolbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    label { display: grid; gap: 7px; color: var(--muted); font-size: 13px; font-weight: 900; }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(70,240,255,.28);
+      background: rgba(255,255,255,.055);
+      color: var(--text);
+      min-height: 46px;
+      padding: 12px 13px;
+      font: inherit;
+      font-weight: 800;
+      outline: none;
+    }
+    textarea { min-height: 96px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { border-color: var(--cyan); box-shadow: 0 0 20px rgba(70,240,255,.18); }
+    .action {
+      border: 0;
+      min-height: 46px;
+      padding: 12px 16px;
+      color: #05020d;
+      background: linear-gradient(135deg, var(--lime), var(--cyan));
+      font-weight: 1000;
+      cursor: pointer;
+    }
+    .result-box {
+      margin-top: 14px;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.055);
+      min-height: 96px;
+      line-height: 1.65;
+      font-weight: 800;
+    }
+    .mode-switch { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+    .mode-btn {
+      border: 1px solid rgba(255,56,207,.42);
+      background: rgba(255,255,255,.045);
+      color: var(--text);
+      padding: 13px;
+      cursor: pointer;
+      font-weight: 1000;
+    }
+    .mode-btn.active { border-color: var(--cyan); color: #05020d; background: linear-gradient(135deg, var(--pink), var(--cyan)); }
+    .share-card {
+      min-height: 520px;
+      display: grid;
+      align-content: space-between;
+      padding: 24px;
+      border: 1px solid rgba(200,255,77,.5);
+      background: linear-gradient(135deg, rgba(255,56,207,.28), rgba(70,240,255,.12), rgba(200,255,77,.1)), rgba(8,4,22,.92);
+      box-shadow: var(--shadow);
+    }
+    .share-card h3 { font-size: 36px; line-height: 1; margin: 0; }
+    .share-picks { display: grid; gap: 12px; margin: 22px 0; }
+    .share-pick {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 12px;
+      padding: 13px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(5,2,13,.45);
+      font-weight: 900;
+    }
+    .share-foot { color: var(--muted); font-weight: 800; line-height: 1.55; }
+    .error-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .error-card {
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.045);
+      font-weight: 850;
+    }
+    .error-card input { width: 18px; height: 18px; min-height: 18px; accent-color: #46f0ff; }
+    .error-card span { color: var(--muted); line-height: 1.5; }
+    .brand-wall { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .wall-card {
+      min-height: 150px;
+      padding: 18px;
+      border: 1px solid rgba(70,240,255,.22);
+      background: linear-gradient(145deg, rgba(255,56,207,.14), rgba(70,240,255,.07)), rgba(255,255,255,.04);
+    }
+    .wall-card strong { display: block; font-size: 38px; line-height: 1; color: var(--cyan); margin: 10px 0; }
+    .wall-card span { color: var(--muted); font-weight: 800; line-height: 1.55; }
+    .ladder { display: grid; gap: 10px; }
+    .ladder-row {
+      display: grid;
+      grid-template-columns: 54px 1fr 74px;
+      gap: 12px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.045);
+      font-weight: 900;
+    }
+    .scenario-board {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .scenario-output {
+      margin-top: 14px;
+      padding: 16px;
+      min-height: 130px;
+      border: 1px solid rgba(200,255,77,.28);
+      background: rgba(200,255,77,.06);
+      line-height: 1.65;
+      font-weight: 830;
+    }
+    .odds-timeline { display: grid; gap: 12px; }
+    .odds-row {
+      display: grid;
+      grid-template-columns: 88px 1fr 1fr 90px;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.045);
+      font-weight: 850;
+    }
+    .report-box {
+      min-height: 180px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      line-height: 1.7;
+      font-weight: 820;
+      white-space: pre-line;
+    }
     table { width: 100%; border-collapse: collapse; font-weight: 800; }
     th, td { padding: 10px 8px; border-bottom: 1px solid rgba(255,255,255,.09); text-align: left; }
     th { color: var(--muted); font-size: 12px; }
@@ -243,17 +374,17 @@
     footer { color: var(--muted); border-top: 1px solid rgba(255,255,255,.08); padding: 28px 0 44px; line-height: 1.7; }
     @media (max-width: 1100px) {
       .nav, .section-head { align-items: flex-start; flex-direction: column; }
-      .hero-grid, .dashboard, .daily-three, .two, .three, .matches, .standings, .model-grid { grid-template-columns: 1fr; }
+      .hero-grid, .dashboard, .daily-three, .two, .three, .matches, .standings, .model-grid, .toolbox-grid, .error-grid, .brand-wall, .scenario-board { grid-template-columns: 1fr; }
       .hero-cards { grid-template-columns: 1fr; }
       .hero-card { border-right: 0; border-bottom: 1px solid var(--line); }
     }
     @media (max-width: 640px) {
       .wrap { width: min(100% - 20px, 1580px); }
       .tabs { width: 100%; display: grid; grid-template-columns: repeat(2, 1fr); }
-      .alert, .teams, .three-details, .pick-grid, .prob, .status-strip { grid-template-columns: 1fr; }
+      .alert, .teams, .three-details, .pick-grid, .prob, .status-strip, .form-grid, .mode-switch { grid-template-columns: 1fr; }
       .team.right, .vs { text-align: left; }
       .hero h2 { font-size: 56px; }
-      .track-row, .signal, .row-card, .metric { grid-template-columns: 1fr; }
+      .track-row, .signal, .row-card, .metric, .odds-row, .ladder-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -269,8 +400,10 @@
       </div>
       <nav class="tabs">
         <button class="tab active" data-target="overview">戰情總覽</button>
+        <button class="tab" data-target="toolbox">APE工具台</button>
         <button class="tab" data-target="matches">今日對戰</button>
         <button class="tab" data-target="model">模型權重</button>
+        <button class="tab" data-target="platform">品牌平台</button>
         <button class="tab" data-target="standings">小組積分</button>
         <button class="tab" data-target="review">復盤追蹤</button>
       </nav>
@@ -412,6 +545,91 @@
       </div>
     </section>
 
+    <section id="toolbox">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>APE工具台</h2>
+            <p>把網站從推薦頁升級成決策工具：輸入你看到的台灣盤口，切換玩家模式，產生可分享的今日三單卡。</p>
+          </div>
+        </div>
+        <div class="toolbox-grid">
+          <article class="panel">
+            <h3>盤口輸入器</h3>
+            <div class="form-grid">
+              <label>選擇賽事
+                <select id="lineMatch">
+                  <option value="england">巴拿馬 vs 英格蘭</option>
+                  <option value="portugal">哥倫比亞 vs 葡萄牙</option>
+                  <option value="croatia">克羅埃西亞 vs 迦納</option>
+                  <option value="argentina">約旦 vs 阿根廷</option>
+                  <option value="austria">阿爾及利亞 vs 奧地利</option>
+                  <option value="congo">剛果民主共和國 vs 烏茲別克</option>
+                </select>
+              </label>
+              <label>你看到的讓分盤
+                <input id="handicapInput" value="英格蘭讓1/1.5" placeholder="例：英格蘭讓1/1.5">
+              </label>
+              <label>你看到的大小盤
+                <input id="totalInput" value="小3/3.5" placeholder="例：大小3/3.5">
+              </label>
+              <label>盤口狀態
+                <select id="marketHeat">
+                  <option value="normal">正常盤</option>
+                  <option value="hot">熱門追高</option>
+                  <option value="drop">降盤回落</option>
+                </select>
+              </label>
+            </div>
+            <button class="action" id="judgeLine" type="button" style="margin-top:14px">判斷這個盤能不能進</button>
+            <div class="result-box" id="lineResult">輸入盤口後，這裡會顯示：可進、降注、避開，以及改單方向。</div>
+          </article>
+
+          <article class="panel">
+            <h3>玩家模式</h3>
+            <div class="mode-switch">
+              <button class="mode-btn active" data-mode="safe" type="button">保守</button>
+              <button class="mode-btn" data-mode="steady" type="button">穩健</button>
+              <button class="mode-btn" data-mode="sharp" type="button">激進</button>
+            </div>
+            <div class="result-box" id="modeResult">
+              <b>保守模式</b><br>
+              主推：英格蘭勝 + 小3/3.5<br>
+              搭配：克羅埃西亞不敗 / 小2.5<br>
+              避開：阿根廷深讓、英格蘭讓2以上。
+            </div>
+            <p class="muted">模式不是叫人加注，而是讓不同風險承受度的人看懂同一場比賽該怎麼降級。</p>
+          </article>
+        </div>
+
+        <div class="toolbox-grid" style="margin-top:20px">
+          <article class="share-card" id="shareCard">
+            <div>
+              <div class="kicker">2026-06-27 APE 今日三單</div>
+              <h3>APE世足戰情室</h3>
+              <div class="share-picks">
+                <div class="share-pick"><span class="pill green">主推</span><div>英格蘭勝 + 小3/3.5<br><span class="muted">信心 83｜0-2 / 0-3</span></div></div>
+                <div class="share-pick"><span class="pill">進攻</span><div>葡萄牙 vs 哥倫比亞 大2.5<br><span class="muted">信心 79｜1-2 / 2-2</span></div></div>
+                <div class="share-pick"><span class="pill gold">避險</span><div>克羅埃西亞不敗 / 小2.5<br><span class="muted">信心 74｜1-1 / 1-0</span></div></div>
+              </div>
+            </div>
+            <div class="share-foot">個人分析參考，不保證結果。請勿重注、借貸下注或追輸。適合截圖分享到 LINE / IG。</div>
+          </article>
+          <article class="panel">
+            <h3>截圖卡片設定</h3>
+            <div class="form-grid">
+              <label>主推文字<input id="shareMain" value="英格蘭勝 + 小3/3.5"></label>
+              <label>進攻單文字<input id="shareAttack" value="葡萄牙 vs 哥倫比亞 大2.5"></label>
+              <label>避險單文字<input id="shareSafe" value="克羅埃西亞不敗 / 小2.5"></label>
+              <label>提醒文字<input id="shareNote" value="個人分析參考，不保證結果。"></label>
+            </div>
+            <button class="action" id="updateShare" type="button" style="margin-top:14px">更新分享卡內容</button>
+            <div class="result-box">更新後直接用瀏覽器截圖這張卡，就可以丟 LINE、IG 限動或傳給朋友。</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="matches">
       <div class="wrap">
         <div class="section-head">
@@ -478,6 +696,79 @@
       </div>
     </section>
 
+    <section id="platform">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>APE品牌平台</h2>
+            <p>第三階段升級：把每天的推薦、盤口變化、朋友最愛看的熱門盤、賽後報告做成可累積的品牌資產。</p>
+          </div>
+        </div>
+
+        <div class="brand-wall">
+          <article class="wall-card"><span>近7日主推</span><strong>5中3</strong><span>以主推單為主，不把觀察盤灌進命中率。</span></article>
+          <article class="wall-card"><span>大小球方向</span><strong>57%</strong><span>第三輪偏小，淘汰賽需重新調整模型。</span></article>
+          <article class="wall-card"><span>避雷成功</span><strong>4次</strong><span>深讓追高、熱門大球是主要避雷來源。</span></article>
+          <article class="wall-card"><span>今日更新</span><strong>6場</strong><span>J/K/L 三組完整台灣時間版。</span></article>
+        </div>
+
+        <div class="grid two" style="margin-top:20px">
+          <article class="panel">
+            <h3>朋友最愛看排行榜</h3>
+            <div class="ladder">
+              <div class="ladder-row"><span class="pill pink">熱1</span><div><b>阿根廷深讓</b><p class="muted">最多人會問，但也是今日最大追高風險。</p></div><span>避雷</span></div>
+              <div class="ladder-row"><span class="pill green">熱2</span><div><b>英格蘭勝</b><p class="muted">勝面高，搭小分比硬讓更適合分享。</p></div><span>可看</span></div>
+              <div class="ladder-row"><span class="pill">熱3</span><div><b>葡萄牙/哥倫比亞大球</b><p class="muted">攻擊品質夠，勝負盤不如大小乾淨。</p></div><span>A-</span></div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <h3>晉級情境模擬器</h3>
+            <div class="scenario-board">
+              <label>Group J 結果
+                <select id="simJ">
+                  <option value="argentina">阿根廷勝 / 保第一</option>
+                  <option value="draw">約旦逼和 / 阿根廷仍晉級</option>
+                  <option value="austria">奧地利勝 / 搶第二</option>
+                </select>
+              </label>
+              <label>Group L 結果
+                <select id="simL">
+                  <option value="england">英格蘭勝 / 小組第一</option>
+                  <option value="draw">英格蘭和局 / 排名有變數</option>
+                  <option value="croatia">克羅埃西亞勝 / 第二名機會高</option>
+                </select>
+              </label>
+            </div>
+            <button class="action" id="runScenario" type="button" style="margin-top:14px">產生晉級路線判斷</button>
+            <div class="scenario-output" id="scenarioOutput">選擇結果後，這裡會顯示小組第一、第二與最佳第三名風險。</div>
+          </article>
+        </div>
+
+        <div class="grid two" style="margin-top:20px">
+          <article class="panel">
+            <h3>盤口變動歷史</h3>
+            <div class="odds-timeline">
+              <div class="odds-row"><span>開盤</span><b>英格蘭讓1.5</b><b>大小3/3.5</b><span class="pill green">可看</span></div>
+              <div class="odds-row"><span>早盤</span><b>英格蘭讓1.5/2</b><b>大小3/3.5</b><span class="pill gold">偏熱</span></div>
+              <div class="odds-row"><span>臨場</span><b>若升讓2以上</b><b>小3/3.5保留</b><span class="pill pink">降注</span></div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <h3>每日賽後報告產生器</h3>
+            <div class="form-grid">
+              <label>主推結果<select id="reportMain"><option>待更新</option><option>命中</option><option>未命中</option><option>走水</option></select></label>
+              <label>最大錯因<select id="reportCause"><option>盤口追高</option><option>先發誤判</option><option>節奏誤判</option><option>紅牌/VAR</option><option>戰意誤判</option></select></label>
+            </div>
+            <textarea id="reportNote" placeholder="補充今天最重要的一句話，例如：英格蘭早早領先後控節奏，小分邏輯成立。" style="margin-top:14px"></textarea>
+            <button class="action" id="buildDailyReport" type="button" style="margin-top:14px">產生每日賽後報告</button>
+            <div class="report-box" id="dailyReport">賽後按一下即可產生完整報告，方便貼到網站、LINE或IG。</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="review">
       <div class="wrap">
         <div class="section-head">
@@ -491,6 +782,20 @@
           <article class="panel"><h3>錯因分類</h3><p class="muted">若失準，請標註：先發輪休、紅牌、早球、盤口追高、戰意誤判。</p></article>
           <article class="panel"><h3>明日更新方向</h3><p class="muted">淘汰賽開始後，模型要提高「90分鐘保守、延長賽風險、強隊不急攻」權重。</p></article>
         </div>
+        <article class="panel" style="margin-top:20px">
+          <h3>賽後錯因分類器</h3>
+          <div class="error-grid">
+            <label class="error-card"><input type="checkbox" value="盤口追高"><b>盤口追高</b><span>方向對，但進場盤已沒有價值。</span></label>
+            <label class="error-card"><input type="checkbox" value="先發誤判"><b>先發誤判</b><span>核心球員輪休或臨場傷缺。</span></label>
+            <label class="error-card"><input type="checkbox" value="節奏誤判"><b>節奏誤判</b><span>預期大球但比賽變控節奏。</span></label>
+            <label class="error-card"><input type="checkbox" value="早球意外"><b>早球意外</b><span>太早進球改變讓分與大小節奏。</span></label>
+            <label class="error-card"><input type="checkbox" value="紅牌/VAR"><b>紅牌 / VAR</b><span>非模型可控的比賽事件。</span></label>
+            <label class="error-card"><input type="checkbox" value="戰意誤判"><b>戰意誤判</b><span>球隊保守或輪休程度超出預期。</span></label>
+          </div>
+          <textarea id="reviewNote" placeholder="賽後補充：例如英格蘭第幾分鐘進球、盤口是否卡住、先發是否和預期不同。" style="margin-top:14px"></textarea>
+          <button class="action" id="buildReview" type="button" style="margin-top:14px">產生復盤文字</button>
+          <div class="result-box" id="reviewResult">賽後勾選錯因後，這裡會產生可貼到網站或社群的復盤文字。</div>
+        </article>
         <div class="disclaimer">
           <b>特別提醒：</b>本網站內容只是個人賽前分析與資料整理，不是穩贏訊號，也不保證命中。請量力而為，不建議重注、借貸下注、追輸或因結果不如預期而責怪任何人。
         </div>
@@ -661,6 +966,130 @@
     function lightText(light) {
       return { green: "綠燈可參考", yellow: "黃燈等先發", red: "紅燈防追高" }[light] || "觀察";
     }
+
+    function judgeLine() {
+      const match = document.getElementById("lineMatch").value;
+      const handicap = document.getElementById("handicapInput").value.trim();
+      const total = document.getElementById("totalInput").value.trim();
+      const heat = document.getElementById("marketHeat").value;
+      const result = document.getElementById("lineResult");
+      const text = `${handicap} ${total}`;
+
+      const rules = {
+        england: {
+          name: "巴拿馬 vs 英格蘭",
+          green: "英格蘭勝、小3/3.5",
+          warning: "英格蘭讓2以上容易卡盤，勝出搭小分比深讓更乾淨。",
+          avoid: /讓2|讓2\/2\.5|讓2.5|讓3/
+        },
+        portugal: {
+          name: "哥倫比亞 vs 葡萄牙",
+          green: "大2.5、雙方進球",
+          warning: "葡萄牙讓到0.5/1以上不追，大小或雙方進球更好。",
+          avoid: /讓0\.5\/1|讓1/
+        },
+        croatia: {
+          name: "克羅埃西亞 vs 迦納",
+          green: "克羅埃西亞0、受讓0/0.5、小2.5",
+          warning: "克羅埃西亞升讓0.5以上價值下降，改看不敗或小球。",
+          avoid: /讓0\.5|讓0\.5\/1/
+        },
+        argentina: {
+          name: "約旦 vs 阿根廷",
+          green: "阿根廷勝、小3/3.5",
+          warning: "阿根廷讓2/2.5以上就是熱門深讓，勝面高但不適合追大勝。",
+          avoid: /讓2\/2\.5|讓2.5|讓3/
+        },
+        austria: {
+          name: "阿爾及利亞 vs 奧地利",
+          green: "奧地利0、奧地利不敗、小2.5",
+          warning: "奧地利讓0.5/1以上偏硬，平手盤最舒服。",
+          avoid: /讓0\.5\/1|讓1/
+        },
+        congo: {
+          name: "剛果民主共和國 vs 烏茲別克",
+          green: "小2/2.5、和局方向",
+          warning: "這場勝負最不乾淨，任何一方讓0.5都不建議追。",
+          avoid: /讓0\.5|讓0\.5\/1/
+        }
+      };
+
+      const rule = rules[match];
+      let level = "可參考";
+      let pill = "green";
+      let advice = rule.green;
+      if (rule.avoid.test(text) || heat === "hot") {
+        level = "避開 / 降注";
+        pill = "pink";
+        advice = rule.warning;
+      } else if (heat === "drop") {
+        level = "等確認";
+        pill = "gold";
+        advice = `盤口回落可能有價值，但要等先發確認。優先方向：${rule.green}`;
+      }
+      result.innerHTML = `<span class="pill ${pill}">${level}</span><br><b>${rule.name}</b><br>你輸入：${handicap}｜${total}<br>${advice}<br><span class="muted">原則：盤口越熱門，越不要追高；方向對不代表進場價值好。</span>`;
+    }
+
+    const modes = {
+      safe: "<b>保守模式</b><br>主推：英格蘭勝 + 小3/3.5<br>搭配：克羅埃西亞不敗 / 小2.5<br>避開：阿根廷深讓、英格蘭讓2以上。",
+      steady: "<b>穩健模式</b><br>主推：英格蘭勝 + 小3/3.5<br>進攻：葡萄牙/哥倫比亞大2.5<br>備選：奧地利不敗。每場最多只拿一個方向。",
+      sharp: "<b>激進模式</b><br>主推：葡萄牙/哥倫比亞大2.5<br>加碼觀察：阿根廷上半勝、英格蘭半全場<br>提醒：激進模式只適合小注娛樂，盤口升高就跳過。"
+    };
+
+    function updateShareCard() {
+      const main = document.getElementById("shareMain").value;
+      const attack = document.getElementById("shareAttack").value;
+      const safe = document.getElementById("shareSafe").value;
+      const note = document.getElementById("shareNote").value;
+      document.getElementById("shareCard").innerHTML = `
+        <div>
+          <div class="kicker">2026-06-27 APE 今日三單</div>
+          <h3>APE世足戰情室</h3>
+          <div class="share-picks">
+            <div class="share-pick"><span class="pill green">主推</span><div>${main}<br><span class="muted">信心 83｜0-2 / 0-3</span></div></div>
+            <div class="share-pick"><span class="pill">進攻</span><div>${attack}<br><span class="muted">信心 79｜1-2 / 2-2</span></div></div>
+            <div class="share-pick"><span class="pill gold">避險</span><div>${safe}<br><span class="muted">信心 74｜1-1 / 1-0</span></div></div>
+          </div>
+        </div>
+        <div class="share-foot">${note} 請勿重注、借貸下注或追輸。</div>
+      `;
+    }
+
+    function buildReview() {
+      const checked = [...document.querySelectorAll(".error-card input:checked")].map(input => input.value);
+      const note = document.getElementById("reviewNote").value.trim();
+      const cause = checked.length ? checked.join("、") : "尚未標註錯因";
+      document.getElementById("reviewResult").innerHTML = `<b>今日復盤草稿</b><br>三單結果：待填。<br>主要錯因/觀察：${cause}。<br>${note || "補充：等待賽後比分、盤路與先發差異整理。"}<br><span class="muted">明日修正：若錯因是盤口追高，降低熱門深讓權重；若是先發誤判，開賽前60分鐘再更新一次。</span>`;
+    }
+
+    function runScenario() {
+      const j = document.getElementById("simJ").value;
+      const l = document.getElementById("simL").value;
+      const jText = {
+        argentina: "Group J：阿根廷保住第一，奧地利/阿爾及利亞之戰決定第二與第三名排序。",
+        draw: "Group J：阿根廷仍大概率晉級，但第一名優勢縮小，第二名路線會更混亂。",
+        austria: "Group J：奧地利勝出會提高第二名機率，阿爾及利亞第三名壓力變大。"
+      }[j];
+      const lText = {
+        england: "Group L：英格蘭第一機率高，克羅埃西亞/迦納成為第二名與最佳第三名關鍵戰。",
+        draw: "Group L：英格蘭若只和局，仍可晉級但排名要看另一場結果，深讓盤更不值得追。",
+        croatia: "Group L：克羅埃西亞勝出會讓第二名路線變清楚，迦納可能落入最佳第三名比較。"
+      }[l];
+      document.getElementById("scenarioOutput").innerHTML = `<b>模擬結果</b><br>${jText}<br>${lText}<br><span class="muted">盤口結論：已晉級強隊若只需要排名，不追深讓；搶第二/第三名球隊更容易踢出保守上半場。</span>`;
+    }
+
+    function buildDailyReport() {
+      const main = document.getElementById("reportMain").value;
+      const cause = document.getElementById("reportCause").value;
+      const note = document.getElementById("reportNote").value.trim() || "等待賽後補充比分、盤路與先發變化。";
+      document.getElementById("dailyReport").textContent =
+`APE世足戰情室｜每日賽後報告
+主推結果：${main}
+主要錯因/亮點：${cause}
+今日一句話：${note}
+明日修正：若錯在盤口追高，降低熱門隊深讓權重；若錯在先發，開賽前60分鐘再更新一次先發確認燈。`;
+    }
+
     document.querySelectorAll(".tab").forEach(button => {
       button.addEventListener("click", () => {
         document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
@@ -675,6 +1104,18 @@
         renderMatches(button.dataset.filter);
       });
     });
+    document.getElementById("judgeLine").addEventListener("click", judgeLine);
+    document.querySelectorAll(".mode-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".mode-btn").forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        document.getElementById("modeResult").innerHTML = modes[button.dataset.mode];
+      });
+    });
+    document.getElementById("updateShare").addEventListener("click", updateShareCard);
+    document.getElementById("buildReview").addEventListener("click", buildReview);
+    document.getElementById("runScenario").addEventListener("click", runScenario);
+    document.getElementById("buildDailyReport").addEventListener("click", buildDailyReport);
     renderMatches();
     renderStandings();
   </script>
