@@ -51,14 +51,53 @@ a {
 
 .hero {
   position: relative;
+  overflow: hidden;
   min-height: 92vh;
   display: grid;
   align-items: end;
   padding: 28px clamp(18px, 5vw, 72px) 72px;
   color: #fff;
   background:
-    linear-gradient(180deg, rgba(20, 32, 39, 0.2), rgba(20, 32, 39, 0.88)),
-    url("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Hongyadong%2C_Chongqing.jpg/1280px-Hongyadong%2C_Chongqing.jpg") center / cover;
+    radial-gradient(circle at 74% 22%, rgba(255, 190, 104, 0.5), transparent 19%),
+    radial-gradient(circle at 18% 18%, rgba(224, 91, 55, 0.35), transparent 28%),
+    linear-gradient(180deg, rgba(20, 32, 39, 0.12), rgba(20, 32, 39, 0.92)),
+    linear-gradient(135deg, #13212b 0%, #203442 42%, #512b2a 100%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: auto -5vw 0;
+  height: 58vh;
+  background:
+    linear-gradient(90deg, transparent 0 3%, rgba(255, 209, 141, 0.82) 3% 3.6%, transparent 3.6% 8%),
+    linear-gradient(90deg, transparent 0 16%, rgba(255, 209, 141, 0.7) 16% 16.5%, transparent 16.5% 24%),
+    linear-gradient(90deg, transparent 0 31%, rgba(255, 209, 141, 0.78) 31% 31.6%, transparent 31.6% 40%),
+    linear-gradient(90deg, transparent 0 58%, rgba(255, 209, 141, 0.65) 58% 58.5%, transparent 58.5% 70%),
+    linear-gradient(90deg, transparent 0 82%, rgba(255, 209, 141, 0.78) 82% 82.6%, transparent 82.6% 100%),
+    linear-gradient(0deg, rgba(9, 14, 17, 0.98), rgba(13, 22, 27, 0.88));
+  clip-path: polygon(
+    0 52%, 6% 48%, 6% 38%, 13% 38%, 13% 58%, 18% 58%, 18% 25%, 24% 25%, 24% 62%,
+    29% 62%, 29% 42%, 36% 42%, 36% 57%, 42% 57%, 42% 18%, 49% 18%, 49% 63%,
+    55% 63%, 55% 35%, 62% 35%, 62% 55%, 67% 55%, 67% 28%, 74% 28%, 74% 60%,
+    80% 60%, 80% 40%, 87% 40%, 87% 54%, 93% 54%, 93% 31%, 100% 31%, 100% 100%, 0 100%
+  );
+  opacity: 0.9;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  left: -10vw;
+  right: -10vw;
+  bottom: -10vh;
+  height: 34vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 205, 126, 0.32), transparent 46%),
+    repeating-linear-gradient(90deg, rgba(255, 202, 116, 0.16) 0 2px, transparent 2px 28px),
+    linear-gradient(180deg, rgba(38, 116, 104, 0.18), rgba(9, 14, 17, 0.65));
+  transform: skewY(-2deg);
+  opacity: 0.95;
 }
 
 .topbar {
@@ -94,6 +133,7 @@ a {
 
 .hero__content {
   position: relative;
+  z-index: 1;
   max-width: 900px;
 }
 
@@ -216,6 +256,43 @@ h3 {
 
 .quickfacts strong {
   color: var(--red);
+}
+
+.creator-note {
+  background: var(--paper);
+}
+
+.creator-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.creator-grid article {
+  min-height: 170px;
+  padding: 20px;
+  color: #fff;
+  background:
+    linear-gradient(160deg, rgba(224, 91, 55, 0.9), rgba(20, 32, 39, 0.96)),
+    var(--night);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.creator-grid strong,
+.creator-grid span {
+  display: block;
+}
+
+.creator-grid strong {
+  margin-bottom: 14px;
+  color: #ffe0a6;
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.creator-grid span {
+  color: #fff8ec;
 }
 
 .photo-strip {
@@ -532,6 +609,167 @@ h3 {
   color: var(--red);
 }
 
+.route-map-section {
+  background: var(--night);
+  color: #fff;
+}
+
+.route-map-section .section__head p:not(.kicker) {
+  color: #d9e1de;
+}
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.flow-grid article {
+  position: relative;
+  min-height: 240px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+}
+
+.flow-grid article:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -13px;
+  z-index: 1;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  color: var(--night);
+  background: #ffd37c;
+  border-radius: 50%;
+  font-weight: 900;
+}
+
+.flow-grid span,
+.flow-grid strong,
+.flow-grid em {
+  display: block;
+}
+
+.flow-grid span {
+  color: #ffd37c;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.flow-grid strong {
+  margin: 12px 0;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.flow-grid em {
+  color: #fff3d4;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.flow-grid p {
+  color: #d9e1de;
+}
+
+.pack-grid,
+.avoid-grid,
+.ranking {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.pack-grid article,
+.avoid-grid article,
+.ranking article {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.pack-grid h3 {
+  color: var(--red);
+}
+
+.pack-grid p {
+  margin: 10px 0 0;
+  color: #3d454b;
+}
+
+.ranking {
+  margin-bottom: 24px;
+}
+
+.ranking article {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  column-gap: 14px;
+  align-items: start;
+}
+
+.ranking span {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  color: #fff;
+  background: var(--chili);
+  border-radius: 50%;
+  font-weight: 900;
+}
+
+.ranking h3 {
+  color: var(--red);
+}
+
+.ranking p {
+  grid-column: 2;
+  margin: 8px 0 0;
+  color: #3d454b;
+}
+
+.avoid-section {
+  background:
+    linear-gradient(180deg, rgba(20, 32, 39, 0.96), rgba(20, 32, 39, 0.9)),
+    var(--night);
+  color: #fff;
+}
+
+.avoid-section .section__head p:not(.kicker) {
+  color: #d9e1de;
+}
+
+.avoid-grid article {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: none;
+}
+
+.avoid-grid strong,
+.avoid-grid span {
+  display: block;
+}
+
+.avoid-grid strong {
+  color: #ffd37c;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.avoid-grid span {
+  margin-top: 10px;
+  color: #eef2ef;
+}
+
 .table-wrap {
   overflow-x: auto;
   background: #fff;
@@ -687,10 +925,15 @@ select {
   .hotel-picks,
   .directory-grid,
   .radar-grid,
+  .flow-grid,
+  .pack-grid,
+  .avoid-grid,
+  .ranking,
   .split,
   .money-grid,
   .budget-result,
   .checklist,
+  .creator-grid,
   .day,
   .spot-card.wide {
     grid-template-columns: 1fr;
@@ -706,6 +949,13 @@ select {
 
   .photo-strip {
     grid-template-columns: 1fr;
+  }
+
+  .flow-grid article:not(:last-child)::after {
+    top: auto;
+    right: 20px;
+    bottom: -13px;
+    transform: rotate(90deg);
   }
 }
 
@@ -778,17 +1028,43 @@ select {
         </div>
       </section>
 
+      <section class="section creator-note">
+        <div class="section__head">
+          <p class="kicker">Why This Route</p>
+          <h2>這不是景點清單，是幫你少踩雷的玩法</h2>
+          <p>重慶網紅點很多，但 7 月底不是每個都適合硬排。這份攻略把「必去、必吃、順路、可跳過」分開，讓你們每天都有亮點，也留得下體力吃晚餐。</p>
+        </div>
+        <div class="creator-grid">
+          <article>
+            <strong>早晚拍照</strong>
+            <span>李子壩、十八梯、山城步道、洪崖洞都避開正中午，照片好看，人也不會熱到崩潰。</span>
+          </article>
+          <article>
+            <strong>中午躲熱</strong>
+            <span>把商場、咖啡、茶館、美術館放在午後，這是 7 月底重慶旅行的關鍵。</span>
+          </article>
+          <article>
+            <strong>晚餐是主角</strong>
+            <span>火鍋、江湖菜、小面、小吃都排進動線，不為了吃一間店跨城奔波。</span>
+          </article>
+          <article>
+            <strong>武隆放中間</strong>
+            <span>第三天離開市區換氣，回來後 Day 4、Day 5 才不會只剩疲累。</span>
+          </article>
+        </div>
+      </section>
+
       <section class="photo-strip" aria-label="重慶旅行代表畫面">
         <figure>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Hongyadong%2C_Chongqing.jpg/1280px-Hongyadong%2C_Chongqing.jpg" alt="重慶洪崖洞夜景" />
+          <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23121a22%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%232f4353%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e45d36%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ffd37c%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ffd37c%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cg%20opacity%3D%22.96%22%3E%3Crect%20x%3D%22180%22%20y%3D%22360%22%20width%3D%22180%22%20height%3D%22220%22%20fill%3D%22%232d2b25%22/%3E%3Cpath%20d%3D%22M150%20360%20L270%20295%20L390%20360%20Z%22%20fill%3D%22%23ffd37c%22/%3E%3Crect%20x%3D%22430%22%20y%3D%22300%22%20width%3D%22260%22%20height%3D%22280%22%20fill%3D%22%23302a27%22/%3E%3Cpath%20d%3D%22M400%20300%20L560%20220%20L720%20300%20Z%22%20fill%3D%22%23ffd37c%22/%3E%3Crect%20x%3D%22760%22%20y%3D%22385%22%20width%3D%22230%22%20height%3D%22195%22%20fill%3D%22%232a2f2d%22/%3E%3Cpath%20d%3D%22M735%20385%20L875%20315%20L1015%20385%20Z%22%20fill%3D%22%23ffd37c%22/%3E%3C/g%3E%0A%3Cg%20fill%3D%22%23ffd37c%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E6%B4%AA%E5%B4%96%E6%B4%9E%E5%A4%9C%E6%99%AF%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E5%90%8A%E8%85%B3%E6%A8%93%20%E9%87%91%E8%89%B2%E7%87%88%E7%81%AB%20%E5%98%89%E9%99%B5%E6%B1%9F%3C/text%3E%3C/svg%3E" alt="重慶洪崖洞夜景" />
           <figcaption>洪崖洞：夜景與吊腳樓</figcaption>
         </figure>
         <figure>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Liziba_station_Chongqing_Rail_Transit_Line_2.jpg/1280px-Liziba_station_Chongqing_Rail_Transit_Line_2.jpg" alt="李子壩輕軌穿樓" />
+          <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23173042%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%232f4e3d%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234da3d9%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ffd37c%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ffd37c%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cpath%20d%3D%22M90%20485%20C310%20410%20560%20420%201110%20320%22%20stroke%3D%22%234da3d9%22%20stroke-width%3D%2226%22%20fill%3D%22none%22%20opacity%3D%22.95%22/%3E%3Crect%20x%3D%22520%22%20y%3D%22318%22%20width%3D%22230%22%20height%3D%2270%22%20rx%3D%2218%22%20fill%3D%22%23e8f2f7%22/%3E%3Crect%20x%3D%22548%22%20y%3D%22336%22%20width%3D%2234%22%20height%3D%2228%22%20fill%3D%22%232f4e3d%22/%3E%3Crect%20x%3D%22604%22%20y%3D%22336%22%20width%3D%2234%22%20height%3D%2228%22%20fill%3D%22%232f4e3d%22/%3E%3Crect%20x%3D%22660%22%20y%3D%22336%22%20width%3D%2234%22%20height%3D%2228%22%20fill%3D%22%232f4e3d%22/%3E%0A%3Cg%20fill%3D%22%23ffd37c%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E6%9D%8E%E5%AD%90%E5%A3%A9%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E8%BC%95%E8%BB%8C%E7%A9%BF%E6%A8%93%20%E5%B1%B1%E5%9F%8E%E9%AD%94%E5%B9%BB%3C/text%3E%3C/svg%3E" alt="李子壩輕軌穿樓" />
           <figcaption>李子壩：輕軌穿樓</figcaption>
         </figure>
         <figure>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Wulong_Karst_Three_Natural_Bridges.jpg/1280px-Wulong_Karst_Three_Natural_Bridges.jpg" alt="武隆天生三橋喀斯特峽谷" />
+          <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23173626%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%236d7780%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%236fb46e%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23e9d8a6%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e9d8a6%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cpath%20d%3D%22M180%20620%20C160%20420%20230%20210%20390%20120%20C455%20300%20420%20500%20335%20620%20Z%22%20fill%3D%22%2362736b%22/%3E%3Cpath%20d%3D%22M780%20620%20C720%20420%20785%20210%20980%2095%20C1010%20290%201010%20500%20910%20620%20Z%22%20fill%3D%22%237d8580%22/%3E%3Cpath%20d%3D%22M410%20430%20C520%20300%20650%20300%20760%20430%20C690%20390%20480%20390%20410%20430%20Z%22%20fill%3D%22%23e9d8a6%22%20opacity%3D%22.95%22/%3E%0A%3Cg%20fill%3D%22%23e9d8a6%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E6%AD%A6%E9%9A%86%E5%A4%A9%E7%94%9F%E4%B8%89%E6%A9%8B%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E5%96%80%E6%96%AF%E7%89%B9%E5%B3%BD%E8%B0%B7%20%E4%B8%96%E7%95%8C%E8%87%AA%E7%84%B6%E9%81%BA%E7%94%A2%3C/text%3E%3C/svg%3E" alt="武隆天生三橋喀斯特峽谷" />
           <figcaption>武隆：天生三橋</figcaption>
         </figure>
       </section>
@@ -885,7 +1161,7 @@ select {
 
         <div class="spot-grid">
           <article class="spot-card wide">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Hongyadong%2C_Chongqing.jpg/1280px-Hongyadong%2C_Chongqing.jpg" alt="洪崖洞夜晚燈光與江景" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23121a22%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%232f4353%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e45d36%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ffd37c%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ffd37c%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cg%20opacity%3D%22.96%22%3E%3Crect%20x%3D%22180%22%20y%3D%22360%22%20width%3D%22180%22%20height%3D%22220%22%20fill%3D%22%232d2b25%22/%3E%3Cpath%20d%3D%22M150%20360%20L270%20295%20L390%20360%20Z%22%20fill%3D%22%23ffd37c%22/%3E%3Crect%20x%3D%22430%22%20y%3D%22300%22%20width%3D%22260%22%20height%3D%22280%22%20fill%3D%22%23302a27%22/%3E%3Cpath%20d%3D%22M400%20300%20L560%20220%20L720%20300%20Z%22%20fill%3D%22%23ffd37c%22/%3E%3Crect%20x%3D%22760%22%20y%3D%22385%22%20width%3D%22230%22%20height%3D%22195%22%20fill%3D%22%232a2f2d%22/%3E%3Cpath%20d%3D%22M735%20385%20L875%20315%20L1015%20385%20Z%22%20fill%3D%22%23ffd37c%22/%3E%3C/g%3E%0A%3Cg%20fill%3D%22%23ffd37c%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E6%B4%AA%E5%B4%96%E6%B4%9E%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E5%A4%9C%E6%99%AF%E5%BF%85%E6%8B%8D%20%E5%8D%83%E5%BB%9D%E9%96%80%E5%A4%A7%E6%A9%8B%3C/text%3E%3C/svg%3E" alt="洪崖洞夜晚燈光與江景" />
             <div>
               <span class="pill">Day 1 晚上</span>
               <h3>洪崖洞民俗風貌區</h3>
@@ -898,7 +1174,7 @@ select {
           </article>
 
           <article class="spot-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Liziba_station_Chongqing_Rail_Transit_Line_2.jpg/1280px-Liziba_station_Chongqing_Rail_Transit_Line_2.jpg" alt="李子壩站輕軌穿樓" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23173042%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%232f4e3d%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234da3d9%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ffd37c%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ffd37c%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cpath%20d%3D%22M90%20485%20C310%20410%20560%20420%201110%20320%22%20stroke%3D%22%234da3d9%22%20stroke-width%3D%2226%22%20fill%3D%22none%22%20opacity%3D%22.95%22/%3E%3Crect%20x%3D%22520%22%20y%3D%22318%22%20width%3D%22230%22%20height%3D%2270%22%20rx%3D%2218%22%20fill%3D%22%23e8f2f7%22/%3E%3Crect%20x%3D%22548%22%20y%3D%22336%22%20width%3D%2234%22%20height%3D%2228%22%20fill%3D%22%232f4e3d%22/%3E%3Crect%20x%3D%22604%22%20y%3D%22336%22%20width%3D%2234%22%20height%3D%2228%22%20fill%3D%22%232f4e3d%22/%3E%3Crect%20x%3D%22660%22%20y%3D%22336%22%20width%3D%2234%22%20height%3D%2228%22%20fill%3D%22%232f4e3d%22/%3E%0A%3Cg%20fill%3D%22%23ffd37c%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E6%9D%8E%E5%AD%90%E5%A3%A9%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E2%E8%99%9F%E7%B7%9A%E7%A9%BF%E6%A8%93%20%E8%A7%80%E6%99%AF%E5%B9%B3%E5%8F%B0%3C/text%3E%3C/svg%3E" alt="李子壩站輕軌穿樓" />
             <span class="pill">Day 2 早上</span>
             <h3>李子壩輕軌穿樓</h3>
             <p><strong>搜尋名稱：</strong>李子壩站 / 李子壩單軌穿樓觀景平台</p>
@@ -908,7 +1184,7 @@ select {
           </article>
 
           <article class="spot-card">
-            <img src="https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=80" alt="城市老廠房與街區" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2331251f%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%239b4f36%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23c7923e%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f1d7a3%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f1d7a3%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cg%20opacity%3D%22.96%22%3E%3Crect%20x%3D%22180%22%20y%3D%22360%22%20width%3D%22180%22%20height%3D%22220%22%20fill%3D%22%232d2b25%22/%3E%3Cpath%20d%3D%22M150%20360%20L270%20295%20L390%20360%20Z%22%20fill%3D%22%23f1d7a3%22/%3E%3Crect%20x%3D%22430%22%20y%3D%22300%22%20width%3D%22260%22%20height%3D%22280%22%20fill%3D%22%23302a27%22/%3E%3Cpath%20d%3D%22M400%20300%20L560%20220%20L720%20300%20Z%22%20fill%3D%22%23f1d7a3%22/%3E%3Crect%20x%3D%22760%22%20y%3D%22385%22%20width%3D%22230%22%20height%3D%22195%22%20fill%3D%22%232a2f2d%22/%3E%3Cpath%20d%3D%22M735%20385%20L875%20315%20L1015%20385%20Z%22%20fill%3D%22%23f1d7a3%22/%3E%3C/g%3E%0A%3Cg%20fill%3D%22%23f1d7a3%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E9%B5%9D%E5%B6%BA%E4%BA%8C%E5%BB%A0%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E8%80%81%E5%BB%A0%E6%88%BF%20%E6%96%87%E5%89%B5%20%E5%A4%A9%E5%8F%B0%E6%8B%8D%E7%85%A7%3C/text%3E%3C/svg%3E" alt="城市老廠房與街區" />
             <span class="pill">Day 2 中午</span>
             <h3>鵝嶺二廠</h3>
             <p><strong>搜尋名稱：</strong>鵝嶺二廠文創公園</p>
@@ -918,7 +1194,7 @@ select {
           </article>
 
           <article class="spot-card">
-            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80" alt="城市高樓與江景夜色" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23132536%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%235a7fa3%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23267468%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f5c56a%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f5c56a%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cg%20opacity%3D%22.96%22%3E%3Crect%20x%3D%22180%22%20y%3D%22360%22%20width%3D%22180%22%20height%3D%22220%22%20fill%3D%22%232d2b25%22/%3E%3Cpath%20d%3D%22M150%20360%20L270%20295%20L390%20360%20Z%22%20fill%3D%22%23f5c56a%22/%3E%3Crect%20x%3D%22430%22%20y%3D%22300%22%20width%3D%22260%22%20height%3D%22280%22%20fill%3D%22%23302a27%22/%3E%3Cpath%20d%3D%22M400%20300%20L560%20220%20L720%20300%20Z%22%20fill%3D%22%23f5c56a%22/%3E%3Crect%20x%3D%22760%22%20y%3D%22385%22%20width%3D%22230%22%20height%3D%22195%22%20fill%3D%22%232a2f2d%22/%3E%3Cpath%20d%3D%22M735%20385%20L875%20315%20L1015%20385%20Z%22%20fill%3D%22%23f5c56a%22/%3E%3C/g%3E%0A%3Cg%20fill%3D%22%23f5c56a%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E9%95%B7%E6%B1%9F%E7%B4%A2%E9%81%93%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E9%81%8E%E6%B1%9F%E7%BA%9C%E8%BB%8A%20%E5%8D%97%E5%B2%B8%E5%A4%9C%E6%99%AF%3C/text%3E%3C/svg%3E" alt="城市高樓與江景夜色" />
             <span class="pill">Day 2 傍晚</span>
             <h3>長江索道＋龍門浩老街</h3>
             <p><strong>搜尋名稱：</strong>長江索道新華路站、龍門浩老街</p>
@@ -928,7 +1204,7 @@ select {
           </article>
 
           <article class="spot-card wide">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Wulong_Karst_Three_Natural_Bridges.jpg/1280px-Wulong_Karst_Three_Natural_Bridges.jpg" alt="武隆天生三橋" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23173626%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%236d7780%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%236fb46e%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23e9d8a6%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e9d8a6%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cpath%20d%3D%22M180%20620%20C160%20420%20230%20210%20390%20120%20C455%20300%20420%20500%20335%20620%20Z%22%20fill%3D%22%2362736b%22/%3E%3Cpath%20d%3D%22M780%20620%20C720%20420%20785%20210%20980%2095%20C1010%20290%201010%20500%20910%20620%20Z%22%20fill%3D%22%237d8580%22/%3E%3Cpath%20d%3D%22M410%20430%20C520%20300%20650%20300%20760%20430%20C690%20390%20480%20390%20410%20430%20Z%22%20fill%3D%22%23e9d8a6%22%20opacity%3D%22.95%22/%3E%0A%3Cg%20fill%3D%22%23e9d8a6%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E6%AD%A6%E9%9A%86%E5%A4%A9%E7%94%9F%E4%B8%89%E6%A9%8B%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E5%A4%A9%E5%9D%91%20%E7%9F%B3%E6%A9%8B%20%E5%B3%BD%E8%B0%B7%E6%AD%A5%E9%81%93%3C/text%3E%3C/svg%3E" alt="武隆天生三橋" />
             <div>
               <span class="pill">Day 3 全天</span>
               <h3>武隆天生三橋</h3>
@@ -941,7 +1217,7 @@ select {
           </article>
 
           <article class="spot-card">
-            <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80" alt="中國古鎮街道" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2330251d%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%236d4b36%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b23a2f%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f0c987%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f0c987%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cg%20opacity%3D%22.96%22%3E%3Crect%20x%3D%22180%22%20y%3D%22360%22%20width%3D%22180%22%20height%3D%22220%22%20fill%3D%22%232d2b25%22/%3E%3Cpath%20d%3D%22M150%20360%20L270%20295%20L390%20360%20Z%22%20fill%3D%22%23f0c987%22/%3E%3Crect%20x%3D%22430%22%20y%3D%22300%22%20width%3D%22260%22%20height%3D%22280%22%20fill%3D%22%23302a27%22/%3E%3Cpath%20d%3D%22M400%20300%20L560%20220%20L720%20300%20Z%22%20fill%3D%22%23f0c987%22/%3E%3Crect%20x%3D%22760%22%20y%3D%22385%22%20width%3D%22230%22%20height%3D%22195%22%20fill%3D%22%232a2f2d%22/%3E%3Cpath%20d%3D%22M735%20385%20L875%20315%20L1015%20385%20Z%22%20fill%3D%22%23f0c987%22/%3E%3C/g%3E%0A%3Cg%20fill%3D%22%23f0c987%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E7%A3%81%E5%99%A8%E5%8F%A3%E5%8F%A4%E9%8E%AE%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E7%9F%B3%E6%9D%BF%E8%B7%AF%20%E9%99%B3%E9%BA%BB%E8%8A%B1%20%E5%B0%8F%E9%87%8D%E6%85%B6%3C/text%3E%3C/svg%3E" alt="中國古鎮街道" />
             <span class="pill">Day 4 早上</span>
             <h3>磁器口古鎮</h3>
             <p><strong>搜尋名稱：</strong>磁器口古鎮</p>
@@ -951,7 +1227,7 @@ select {
           </article>
 
           <article class="spot-card">
-            <img src="https://images.unsplash.com/photo-1512223792601-592a9809eed4?auto=format&fit=crop&w=1200&q=80" alt="茶館桌椅與茶杯" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2324362e%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%238c6d4f%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%238fb069%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f1d7a3%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f1d7a3%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Crect%20x%3D%22250%22%20y%3D%22500%22%20width%3D%22720%22%20height%3D%2255%22%20rx%3D%228%22%20fill%3D%22%235b3928%22/%3E%3Ccircle%20cx%3D%22455%22%20cy%3D%22430%22%20r%3D%2265%22%20fill%3D%22%238fb069%22/%3E%3Crect%20x%3D%22410%22%20y%3D%22415%22%20width%3D%2290%22%20height%3D%2270%22%20rx%3D%2218%22%20fill%3D%22%23efe2c6%22/%3E%3Ccircle%20cx%3D%22735%22%20cy%3D%22430%22%20r%3D%2265%22%20fill%3D%22%238fb069%22/%3E%3Crect%20x%3D%22690%22%20y%3D%22415%22%20width%3D%2290%22%20height%3D%2270%22%20rx%3D%2218%22%20fill%3D%22%23efe2c6%22/%3E%0A%3Cg%20fill%3D%22%23f1d7a3%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E4%BA%A4%E9%80%9A%E8%8C%B6%E9%A4%A8%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E8%93%8B%E7%A2%97%E8%8C%B6%20%E8%80%81%E9%87%8D%E6%85%B6%E7%94%9F%E6%B4%BB%E6%84%9F%3C/text%3E%3C/svg%3E" alt="茶館桌椅與茶杯" />
             <span class="pill">Day 4 下午</span>
             <h3>交通茶館 / 川美黃桷坪</h3>
             <p><strong>搜尋名稱：</strong>交通茶館、四川美術學院黃桷坪校區</p>
@@ -961,7 +1237,7 @@ select {
           </article>
 
           <article class="spot-card">
-            <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1200&q=80" alt="美術館展牆與觀展者" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23252a3d%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%235b8fb9%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e05b37%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f6c85f%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f6c85f%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cg%20opacity%3D%22.96%22%3E%3Crect%20x%3D%22180%22%20y%3D%22360%22%20width%3D%22180%22%20height%3D%22220%22%20fill%3D%22%232d2b25%22/%3E%3Cpath%20d%3D%22M150%20360%20L270%20295%20L390%20360%20Z%22%20fill%3D%22%23f6c85f%22/%3E%3Crect%20x%3D%22430%22%20y%3D%22300%22%20width%3D%22260%22%20height%3D%22280%22%20fill%3D%22%23302a27%22/%3E%3Cpath%20d%3D%22M400%20300%20L560%20220%20L720%20300%20Z%22%20fill%3D%22%23f6c85f%22/%3E%3Crect%20x%3D%22760%22%20y%3D%22385%22%20width%3D%22230%22%20height%3D%22195%22%20fill%3D%22%232a2f2d%22/%3E%3Cpath%20d%3D%22M735%20385%20L875%20315%20L1015%20385%20Z%22%20fill%3D%22%23f6c85f%22/%3E%3C/g%3E%0A%3Cg%20fill%3D%22%23f6c85f%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E7%BE%85%E4%B8%AD%E7%AB%8B%E7%BE%8E%E8%A1%93%E9%A4%A8%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E5%B7%9D%E7%BE%8E%20%E8%99%8E%E6%BA%AA%20%E5%BD%A9%E8%89%B2%E5%A4%96%E7%89%86%3C/text%3E%3C/svg%3E" alt="美術館展牆與觀展者" />
             <span class="pill">Day 4 替代</span>
             <h3>羅中立美術館</h3>
             <p><strong>搜尋名稱：</strong>四川美術學院美術館 / 羅中立美術館</p>
@@ -971,7 +1247,7 @@ select {
           </article>
 
           <article class="spot-card wide">
-            <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=80" alt="重慶風格高樓與城市街區" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2320272d%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%2374685d%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23c7923e%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f2d7a0%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f2d7a0%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cg%20opacity%3D%22.96%22%3E%3Crect%20x%3D%22180%22%20y%3D%22360%22%20width%3D%22180%22%20height%3D%22220%22%20fill%3D%22%232d2b25%22/%3E%3Cpath%20d%3D%22M150%20360%20L270%20295%20L390%20360%20Z%22%20fill%3D%22%23f2d7a0%22/%3E%3Crect%20x%3D%22430%22%20y%3D%22300%22%20width%3D%22260%22%20height%3D%22280%22%20fill%3D%22%23302a27%22/%3E%3Cpath%20d%3D%22M400%20300%20L560%20220%20L720%20300%20Z%22%20fill%3D%22%23f2d7a0%22/%3E%3Crect%20x%3D%22760%22%20y%3D%22385%22%20width%3D%22230%22%20height%3D%22195%22%20fill%3D%22%232a2f2d%22/%3E%3Cpath%20d%3D%22M735%20385%20L875%20315%20L1015%20385%20Z%22%20fill%3D%22%23f2d7a0%22/%3E%3C/g%3E%0A%3Cg%20fill%3D%22%23f2d7a0%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E5%B1%B1%E5%9F%8E%E6%AD%A5%E9%81%93%20/%20%E7%99%BD%E8%B1%A1%E5%B1%85%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E8%80%81%E5%9F%8E%E9%9A%8E%E6%A2%AF%20%E7%AB%8B%E9%AB%94%E4%BD%8F%E5%AE%85%3C/text%3E%3C/svg%3E" alt="重慶風格高樓與城市街區" />
             <div>
               <span class="pill">Day 5 上午</span>
               <h3>山城步道 / 白象居</h3>
@@ -1069,11 +1345,114 @@ select {
         </div>
       </section>
 
+      <section class="section route-map-section">
+        <div class="section__head">
+          <p class="kicker">Route Flow</p>
+          <h2>5 天動線地圖：照這個方向走就不亂</h2>
+          <p>重慶最怕「看地圖很近，走起來很崩潰」。這版用區域串路線，不來回橫跳，夏天也比較保命。</p>
+        </div>
+        <div class="flow-grid">
+          <article>
+            <span>7/26 Day 1</span>
+            <strong>解放碑</strong>
+            <em>→ 八一好吃街 → 洪崖洞 → 千廝門</em>
+            <p>第一晚只走渝中核心，少轉車，先把夜景和小吃拿下。</p>
+          </article>
+          <article>
+            <span>7/27 Day 2</span>
+            <strong>李子壩</strong>
+            <em>→ 鵝嶺二廠 → 午休 → 長江索道 → 龍門浩</em>
+            <p>早上拍城市魔幻感，傍晚過江看夜景，中午不要硬曬。</p>
+          </article>
+          <article>
+            <span>7/28 Day 3</span>
+            <strong>武隆</strong>
+            <em>→ 天生三橋 → 地縫/仙女山 → 回市區</em>
+            <p>整天交給包車或一日團，別把市區景點硬塞進這天。</p>
+          </article>
+          <article>
+            <span>7/29 Day 4</span>
+            <strong>磁器口</strong>
+            <em>→ 茶館/美術館 → 觀音橋 → 火鍋</em>
+            <p>上午古鎮，下午室內，晚上吃一頓真正有記憶點的重慶菜。</p>
+          </article>
+          <article>
+            <span>7/30 Day 5</span>
+            <strong>老城收尾</strong>
+            <em>→ 山城步道/白象居 → 來福士 → 機場</em>
+            <p>早上拍老城，中午進商場收尾，行李和時間都比較穩。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section band daily-pack">
+        <div class="section__head">
+          <p class="kicker">Daily Pack</p>
+          <h2>每日懶人包：今天穿什麼、吃什麼、注意什麼</h2>
+          <p>這一段是給出發當天快速看的，不用重新讀完整攻略。</p>
+        </div>
+        <div class="pack-grid">
+          <article>
+            <h3>7/26 抵達夜景日</h3>
+            <p><strong>穿搭：</strong>好走涼鞋或球鞋，晚上拍照可帶薄外套。</p>
+            <p><strong>吃：</strong>好又來酸辣粉、烤苕皮、冰粉，晚點再火鍋。</p>
+            <p><strong>提醒：</strong>洪崖洞只拍外觀就好，別在裡面被人潮消耗。</p>
+          </article>
+          <article>
+            <h3>7/27 山城打卡日</h3>
+            <p><strong>穿搭：</strong>球鞋必備，少背重包，防曬補水。</p>
+            <p><strong>吃：</strong>早上豌雜麵，中午咖啡/簡餐，晚上火鍋或江湖菜。</p>
+            <p><strong>提醒：</strong>下午熱到不舒服就回飯店，傍晚再出門。</p>
+          </article>
+          <article>
+            <h3>7/28 武隆自然日</h3>
+            <p><strong>穿搭：</strong>防滑鞋、輕便褲裝、小包、薄外套。</p>
+            <p><strong>吃：</strong>景區簡餐不要期待太高，晚上回市區吃好一點。</p>
+            <p><strong>提醒：</strong>不要穿拖鞋，不要為了拍照站到危險邊緣。</p>
+          </article>
+          <article>
+            <h3>7/29 古鎮吃喝日</h3>
+            <p><strong>穿搭：</strong>透氣洋裝或短袖長裙，鞋子仍要好走。</p>
+            <p><strong>吃：</strong>磁器口小吃、觀音橋晚餐、酸奶解辣。</p>
+            <p><strong>提醒：</strong>磁器口 10 點前到，下午改室內最舒服。</p>
+          </article>
+          <article>
+            <h3>7/30 老城收尾日</h3>
+            <p><strong>穿搭：</strong>舒服好走，行李寄飯店，隨身帶證件。</p>
+            <p><strong>吃：</strong>小面或豆花飯，來福士買伴手禮。</p>
+            <p><strong>提醒：</strong>去機場抓 60-90 分鐘，雨天再提早。</p>
+          </article>
+        </div>
+      </section>
+
       <section id="food" class="section band">
         <div class="section__head">
           <p class="kicker">Food Map</p>
           <h2>吃過這些，才像真的來過重慶</h2>
           <p>餐廳分店多，別為了某一家店跨城奔波。用大眾點評/高德地圖找「離你最近、評分穩、排隊可接受」的分店，旅程會舒服很多。</p>
+        </div>
+
+        <div class="ranking">
+          <article>
+            <span>01</span>
+            <h3>第一次火鍋：珮姐老火鍋</h3>
+            <p>適合第一晚或第二晚，口味穩、辨識度高、交通方便。點微辣或鴛鴦，不要硬挑戰特辣。</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>想拍照：朱光玉火鍋館</h3>
+            <p>裝潢和氛圍比較討喜，適合女生小團。熱門時間先取號，不要餓到才排。</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>想吃本地感：陶蘇老火鍋</h3>
+            <p>比精緻網紅店更有市井味，適合想吃重慶老火鍋氛圍的人。</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>多人聚餐：楊記隆府</h3>
+            <p>4-5 人很適合點江湖菜，一桌比單吃小吃更完整，也比較能照顧不吃太辣的人。</p>
+          </article>
         </div>
 
         <div class="directory-grid">
@@ -1147,7 +1526,7 @@ select {
 
         <div class="food-grid">
           <article class="food-card">
-            <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=1200&q=80" alt="熱辣火鍋鍋底與食材" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23351817%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%238a1f19%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23d7432f%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ffd37c%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ffd37c%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cellipse%20cx%3D%22620%22%20cy%3D%22430%22%20rx%3D%22310%22%20ry%3D%22165%22%20fill%3D%22%23151515%22/%3E%3Cellipse%20cx%3D%22620%22%20cy%3D%22410%22%20rx%3D%22270%22%20ry%3D%22130%22%20fill%3D%22%23d7432f%22/%3E%3Cpath%20d%3D%22M350%20410%20H890%22%20stroke%3D%22%234a1610%22%20stroke-width%3D%2210%22/%3E%3Cpath%20d%3D%22M620%20282%20V540%22%20stroke%3D%22%234a1610%22%20stroke-width%3D%2210%22/%3E%3Cg%20fill%3D%22%23ffd37c%22%3E%3Ccircle%20cx%3D%22490%22%20cy%3D%22382%22%20r%3D%2213%22/%3E%3Ccircle%20cx%3D%22710%22%20cy%3D%22440%22%20r%3D%2211%22/%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22350%22%20r%3D%229%22/%3E%3Ccircle%20cx%3D%22800%22%20cy%3D%22390%22%20r%3D%2210%22/%3E%3C/g%3E%0A%3Cg%20fill%3D%22%23ffd37c%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E9%87%8D%E6%85%B6%E8%80%81%E7%81%AB%E9%8D%8B%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E6%AF%9B%E8%82%9A%20%E9%B4%A8%E8%85%B8%20%E9%BB%83%E5%96%89%20%E6%B2%B9%E7%A2%9F%3C/text%3E%3C/svg%3E" alt="熱辣火鍋鍋底與食材" />
             <h3>重慶老火鍋</h3>
             <p>必點毛肚、鴨腸、黃喉、麻辣牛肉、貢菜、苕粉、小酥肉。第一次吃建議微辣或鴛鴦鍋，油碟放香油、蒜泥、香菜。</p>
             <strong>推薦：珮姐老火鍋、周師兄、陶蘇老火鍋、朱光玉火鍋館</strong>
@@ -1155,7 +1534,7 @@ select {
           </article>
 
           <article class="food-card">
-            <img src="https://images.unsplash.com/photo-1626804475297-41608ea09aeb?auto=format&fit=crop&w=1200&q=80" alt="一碗麻辣麵食" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232a2119%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%2369412e%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e05b37%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f1c56b%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f1c56b%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cellipse%20cx%3D%22620%22%20cy%3D%22470%22%20rx%3D%22280%22%20ry%3D%22125%22%20fill%3D%22%23f8e5bc%22/%3E%3Cellipse%20cx%3D%22620%22%20cy%3D%22440%22%20rx%3D%22230%22%20ry%3D%2282%22%20fill%3D%22%23e05b37%22/%3E%3Cpath%20d%3D%22M445%20430%20C530%20395%20650%20495%20790%20420%22%20stroke%3D%22%23f1c56b%22%20stroke-width%3D%2214%22%20fill%3D%22none%22%20opacity%3D%22.9%22/%3E%3Ccircle%20cx%3D%22545%22%20cy%3D%22425%22%20r%3D%2218%22%20fill%3D%22%23f1c56b%22/%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22455%22%20r%3D%2216%22%20fill%3D%22%2369412e%22/%3E%0A%3Cg%20fill%3D%22%23f1c56b%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E5%B0%8F%E9%9D%A2%20/%20%E8%B1%8C%E9%9B%9C%E9%BA%B5%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E6%97%A9%E9%A4%90%E9%9D%88%E9%AD%82%20%E5%BE%AE%E8%BE%A3%E4%B9%BE%E6%BA%9C%3C/text%3E%3C/svg%3E" alt="一碗麻辣麵食" />
             <h3>小面 / 豌雜麵</h3>
             <p>重慶人的早餐靈魂。點法可以說：微辣、乾溜、提黃、多青。豌雜麵比素小面更適合第一次吃的人。</p>
             <strong>推薦：花市豌雜麵、胖妹麵莊、十八梯眼鏡麵</strong>
@@ -1163,7 +1542,7 @@ select {
           </article>
 
           <article class="food-card">
-            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1200&q=80" alt="香辣中式家常菜" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232b1f24%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%233e4f35%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b23a2f%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f6b26b%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f6b26b%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cellipse%20cx%3D%22620%22%20cy%3D%22470%22%20rx%3D%22280%22%20ry%3D%22125%22%20fill%3D%22%23f8e5bc%22/%3E%3Cellipse%20cx%3D%22620%22%20cy%3D%22440%22%20rx%3D%22230%22%20ry%3D%2282%22%20fill%3D%22%23b23a2f%22/%3E%3Cpath%20d%3D%22M445%20430%20C530%20395%20650%20495%20790%20420%22%20stroke%3D%22%23f6b26b%22%20stroke-width%3D%2214%22%20fill%3D%22none%22%20opacity%3D%22.9%22/%3E%3Ccircle%20cx%3D%22545%22%20cy%3D%22425%22%20r%3D%2218%22%20fill%3D%22%23f6b26b%22/%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22455%22%20r%3D%2216%22%20fill%3D%22%233e4f35%22/%3E%0A%3Cg%20fill%3D%22%23f6b26b%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E6%B1%9F%E6%B9%96%E8%8F%9C%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E8%BE%A3%E5%AD%90%E9%9B%9E%20%E6%AF%9B%E8%A1%80%E6%97%BA%20%E9%85%B8%E8%8F%9C%E9%AD%9A%3C/text%3E%3C/svg%3E" alt="香辣中式家常菜" />
             <h3>江湖菜</h3>
             <p>重慶的豪爽在江湖菜裡：辣子雞、泉水雞、毛血旺、酸菜魚、尖椒雞。比火鍋更適合多人點一桌。</p>
             <strong>推薦：楊記隆府、山城二十二川菜館、馬房灣 66 號江湖菜</strong>
@@ -1171,7 +1550,7 @@ select {
           </article>
 
           <article class="food-card">
-            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1200&q=80" alt="街邊小吃拼盤" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201200%20760%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23243224%22/%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%239d5030%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e89b3c%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22r%22%20cx%3D%2275%25%22%20cy%3D%2220%25%22%20r%3D%2245%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f6d87c%22%20stop-opacity%3D%22.72%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f6d87c%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22url%28%23r%29%22/%3E%3Cpath%20d%3D%22M0%20610%20C190%20500%20330%20570%20510%20470%20C700%20365%20835%20430%201010%20300%20C1110%20225%201160%20245%201200%20220%20L1200%20760%20L0%20760%20Z%22%20fill%3D%22%230b1114%22%20opacity%3D%22.58%22/%3E%3Cellipse%20cx%3D%22620%22%20cy%3D%22470%22%20rx%3D%22280%22%20ry%3D%22125%22%20fill%3D%22%23f8e5bc%22/%3E%3Cellipse%20cx%3D%22620%22%20cy%3D%22440%22%20rx%3D%22230%22%20ry%3D%2282%22%20fill%3D%22%23e89b3c%22/%3E%3Cpath%20d%3D%22M445%20430%20C530%20395%20650%20495%20790%20420%22%20stroke%3D%22%23f6d87c%22%20stroke-width%3D%2214%22%20fill%3D%22none%22%20opacity%3D%22.9%22/%3E%3Ccircle%20cx%3D%22545%22%20cy%3D%22425%22%20r%3D%2218%22%20fill%3D%22%23f6d87c%22/%3E%3Ccircle%20cx%3D%22700%22%20cy%3D%22455%22%20r%3D%2216%22%20fill%3D%22%239d5030%22/%3E%0A%3Cg%20fill%3D%22%23f6d87c%22%20opacity%3D%22.86%22%3E%3Ccircle%20cx%3D%22220%22%20cy%3D%22430%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22315%22%20cy%3D%22450%22%20r%3D%226%22/%3E%3Ccircle%20cx%3D%22498%22%20cy%3D%22365%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%22590%22%20cy%3D%22365%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22850%22%20cy%3D%22445%22%20r%3D%227%22/%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22455%22%20r%3D%226%22/%3E%3C/g%3E%0A%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221200%22%20height%3D%22760%22%20fill%3D%22%23000%22%20opacity%3D%22.08%22/%3E%3Ctext%20x%3D%2270%22%20y%3D%22108%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2254%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E%E8%A1%97%E9%A0%AD%E5%B0%8F%E5%90%83%3C/text%3E%3Ctext%20x%3D%2272%22%20y%3D%22166%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff0cf%22%3E%E9%85%B8%E8%BE%A3%E7%B2%89%20%E7%83%A4%E8%8B%95%E7%9A%AE%20%E5%86%B0%E7%B2%89%3C/text%3E%3C/svg%3E" alt="街邊小吃拼盤" />
             <h3>街頭小吃</h3>
             <p>酸辣粉、烤苕皮、烤豆干、冰粉、熨斗糕、降龍爪爪、烤腦花。八一好吃街適合一次掃貨，但不要每樣都買大份。</p>
             <strong>推薦：好又來酸辣粉、九村烤腦花、一隻酸奶牛、磁器口陳麻花</strong>
@@ -1201,6 +1580,22 @@ select {
             <p><strong>馬房灣 66 號江湖菜：</strong>導航搜尋「馬房灣66號江湖菜」。位置較偏，適合 Day 4 有體力再去。</p>
             <p><strong>點菜公式：</strong>一辣一酸一清爽，加一份主食。不要整桌都點爆辣，隔天的胃和腿都會謝謝你們。</p>
           </article>
+        </div>
+      </section>
+
+      <section class="section avoid-section">
+        <div class="section__head">
+          <p class="kicker">Don't Do This</p>
+          <h2>不要這樣排：我會直接幫你避開</h2>
+          <p>這些不是不能去，是不要用錯時間、錯方式去。重慶 7 月底很熱，踩雷通常不是景點不好，是排法錯了。</p>
+        </div>
+        <div class="avoid-grid">
+          <article><strong>不要中午走十八梯/山城步道</strong><span>石階、坡道、太陽一起來，拍照表情會很痛苦。改早上。</span></article>
+          <article><strong>不要洪崖洞內部硬擠</strong><span>它最美在外觀夜景，裡面商業感重，人多時體驗反而下降。</span></article>
+          <article><strong>不要第一餐直接特辣</strong><span>微辣起步，油碟解辣，隔天才有體力走行程。</span></article>
+          <article><strong>不要武隆穿拖鞋或高跟鞋</strong><span>步道濕滑、階梯多，鞋子不對會毀掉一整天。</span></article>
+          <article><strong>不要為了一家店跨城</strong><span>重慶塞車和地形很現實，選同品牌近分店更聰明。</span></article>
+          <article><strong>不要把每天都排滿</strong><span>7 月底要留午休和叫車緩衝，旅行才會好玩不是硬撐。</span></article>
         </div>
       </section>
 
