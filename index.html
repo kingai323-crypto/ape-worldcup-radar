@@ -1,51 +1,1173 @@
 <!doctype html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>APE世足戰情室｜最新盤口版</title>
-  <style>
-    :root{--bg:#05020d;--panel:rgba(24,7,42,.9);--line:rgba(255,55,211,.38);--cyan:#46f0ff;--pink:#ff38cf;--lime:#c8ff4d;--gold:#ffd166;--red:#ff5d8f;--green:#43ffad;--text:#fff7ff;--muted:#cdb9dd;--shadow:0 0 34px rgba(255,56,207,.25),0 0 70px rgba(70,240,255,.12);font-family:Inter,"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;color-scheme:dark}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(circle at 16% 9%,rgba(255,56,207,.34),transparent 30%),radial-gradient(circle at 86% 12%,rgba(70,240,255,.22),transparent 29%),linear-gradient(135deg,#05020d,#170527 48%,#070617);min-height:100vh}body:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,#000,transparent 92%)}
-    .wrap{width:min(1580px,calc(100% - 32px));margin:0 auto}.topbar{position:sticky;top:0;z-index:20;background:rgba(5,2,13,.8);backdrop-filter:blur(22px);border-bottom:1px solid var(--line)}.nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:16px}.logo{width:58px;height:58px;display:grid;place-items:center;border:1px solid var(--pink);background:linear-gradient(135deg,rgba(255,56,207,.32),rgba(70,240,255,.14));box-shadow:var(--shadow);font-size:22px;font-weight:1000}.brand h1{margin:0;font-size:22px}.brand p{margin:5px 0 0;color:var(--muted);font-size:13px;font-weight:750}.tabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.tab,.filter,.action,.mode-btn{border:1px solid rgba(255,56,207,.48);background:rgba(21,5,36,.78);color:var(--text);min-height:46px;padding:12px 15px;cursor:pointer;font-weight:900}.tab.active,.tab:hover,.filter.active,.filter:hover,.mode-btn.active{border-color:var(--cyan);box-shadow:0 0 24px rgba(70,240,255,.22),inset 0 0 18px rgba(255,56,207,.18)}.action{border:0;color:#05020d;background:linear-gradient(135deg,var(--lime),var(--cyan))}
-    .hero{min-height:680px;position:relative;display:grid;align-items:center;padding:84px 0 56px;border-bottom:1px solid rgba(70,240,255,.22);overflow:hidden}.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,2,13,.96),rgba(13,4,30,.62),rgba(5,2,13,.5)),url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=2200&q=80") center/cover;filter:saturate(1.35) contrast(1.12)}.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(340px,.72fr);gap:34px;align-items:end}.kicker{color:var(--cyan);font-weight:1000;font-size:18px}.hero h2{margin:18px 0;font-size:clamp(56px,8vw,130px);line-height:.9;text-shadow:0 0 30px rgba(255,56,207,.36)}.hero-lead{max-width:980px;font-size:clamp(20px,2vw,30px);line-height:1.55;font-weight:760}.hero-cards{display:grid;grid-template-columns:repeat(3,1fr);margin-top:34px;border:1px solid var(--line);background:rgba(8,4,22,.76);box-shadow:var(--shadow)}.hero-card{padding:22px;border-right:1px solid var(--line)}.hero-card:last-child{border-right:0}.hero-card small{color:var(--muted);font-weight:950}.hero-card strong{display:block;margin-top:10px;font-size:clamp(21px,2vw,30px);line-height:1.2}
-    section{padding:58px 0}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:24px}.section-head h2{margin:0;font-size:clamp(34px,4vw,60px);line-height:1}.section-head p{margin:10px 0 0;color:var(--muted);max-width:860px;font-weight:720}.panel,.match,.command,.share-card{background:linear-gradient(180deg,rgba(55,14,82,.82),rgba(14,5,30,.92));border:1px solid var(--line);box-shadow:var(--shadow);padding:22px;position:relative;overflow:hidden}.panel:before,.match:before,.command:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--pink),var(--cyan),var(--lime))}.panel h3,.command h3{margin:0 0 16px;font-size:24px}.grid{display:grid;gap:20px}.dashboard,.three{grid-template-columns:repeat(3,minmax(0,1fr))}.two,.toolbox-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.daily-three{display:grid;grid-template-columns:1.15fr .92fr .92fr;gap:18px;margin-top:20px}.matches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.rank-list,.metric-row,.track-table,.signal-list{display:grid;gap:12px}.row-card,.metric,.track-row,.signal{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.045);font-weight:850}.flag{font-size:30px}.muted,.row-card p,.signal span{color:var(--muted)}.row-card p{margin:4px 0 0;line-height:1.5}.badge,.pill{display:inline-grid;place-items:center;min-height:32px;padding:6px 10px;color:#05020d;background:linear-gradient(135deg,var(--pink),var(--cyan));font-weight:1000;white-space:nowrap}.pill.green{background:var(--green)}.pill.gold{background:var(--gold)}.pill.pink{background:var(--pink);color:white}.pill.dark{color:var(--text);background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14)}
-    .alert{margin:-18px auto 34px;position:relative;z-index:5;display:grid;grid-template-columns:160px 1fr;border:1px solid rgba(70,240,255,.35);background:rgba(7,3,20,.92);box-shadow:var(--shadow)}.alert b{display:grid;place-items:center;color:#05020d;background:linear-gradient(135deg,var(--pink),var(--cyan));font-size:22px;padding:18px}.alert div{padding:18px 22px;display:flex;gap:20px;flex-wrap:wrap;font-weight:850;line-height:1.45}.three-pick{min-height:320px;padding:22px;border:1px solid rgba(255,56,207,.42);background:linear-gradient(150deg,rgba(255,56,207,.22),rgba(70,240,255,.08),rgba(200,255,77,.06)),rgba(18,5,34,.9);box-shadow:var(--shadow)}.three-pick.main{border-color:rgba(200,255,77,.68)}.three-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.three-head span:first-child{color:var(--cyan);font-weight:1000}.three-pick h3{margin:0 0 10px;font-size:clamp(28px,3vw,44px);line-height:1.05}.three-pick p{color:var(--muted);line-height:1.62;font-weight:740}.three-details,.pick-grid,.prob,.status-strip,.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.prob,.status-strip{grid-template-columns:repeat(3,1fr)}.three-detail,.pick,.prob div,.status-box,.model-box,.result-box{padding:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.045);min-height:74px}.three-detail small,.pick small,.prob small{display:block;color:var(--muted);margin-bottom:7px;font-weight:950}.match{min-height:620px}.match-top{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-weight:900}.status-strip{margin-top:14px}.status-box{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:13px;font-weight:900}.dot{width:12px;height:12px;border-radius:999px;flex:0 0 auto;background:currentColor;box-shadow:0 0 16px currentColor}.green{color:var(--green)}.yellow{color:var(--gold)}.red{color:var(--red)}.teams{display:grid;grid-template-columns:1fr 64px 1fr;align-items:center;gap:12px;margin:24px 0 18px}.team.right{text-align:right}.team h3{margin:8px 0 4px;font-size:clamp(26px,3vw,42px);line-height:1.08}.team p{margin:0;color:var(--muted);font-weight:800}.vs{color:var(--cyan);font-size:30px;font-weight:1000;text-align:center}.power{display:grid;grid-template-columns:120px 1fr 42px;gap:10px;align-items:center;margin:9px 0;font-weight:900}.track,.heat-meter{height:12px;background:rgba(255,255,255,.12);overflow:hidden}.fill,.heat-fill{height:100%;background:linear-gradient(90deg,var(--pink),var(--cyan),var(--gold))}.condition-list{display:grid;gap:8px;margin-top:14px}.condition{padding:11px 12px;border-left:3px solid var(--cyan);background:rgba(70,240,255,.06);font-weight:760;line-height:1.45}.analysis{margin-top:16px;color:#f2e7ff;line-height:1.72;font-weight:720}
-    input,select,textarea{width:100%;border:1px solid rgba(70,240,255,.28);background:rgba(255,255,255,.055);color:var(--text);min-height:46px;padding:12px 13px;font:inherit;font-weight:800;outline:none}label{display:grid;gap:7px;color:var(--muted);font-size:13px;font-weight:900}.mode-switch{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}.share-card{min-height:520px;display:grid;align-content:space-between;border-color:rgba(200,255,77,.5);background:linear-gradient(135deg,rgba(255,56,207,.28),rgba(70,240,255,.12),rgba(200,255,77,.1)),rgba(8,4,22,.92)}.share-card h3{font-size:36px;line-height:1;margin:0}.share-picks{display:grid;gap:12px;margin:22px 0}.share-pick{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:13px;border:1px solid rgba(255,255,255,.14);background:rgba(5,2,13,.45);font-weight:900}.standings,.brand-wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.brand-wall{grid-template-columns:repeat(4,minmax(0,1fr))}.wall-card{min-height:150px;padding:18px;border:1px solid rgba(70,240,255,.22);background:linear-gradient(145deg,rgba(255,56,207,.14),rgba(70,240,255,.07)),rgba(255,255,255,.04)}.wall-card strong{display:block;font-size:38px;color:var(--cyan);margin:10px 0}.error-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.error-card{display:grid;gap:8px;padding:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.045);font-weight:850}.error-card input{width:18px;height:18px;min-height:18px;accent-color:#46f0ff}table{width:100%;border-collapse:collapse;font-weight:800}th,td{padding:10px 8px;border-bottom:1px solid rgba(255,255,255,.09);text-align:left}th{color:var(--muted);font-size:12px}td:last-child,th:last-child{text-align:right}.status{color:var(--cyan);font-weight:1000}.disclaimer{margin-top:40px;padding:22px;border:1px solid rgba(255,93,143,.45);background:rgba(255,93,143,.08);line-height:1.7;font-weight:760}footer{color:var(--muted);border-top:1px solid rgba(255,255,255,.08);padding:28px 0 44px;line-height:1.7}
-    @media(max-width:1100px){.nav,.section-head{align-items:flex-start;flex-direction:column}.hero-grid,.dashboard,.daily-three,.two,.three,.matches,.standings,.brand-wall,.toolbox-grid,.error-grid{grid-template-columns:1fr}.hero-cards{grid-template-columns:1fr}.hero-card{border-right:0;border-bottom:1px solid var(--line)}}@media(max-width:640px){.wrap{width:min(100% - 20px,1580px)}.tabs{width:100%;display:grid;grid-template-columns:repeat(2,1fr)}.alert,.teams,.three-details,.pick-grid,.prob,.status-strip,.form-grid,.mode-switch{grid-template-columns:1fr}.team.right,.vs{text-align:left}.hero h2{font-size:56px}.track-row,.signal,.row-card,.metric{grid-template-columns:1fr}}
-  </style>
-</head>
-<body>
-  <header class="topbar"><div class="wrap nav"><div class="brand"><div class="logo">APE</div><div><h1>APE世足戰情室</h1><p>台灣盤口・先發傷停・盤口工具・品牌平台</p></div></div><nav class="tabs"><button class="tab active" data-target="overview">戰情總覽</button><button class="tab" data-target="toolbox">APE工具台</button><button class="tab" data-target="matches">今日對戰</button><button class="tab" data-target="platform">品牌平台</button><button class="tab" data-target="standings">小組積分</button><button class="tab" data-target="review">復盤追蹤</button></nav></div></header>
-  <main>
-    <section class="hero" id="overview"><div class="wrap hero-grid"><div><div class="kicker">台灣時間 2026-06-28｜FIFA 6/27 賽事日最後盤口版</div><h2>APE世足<br>戰情室</h2><p class="hero-lead">今日 J / K / L 三組最後一輪共六場。最新盤口重點：英格蘭不追深讓，改勝且小；葡萄牙改隊進球；克羅埃西亞對迦納改成和局/小球價值；阿根廷深讓仍避雷。</p><div class="hero-cards"><div class="hero-card"><small>今日主推</small><strong>英格蘭勝且小3.5</strong></div><div class="hero-card"><small>副推</small><strong>葡萄牙隊進球大1.5</strong></div><div class="hero-card"><small>避雷盤</small><strong>阿根廷讓2/2.5追高</strong></div></div></div><aside class="command"><h3>今日雷達</h3><div class="signal-list"><div class="signal"><span class="flag">🇬🇧</span><div><b>英格蘭勝且小</b><span>勝面高，但深讓不漂亮</span></div><span class="badge">A</span></div><div class="signal"><span class="flag">🇵🇹</span><div><b>葡萄牙隊進球</b><span>比全場大更精準</span></div><span class="badge">A-</span></div><div class="signal"><span class="flag">🇭🇷</span><div><b>克羅埃西亞和局/小</b><span>勝負盤降級，節奏偏緊</span></div><span class="badge">B+</span></div><div class="signal"><span class="flag">🇦🇷</span><div><b>阿根廷深讓避雷</b><span>勝面高但不追大勝</span></div><span class="badge">避</span></div></div></aside></div></section>
-    <div class="wrap alert"><b>APE Alert</b><div><span>國外方向偏英格蘭控場零封、葡萄牙進球、克羅埃西亞與迦納低比分拉鋸、阿根廷勝出但防深讓。</span><span>台灣盤口建議：英格蘭讓2以上、阿根廷讓2/2.5以上都不追；克羅埃西亞升讓改小球或和局。</span><span>本頁僅個人分析參考，不保證結果，請勿重注或追輸。</span></div></div>
-    <section><div class="wrap"><div class="section-head"><div><h2>今日總覽儀表板</h2><p>依最新盤口把推薦重新排序。重點不是誰最強，而是哪個盤還有價值。</p></div></div><div class="grid dashboard"><article class="panel"><h3>快速懶人包</h3><div class="metric-row"><div class="metric"><span>主推</span><strong>英格蘭勝且小3.5</strong></div><div class="metric"><span>副推</span><strong>葡萄牙隊進球大1.5</strong></div><div class="metric"><span>價值</span><strong>克羅埃西亞 vs 迦納 和局/小2.5</strong></div><div class="metric"><span>避開</span><strong>阿根廷讓2/2.5以上</strong></div></div></article><article class="panel"><h3>盤口變動重點</h3><div class="rank-list"><div class="row-card"><span class="pill pink">熱</span><div><b>阿根廷深讓</b><p>熱門隊最容易被追高，勝面高不等於讓分有價值。</p></div><span>避</span></div><div class="row-card"><span class="pill gold">降</span><div><b>英格蘭深讓降級</b><p>改勝出+小分，不硬追兩球以上。</p></div><span>A</span></div><div class="row-card"><span class="pill">轉</span><div><b>克羅埃西亞勝負降級</b><p>若升讓0.5/1，改看和局或小2.5。</p></div><span>B+</span></div></div></article><article class="panel"><h3>臨場提醒</h3><div class="rank-list"><div class="row-card"><span class="pill">1</span><div><b>先發確認</b><p>英格蘭或阿根廷大幅輪休，深讓盤直接取消。</p></div><span>60m</span></div><div class="row-card"><span class="pill green">2</span><div><b>葡萄牙前場</b><p>主力齊，隊進球大1.5保留。</p></div><span>45m</span></div><div class="row-card"><span class="pill gold">3</span><div><b>克羅埃西亞中場</b><p>若偏保守先發，小球權重提高。</p></div><span>45m</span></div></div></article></div>
-      <div class="daily-three"><article class="three-pick main"><div class="three-head"><span>APE 今日三單｜主推</span><span class="badge">A</span></div><h3>🇵🇦 巴拿馬 vs 🇬🇧 英格蘭</h3><p>推薦：英格蘭勝且小3.5。英格蘭需要守第一，但已晉級不必刷大比分；巴拿馬進攻低迷，零封與小分路線較順。</p><div class="three-details"><div class="three-detail"><small>信心</small><b>84 / 100</b></div><div class="three-detail"><small>可接受</small><b>英格蘭勝、小3.5</b></div><div class="three-detail"><small>不可追</small><b>英格蘭讓2以上</b></div><div class="three-detail"><small>比分</small><b>0-2 / 0-3</b></div></div></article><article class="three-pick"><div class="three-head"><span>進攻單</span><span class="badge">A-</span></div><h3>🇨🇴 哥倫比亞 vs 🇵🇹 葡萄牙</h3><p>推薦：葡萄牙隊進球大1.5。哥倫比亞未必會開放互攻，全場大不如抓葡萄牙主動進球。</p><div class="three-details"><div class="three-detail"><small>信心</small><b>80 / 100</b></div><div class="three-detail"><small>可接受</small><b>葡萄牙大1.5</b></div><div class="three-detail"><small>不可追</small><b>葡萄牙讓0.5/1以上</b></div><div class="three-detail"><small>比分</small><b>1-2 / 1-3</b></div></div></article><article class="three-pick"><div class="three-head"><span>價值單</span><span class="badge">B+</span></div><h3>🇭🇷 克羅埃西亞 vs 🇬🇭 迦納</h3><p>推薦：和局 / 小2.5。克羅埃西亞勝負盤升溫後價值下降，第三輪更可能變成控節奏、低比分、互相防失誤。</p><div class="three-details"><div class="three-detail"><small>信心</small><b>74 / 100</b></div><div class="three-detail"><small>可接受</small><b>和局、小2.5</b></div><div class="three-detail"><small>不可追</small><b>克羅埃西亞讓0.5/1</b></div><div class="three-detail"><small>比分</small><b>1-1 / 1-0</b></div></div></article></div>
-    </div></section>
-    <section id="toolbox"><div class="wrap"><div class="section-head"><div><h2>APE工具台</h2><p>輸入你看到的台灣盤，快速判斷可進、降注或避開。</p></div></div><div class="toolbox-grid"><article class="panel"><h3>盤口輸入器</h3><div class="form-grid"><label>賽事<select id="lineMatch"><option value="england">巴拿馬 vs 英格蘭</option><option value="portugal">哥倫比亞 vs 葡萄牙</option><option value="croatia">克羅埃西亞 vs 迦納</option><option value="argentina">約旦 vs 阿根廷</option><option value="austria">阿爾及利亞 vs 奧地利</option><option value="congo">剛果民主共和國 vs 烏茲別克</option></select></label><label>讓分盤<input id="handicapInput" value="英格蘭讓1/1.5"></label><label>大小/隊進球<input id="totalInput" value="小3.5"></label><label>盤口狀態<select id="marketHeat"><option value="normal">正常盤</option><option value="hot">熱門追高</option><option value="drop">降盤回落</option></select></label></div><button class="action" id="judgeLine" type="button" style="margin-top:14px">判斷盤口</button><div class="result-box" id="lineResult">輸入盤口後會顯示判斷。</div></article><article class="panel"><h3>玩家模式</h3><div class="mode-switch"><button class="mode-btn active" data-mode="safe" type="button">保守</button><button class="mode-btn" data-mode="steady" type="button">穩健</button><button class="mode-btn" data-mode="sharp" type="button">激進</button></div><div class="result-box" id="modeResult"><b>保守模式</b><br>英格蘭勝且小3.5、克羅埃西亞/迦納小2.5。避開阿根廷深讓。</div></article></div></div></section>
-    <section id="matches"><div class="wrap"><div class="section-head"><div><h2>今日六場對戰分析</h2><p>全部轉成台灣盤可讀格式，並保留臨場改單條件。</p></div><div class="tabs"><button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="A">A級</button><button class="filter" data-filter="total">大小</button><button class="filter" data-filter="avoid">避雷</button></div></div><div class="matches" id="matchList"></div></div></section>
-    <section id="platform"><div class="wrap"><div class="section-head"><div><h2>APE品牌平台</h2><p>命中率牆、朋友熱門盤、盤口歷史與賽後報告。</p></div></div><div class="brand-wall"><article class="wall-card"><span>近7日主推</span><strong>5中3</strong><span>只統計主推，不灌水。</span></article><article class="wall-card"><span>避雷成功</span><strong>4次</strong><span>深讓追高是最大來源。</span></article><article class="wall-card"><span>今日更新</span><strong>6場</strong><span>最新盤口重估。</span></article><article class="wall-card"><span>核心策略</span><strong>降深讓</strong><span>熱門強隊改勝出/小分/隊進球。</span></article></div><div class="grid two" style="margin-top:20px"><article class="panel"><h3>朋友最愛看排行榜</h3><div class="rank-list"><div class="row-card"><span class="pill pink">熱1</span><div><b>阿根廷深讓</b><p>最多人問，也是最大避雷。</p></div><span>避</span></div><div class="row-card"><span class="pill green">熱2</span><div><b>英格蘭勝</b><p>勝且小比深讓乾淨。</p></div><span>A</span></div><div class="row-card"><span class="pill">熱3</span><div><b>葡萄牙隊進球</b><p>比全場大更精準。</p></div><span>A-</span></div><div class="row-card"><span class="pill gold">熱4</span><div><b>克羅埃西亞 vs 迦納</b><p>勝負盤轉硬，改看和局/小分。</p></div><span>B+</span></div></div></article><article class="panel"><h3>賽後報告</h3><select id="reportMain"><option>待更新</option><option>命中</option><option>未命中</option><option>走水</option></select><textarea id="reportNote" placeholder="賽後補充一句話" style="margin-top:14px"></textarea><button class="action" id="buildDailyReport" type="button" style="margin-top:14px">產生報告</button><div class="result-box" id="dailyReport">賽後按一下產生報告。</div></article></div></div></section>
-    <section id="standings"><div class="wrap"><div class="section-head"><div><h2>今日小組積分雷達</h2><p>J/K/L 三組最後一輪。</p></div></div><div class="standings" id="standingList"></div></div></section>
-    <section id="review"><div class="wrap"><div class="section-head"><div><h2>復盤追蹤區</h2><p>賽後分類錯因，讓模型每天修正。</p></div></div><div class="error-grid"><label class="error-card"><input type="checkbox" value="盤口追高"><b>盤口追高</b><span>方向對，但進場盤沒價值。</span></label><label class="error-card"><input type="checkbox" value="先發誤判"><b>先發誤判</b><span>核心輪休或臨場傷缺。</span></label><label class="error-card"><input type="checkbox" value="節奏誤判"><b>節奏誤判</b><span>大小球節奏判斷錯。</span></label></div><textarea id="reviewNote" placeholder="賽後補充" style="margin-top:14px"></textarea><button class="action" id="buildReview" type="button" style="margin-top:14px">產生復盤文字</button><div class="result-box" id="reviewResult">勾選錯因後產生復盤文字。</div><div class="disclaimer"><b>提醒：</b>本網站內容只是個人賽前分析與資料整理，不是穩贏訊號，也不保證命中。請量力而為，不建議重注、借貸下注、追輸。</div></div></section>
-  </main>
-  <footer><div class="wrap">資料更新：台灣時間 2026-06-28 最後盤口版。參考國內外盤口方向、公開賽程與賽前資訊，實際盤口請以你看到的平台為準。</div></footer>
-  <script>
-    const matches=[
-      {group:"Group L",time:"台灣時間 6/28 05:00",kickoff:"2026-06-28T05:00:00+08:00",grade:"A",tags:["all","A","total"],lineup:"英格蘭防線有傷停，仍爭第一",light:"green",stake:"1單位",home:{flag:"🇵🇦",name:"巴拿馬",note:"已淘汰，進攻低迷",power:52},away:{flag:"🇬🇧",name:"英格蘭",note:"已晉級，仍爭第一",power:88},probs:["巴拿馬勝 8%","和局 18%","英格蘭勝 74%"],handicap:"英格蘭讓1/1.5可接受，讓2以上不追",total:"小3.5 / 小3/3.5",score:"0-2 / 0-3",asia:"英格蘭勝且小3.5",trigger:["英格蘭讓2以上放棄讓分","若前場輪休，保留小分","巴拿馬五後衛，小分更佳"],text:"英格蘭勝面高，但最新盤口不適合硬追深讓。勝且小3.5是更乾淨主推。"},
-      {group:"Group L",time:"台灣時間 6/28 05:00",kickoff:"2026-06-28T05:00:00+08:00",grade:"B+",tags:["all","total"],lineup:"克羅埃西亞經驗盤，迦納必須搶分",light:"yellow",stake:"0.5單位",home:{flag:"🇭🇷",name:"克羅埃西亞",note:"控節奏與經驗",power:75},away:{flag:"🇬🇭",name:"迦納",note:"速度與衝擊",power:69},probs:["克羅埃西亞勝 36%","和局 34%","迦納勝 30%"],handicap:"克羅埃西亞讓0可小看，讓0.5/1避開",total:"小2.5 / 小2/2.5",score:"1-1 / 1-0",asia:"和局或小2.5",trigger:["讓0可小參考","升讓0.5/1改小球","迦納全攻才轉大球"],text:"克羅埃西亞勝負盤被拉熱後價值下降。第三輪兩隊都怕先失球，和局與小2.5比硬追勝負盤更符合盤口風險。"},
-      {group:"Group K",time:"台灣時間 6/28 07:30",kickoff:"2026-06-28T07:30:00+08:00",grade:"A-",tags:["all","A"],lineup:"葡萄牙前場若主力齊，隊進球保留",light:"green",stake:"0.7單位",home:{flag:"🇨🇴",name:"哥倫比亞",note:"反擊犀利",power:79},away:{flag:"🇵🇹",name:"葡萄牙",note:"爭第一，主動進攻",power:87},probs:["哥倫比亞勝 27%","和局 28%","葡萄牙勝 45%"],handicap:"葡萄牙讓0/0.5可看，0.5/1不追",total:"葡萄牙隊進球大1.5",score:"1-2 / 1-3",asia:"葡萄牙進球 Over 1.5",trigger:["葡萄牙輪休前場降級","全場大升到3不追","隊進球比勝負更精準"],text:"最新推薦從全場大改成葡萄牙隊進球大1.5，避開勝負盤拉扯。"},
-      {group:"Group K",time:"台灣時間 6/28 07:30",kickoff:"2026-06-28T07:30:00+08:00",grade:"B",tags:["all"],lineup:"兩隊實力接近，盤不乾淨",light:"yellow",stake:"觀察",home:{flag:"🇨🇩",name:"剛果民主共和國",note:"身體對抗",power:66},away:{flag:"🇺🇿",name:"烏茲別克",note:"紀律低位",power:65},probs:["剛果勝 34%","和局 33%","烏茲別克勝 33%"],handicap:"平手盤，不重注",total:"小2/2.5",score:"1-1 / 0-1",asia:"小2.25",trigger:["任何一方讓0.5不追","先發偏守小球提高","早球後才轉大"],text:"方向最難，適合觀察或小球。"},
-      {group:"Group J",time:"台灣時間 6/28 10:00",kickoff:"2026-06-28T10:00:00+08:00",grade:"B+",tags:["all","avoid"],lineup:"阿根廷可能輪休，約旦守低位",light:"red",stake:"勝出可看，深讓不碰",home:{flag:"🇯🇴",name:"約旦",note:"低位求守",power:50},away:{flag:"🇦🇷",name:"阿根廷",note:"強弱明顯但防輪休",power:91},probs:["約旦勝 6%","和局 15%","阿根廷勝 79%"],handicap:"阿根廷讓2內可小看，2/2.5以上避開",total:"小3/3.5 或阿根廷勝",score:"0-2 / 0-3",asia:"阿根廷勝 / 不追深讓",trigger:["輪休三人以上讓分取消","上半沒早進深讓危險","適合勝出或零封"],text:"熱門深讓陷阱。阿根廷勝面高，但台灣盤若讓2/2.5以上價值被吃掉。"},
-      {group:"Group J",time:"台灣時間 6/28 10:00",kickoff:"2026-06-28T10:00:00+08:00",grade:"B",tags:["all"],lineup:"奧地利組織較穩",light:"yellow",stake:"0.25-0.5單位",home:{flag:"🇩🇿",name:"阿爾及利亞",note:"速度單點",power:70},away:{flag:"🇦🇹",name:"奧地利",note:"壓迫與組織",power:74},probs:["阿爾及利亞勝 31%","和局 30%","奧地利勝 39%"],handicap:"奧地利0或讓0/0.5可看",total:"小2.5",score:"1-1 / 1-2",asia:"奧地利 0 / 小2.5",trigger:["奧地利讓0.5/1不追","阿爾及利亞雙翼齊小球降級","平手盤可看奧地利不敗"],text:"奧地利整體性較好，但勝負不算乾淨，平手盤或不敗較合理。"}
-    ];
-    const groups=[["J",[["🇦🇷 阿根廷",6,"爭第一/防輪休"],["🇦🇹 奧地利",3,"搶晉級"],["🇩🇿 阿爾及利亞",3,"搶晉級"],["🇯🇴 約旦",0,"低位求分"]]],["K",[["🇵🇹 葡萄牙",6,"爭第一"],["🇨🇴 哥倫比亞",4,"爭排名"],["🇺🇿 烏茲別克",1,"搶第三"],["🇨🇩 剛果民主共和國",0,"必須贏"]]],["L",[["🇬🇧 英格蘭",4,"已晉級/爭第一"],["🇭🇷 克羅埃西亞",3,"搶晉級"],["🇬🇭 迦納",3,"搶晉級"],["🇵🇦 巴拿馬",0,"已淘汰"]]]];
-    function renderMatches(filter="all"){document.getElementById("matchList").innerHTML=matches.filter(m=>m.tags.includes(filter)).map(m=>`<article class="match"><div class="match-top"><span>${m.time} · ${m.group}</span><span class="badge">${m.grade}</span></div><div class="status-strip"><div class="status-box"><span class="dot ${countdownTone(m.kickoff)}"></span>${countdownText(m.kickoff)}</div><div class="status-box"><span class="dot yellow"></span>${m.lineup}</div><div class="status-box"><span class="dot ${m.light==="green"?"green":m.light==="red"?"red":"yellow"}"></span>${lightText(m.light)} · ${m.stake}</div></div><div class="teams"><div class="team"><span class="flag">${m.home.flag}</span><h3>${m.home.name}</h3><p>${m.home.note}</p></div><div class="vs">VS</div><div class="team right"><span class="flag">${m.away.flag}</span><h3>${m.away.name}</h3><p>${m.away.note}</p></div></div><div class="prob">${m.probs.map(x=>{const i=x.lastIndexOf(" ");return`<div><small>${x.slice(0,i)}</small><b>${x.slice(i+1)}</b></div>`}).join("")}</div><div><div class="power"><span>${m.home.flag} ${m.home.name}</span><div class="track"><div class="fill" style="width:${m.home.power}%"></div></div><b>${m.home.power}</b></div><div class="power"><span>${m.away.flag} ${m.away.name}</span><div class="track"><div class="fill" style="width:${m.away.power}%"></div></div><b>${m.away.power}</b></div></div><div class="pick-grid"><div class="pick"><small>台灣讓分</small><b>${m.handicap}</b></div><div class="pick"><small>台灣大小</small><b>${m.total}</b></div><div class="pick"><small>正確比分</small><b>${m.score}</b></div><div class="pick"><small>亞洲盤換算</small><b>${m.asia}</b></div></div><div class="condition-list">${m.trigger.map(t=>`<div class="condition">${t}</div>`).join("")}</div><p class="analysis">${m.text}</p></article>`).join("")}
-    function renderStandings(){document.getElementById("standingList").innerHTML=groups.map(([n,ts])=>`<article class="panel"><h3>Group ${n}</h3><table><thead><tr><th>隊伍</th><th>分</th><th>狀態</th></tr></thead><tbody>${ts.map(t=>`<tr><td>${t[0]}</td><td>${t[1]}</td><td class="status">${t[2]}</td></tr>`).join("")}</tbody></table></article>`).join("")}
-    function countdownText(iso){const d=new Date(iso)-Date.now();if(d<=-7200000)return"賽事已結束 / 待復盤";if(d<=0)return"比賽進行中";const m=Math.floor(d/60000),h=Math.floor(m/60);return h>=24?`距開賽 ${Math.floor(h/24)}天${h%24}小時`:`距開賽 ${h}小時${m%60}分`}function countdownTone(iso){const d=new Date(iso)-Date.now();return d<=0?"red":d<=7200000?"yellow":"green"}function lightText(l){return{green:"綠燈可參考",yellow:"黃燈等先發",red:"紅燈防追高"}[l]||"觀察"}
-    function judgeLine(){const match=document.getElementById("lineMatch").value,handicap=document.getElementById("handicapInput").value.trim(),total=document.getElementById("totalInput").value.trim(),heat=document.getElementById("marketHeat").value,text=`${handicap} ${total}`,rules={england:{name:"巴拿馬 vs 英格蘭",green:"英格蘭勝且小3.5",warning:"英格蘭讓2以上容易卡盤，勝且小比深讓更乾淨。",avoid:/讓2|讓2\/2\.5|讓2.5|讓3/},portugal:{name:"哥倫比亞 vs 葡萄牙",green:"葡萄牙隊進球大1.5",warning:"葡萄牙讓到0.5/1以上不追，隊進球更好。",avoid:/讓0\.5\/1|讓1/},croatia:{name:"克羅埃西亞 vs 迦納",green:"和局、小2.5、小2/2.5",warning:"克羅埃西亞升讓0.5/1以上價值下降，改看小球或和局。",avoid:/讓0\.5\/1|讓1/},argentina:{name:"約旦 vs 阿根廷",green:"阿根廷勝、小3/3.5",warning:"阿根廷讓2/2.5以上是熱門深讓，不追大勝。",avoid:/讓2\/2\.5|讓2.5|讓3/},austria:{name:"阿爾及利亞 vs 奧地利",green:"奧地利0、奧地利不敗、小2.5",warning:"奧地利讓0.5/1以上偏硬。",avoid:/讓0\.5\/1|讓1/},congo:{name:"剛果 vs 烏茲別克",green:"小2/2.5、和局方向",warning:"任何一方讓0.5都不建議追。",avoid:/讓0\.5|讓0\.5\/1/}};const r=rules[match];let level="可參考",pill="green",advice=r.green;if(r.avoid.test(text)||heat==="hot"){level="避開 / 降注";pill="pink";advice=r.warning}else if(heat==="drop"){level="等確認";pill="gold";advice=`盤口回落可能有價值，但要等先發確認。優先方向：${r.green}`}document.getElementById("lineResult").innerHTML=`<span class="pill ${pill}">${level}</span><br><b>${r.name}</b><br>你輸入：${handicap}｜${total}<br>${advice}<br><span class="muted">方向對不代表進場價值好。</span>`}
-    const modes={safe:"<b>保守模式</b><br>英格蘭勝且小3.5、克羅埃西亞/迦納小2.5。避開阿根廷深讓。",steady:"<b>穩健模式</b><br>英格蘭勝且小3.5、葡萄牙隊進球大1.5、克羅埃西亞/迦納和局或小2.5。",sharp:"<b>激進模式</b><br>葡萄牙隊進球大1.5、克羅埃西亞/迦納和局、阿根廷上半勝。提醒：只適合小注娛樂。"};function buildDailyReport(){document.getElementById("dailyReport").textContent=`APE世足戰情室｜每日賽後報告\n主推結果：${document.getElementById("reportMain").value}\n今日一句話：${document.getElementById("reportNote").value||"等待賽後補充比分、盤路與先發變化。"}\n明日修正：若錯在盤口追高，降低熱門隊深讓權重。`}function buildReview(){const checked=[...document.querySelectorAll(".error-card input:checked")].map(i=>i.value);document.getElementById("reviewResult").innerHTML=`<b>復盤草稿</b><br>錯因：${checked.length?checked.join("、"):"尚未標註"}<br>${document.getElementById("reviewNote").value||"等待賽後補充。"}`}
-    document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));b.classList.add("active");document.getElementById(b.dataset.target).scrollIntoView({behavior:"smooth",block:"start"})}));document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".filter").forEach(t=>t.classList.remove("active"));b.classList.add("active");renderMatches(b.dataset.filter)}));document.getElementById("judgeLine").addEventListener("click",judgeLine);document.querySelectorAll(".mode-btn").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".mode-btn").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.getElementById("modeResult").innerHTML=modes[b.dataset.mode]}));document.getElementById("buildDailyReport").addEventListener("click",buildDailyReport);document.getElementById("buildReview").addEventListener("click",buildReview);renderMatches();renderStandings();
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>重慶 5 天 4 夜女生小團導遊攻略</title>
+    <meta
+      name="description"
+      content="4-5 位女生第一次去重慶的完整行程網站：住宿、交通、景點票價、必吃火鍋小吃、換匯與預算。"
+    />
+    <style>
+:root {
+  --ink: #1f2428;
+  --muted: #66707a;
+  --line: #d9dedf;
+  --paper: #fbf7ef;
+  --card: #ffffff;
+  --red: #b23a2f;
+  --chili: #e05b37;
+  --jade: #267468;
+  --gold: #c7923e;
+  --night: #142027;
+  --shadow: 0 18px 45px rgba(20, 32, 39, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.65;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: grid;
+  align-items: end;
+  padding: 28px clamp(18px, 5vw, 72px) 72px;
+  color: #fff;
+  background:
+    linear-gradient(180deg, rgba(20, 32, 39, 0.2), rgba(20, 32, 39, 0.88)),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Hongyadong%2C_Chongqing.jpg/1280px-Hongyadong%2C_Chongqing.jpg") center / cover;
+}
+
+.topbar {
+  position: fixed;
+  z-index: 10;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  padding: 8px;
+  max-width: calc(100vw - 24px);
+  overflow-x: auto;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(16px);
+}
+
+.topbar a {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+.topbar a:hover {
+  background: var(--night);
+  color: #fff;
+}
+
+.hero__content {
+  position: relative;
+  max-width: 900px;
+}
+
+.kicker {
+  margin: 0 0 10px;
+  color: var(--chili);
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.hero .kicker {
+  color: #ffd18d;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+h1 {
+  max-width: 840px;
+  font-size: clamp(44px, 8vw, 92px);
+}
+
+h2 {
+  font-size: clamp(30px, 4vw, 52px);
+}
+
+h3 {
+  font-size: 23px;
+}
+
+.hero__content p:not(.kicker) {
+  max-width: 760px;
+  margin: 24px 0 0;
+  font-size: clamp(17px, 2vw, 22px);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 11px 18px;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+.button--primary {
+  background: var(--chili);
+  color: #fff;
+}
+
+.button--ghost {
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  color: #fff;
+}
+
+.section,
+.band,
+.photo-strip {
+  padding: 72px clamp(18px, 5vw, 72px);
+}
+
+.band {
+  background: #fff;
+}
+
+.section__head {
+  max-width: 900px;
+  margin-bottom: 34px;
+}
+
+.section__head p:not(.kicker) {
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  gap: 36px;
+  align-items: start;
+}
+
+.intro p {
+  font-size: 19px;
+  color: #3d454b;
+}
+
+.quickfacts {
+  display: grid;
+  gap: 12px;
+}
+
+.quickfacts div,
+.budget-box,
+.money-grid article {
+  padding: 18px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.quickfacts strong,
+.quickfacts span {
+  display: block;
+}
+
+.quickfacts strong {
+  color: var(--red);
+}
+
+.photo-strip {
+  display: grid;
+  grid-template-columns: 1.3fr 0.85fr 1fr;
+  gap: 14px;
+  background: var(--night);
+}
+
+.photo-strip figure {
+  position: relative;
+  min-height: 300px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.photo-strip img {
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.08);
+}
+
+.photo-strip figcaption {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 8px 12px;
+  background: rgba(20, 32, 39, 0.78);
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+.spot-grid,
+.food-grid,
+.price-grid,
+.nav-cards,
+.hotel-picks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.spot-card,
+.food-card,
+.price-grid article,
+.day {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.spot-card {
+  padding-bottom: 20px;
+}
+
+.spot-card.wide {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  padding-bottom: 0;
+}
+
+.spot-card img {
+  height: 245px;
+  object-fit: cover;
+}
+
+.spot-card.wide img {
+  height: 100%;
+  min-height: 420px;
+}
+
+.spot-card h3,
+.spot-card p,
+.spot-card .pill {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.spot-card p {
+  margin-top: 9px;
+  margin-bottom: 0;
+  color: #3d454b;
+}
+
+.pill {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 18px;
+  padding: 5px 10px;
+  color: #fff;
+  background: var(--jade);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.timeline {
+  display: grid;
+  gap: 16px;
+}
+
+.day {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+}
+
+.day__meta {
+  padding: 24px;
+  color: #fff;
+  background: var(--night);
+}
+
+.day__meta span {
+  display: inline-flex;
+  margin-bottom: 18px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--chili);
+  font-weight: 800;
+}
+
+.day__meta strong {
+  display: block;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.day__body {
+  padding: 24px;
+}
+
+.day__body p {
+  color: var(--muted);
+}
+
+.day__body li {
+  margin: 6px 0;
+}
+
+.food-card {
+  padding-bottom: 20px;
+}
+
+.food-card img {
+  height: 230px;
+  object-fit: cover;
+}
+
+.food-card h3,
+.food-card p,
+.food-card strong,
+.food-card span {
+  display: block;
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+.food-card h3 {
+  margin-top: 18px;
+}
+
+.food-card p {
+  color: var(--muted);
+}
+
+.food-card strong {
+  color: var(--red);
+}
+
+.food-card span {
+  margin-top: 8px;
+  color: var(--jade);
+  font-weight: 800;
+}
+
+.nav-cards,
+.hotel-picks {
+  margin-top: 22px;
+}
+
+.nav-cards article,
+.hotel-picks article {
+  padding: 22px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.nav-cards h3,
+.hotel-picks h3 {
+  color: var(--red);
+}
+
+.nav-cards p,
+.hotel-picks p {
+  margin: 12px 0 0;
+  color: #3d454b;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: #fff;
+  background: var(--night);
+}
+
+.price-grid article {
+  padding: 18px;
+  box-shadow: none;
+}
+
+.price-grid strong,
+.price-grid span {
+  display: block;
+}
+
+.price-grid span {
+  margin-top: 8px;
+  color: var(--red);
+  font-weight: 900;
+}
+
+.price-grid p {
+  color: var(--muted);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.split > div {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.clean-list {
+  padding-left: 20px;
+}
+
+.clean-list li {
+  margin: 10px 0;
+}
+
+.money-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.budget-box {
+  margin-top: 20px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.budget-controls {
+  margin: 18px 0;
+}
+
+select {
+  min-height: 42px;
+  margin-left: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+}
+
+.budget-result {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.budget-item {
+  padding: 16px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.budget-item strong,
+.budget-item span {
+  display: block;
+}
+
+.budget-item span {
+  color: var(--red);
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.checklist label {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.footer {
+  padding: 30px clamp(18px, 5vw, 72px);
+  color: #dce3e1;
+  background: var(--night);
+}
+
+.footer p {
+  max-width: 1050px;
+}
+
+@media (max-width: 980px) {
+  .intro,
+  .spot-grid,
+  .food-grid,
+  .price-grid,
+  .nav-cards,
+  .hotel-picks,
+  .split,
+  .money-grid,
+  .budget-result,
+  .checklist,
+  .day,
+  .spot-card.wide {
+    grid-template-columns: 1fr;
+  }
+
+  .spot-card.wide {
+    grid-column: span 1;
+  }
+
+  .spot-card.wide img {
+    min-height: 280px;
+  }
+
+  .photo-strip {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    min-height: 86vh;
+    padding-bottom: 44px;
+  }
+
+  .section,
+  .band,
+  .photo-strip {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .topbar {
+    width: calc(100vw - 18px);
+    justify-content: flex-start;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .photo-strip figure {
+    min-height: 230px;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar" aria-label="主要導覽">
+        <a href="#route">行程</a>
+        <a href="#food">必吃</a>
+        <a href="#stay">住宿</a>
+        <a href="#traffic">交通</a>
+        <a href="#money">預算換匯</a>
+      </nav>
+      <div class="hero__shade"></div>
+      <section class="hero__content">
+        <p class="kicker">4-5 位女生｜5 天 4 夜｜第一次到重慶</p>
+        <h1>真正來過重慶的山城、火鍋、江景與煙火氣</h1>
+        <p>
+          這份行程把「好拍」和「好吃」放在同一條動線上：白天走山城階梯與輕軌穿樓，晚上看洪崖洞、南濱路與兩江夜景，中間穿插老火鍋、小面、江湖菜、茶館和武隆喀斯特。
+        </p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="#route">看 5 天路線</a>
+          <a class="button button--ghost" href="#budget">先看總預算</a>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="intro band">
+        <div>
+          <h2>導遊總結</h2>
+          <p>
+            重慶不是靠單一景點取勝，而是靠城市本身的立體感：同一棟樓可以有不同「一樓」，地鐵會從樓裡穿過，夜景像貼著江岸長出來。第一次去，住解放碑，把渝中半島、南岸夜景、沙坪壩古鎮和武隆自然景觀串起來，體驗最完整。
+          </p>
+        </div>
+        <div class="quickfacts" aria-label="旅行概要">
+          <div><strong>推薦季節</strong><span>3-5 月、10-11 月</span></div>
+          <div><strong>夏季提醒</strong><span>7-9 月戶外排早晚</span></div>
+          <div><strong>住宿核心</strong><span>解放碑 / 較場口 / 小什字</span></div>
+          <div><strong>移動策略</strong><span>地鐵＋滴滴，武隆包車或一日團</span></div>
+        </div>
+      </section>
+
+      <section class="photo-strip" aria-label="重慶旅行代表畫面">
+        <figure>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Hongyadong%2C_Chongqing.jpg/1280px-Hongyadong%2C_Chongqing.jpg" alt="重慶洪崖洞夜景" />
+          <figcaption>洪崖洞：夜景與吊腳樓</figcaption>
+        </figure>
+        <figure>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Liziba_station_Chongqing_Rail_Transit_Line_2.jpg/1280px-Liziba_station_Chongqing_Rail_Transit_Line_2.jpg" alt="李子壩輕軌穿樓" />
+          <figcaption>李子壩：輕軌穿樓</figcaption>
+        </figure>
+        <figure>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Wulong_Karst_Three_Natural_Bridges.jpg/1280px-Wulong_Karst_Three_Natural_Bridges.jpg" alt="武隆天生三橋喀斯特峽谷" />
+          <figcaption>武隆：天生三橋</figcaption>
+        </figure>
+      </section>
+
+      <section class="section" id="guide-map">
+        <div class="section__head">
+          <p class="kicker">Guide Map</p>
+          <h2>重點景點導遊卡：地址、交通、拍照與附近吃什麼</h2>
+          <p>導航時可直接複製「搜尋名稱」到高德地圖或百度地圖。地址可能因入口不同略有差異，現場以地圖定位為準。</p>
+        </div>
+
+        <div class="spot-grid">
+          <article class="spot-card wide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Hongyadong%2C_Chongqing.jpg/1280px-Hongyadong%2C_Chongqing.jpg" alt="洪崖洞夜晚燈光與江景" />
+            <div>
+              <span class="pill">Day 1 晚上</span>
+              <h3>洪崖洞民俗風貌區</h3>
+              <p><strong>搜尋名稱：</strong>洪崖洞民俗風貌區</p>
+              <p><strong>地址：</strong>重慶市渝中區嘉陵江濱江路一帶，靠近解放碑與千廝門大橋。</p>
+              <p><strong>怎麼去：</strong>住解放碑可步行 10-20 分鐘；地鐵到「小什字站」或「臨江門站」後步行；晚上散場人潮大，回飯店建議叫車。</p>
+              <p><strong>導遊建議：</strong>不要只鑽進商場裡，重點是拍外觀。最佳機位在千廝門大橋人行道、嘉陵江對岸、洪崖洞 1 樓馬路對面。</p>
+              <p><strong>附近吃：</strong>八一好吃街、好又來酸辣粉、佩姐老火鍋解放碑周邊分店。</p>
+            </div>
+          </article>
+
+          <article class="spot-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Liziba_station_Chongqing_Rail_Transit_Line_2.jpg/1280px-Liziba_station_Chongqing_Rail_Transit_Line_2.jpg" alt="李子壩站輕軌穿樓" />
+            <span class="pill">Day 2 早上</span>
+            <h3>李子壩輕軌穿樓</h3>
+            <p><strong>搜尋名稱：</strong>李子壩站 / 李子壩單軌穿樓觀景平台</p>
+            <p><strong>地址：</strong>重慶市渝中區李子壩正街一帶。</p>
+            <p><strong>怎麼去：</strong>搭軌道交通 2 號線到「李子壩站」，出站下樓到觀景平台；從解放碑可先到較場口轉 2 號線。</p>
+            <p><strong>拍照：</strong>觀景平台拍列車進出樓體，等 2-3 班車就能拍到完整畫面。</p>
+          </article>
+
+          <article class="spot-card">
+            <img src="https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=1200&q=80" alt="城市老廠房與街區" />
+            <span class="pill">Day 2 中午</span>
+            <h3>鵝嶺二廠</h3>
+            <p><strong>搜尋名稱：</strong>鵝嶺二廠文創公園</p>
+            <p><strong>地址：</strong>重慶市渝中區鵝嶺正街 1 號附近。</p>
+            <p><strong>怎麼去：</strong>從李子壩叫車約 10-15 分鐘；也可步行上坡但會累，女生小團不建議硬走。</p>
+            <p><strong>拍照：</strong>老廠房樓梯、天台視角、街邊咖啡店。下午光線較硬，早午或傍晚較好拍。</p>
+          </article>
+
+          <article class="spot-card">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80" alt="城市高樓與江景夜色" />
+            <span class="pill">Day 2 傍晚</span>
+            <h3>長江索道＋龍門浩老街</h3>
+            <p><strong>搜尋名稱：</strong>長江索道新華路站、龍門浩老街</p>
+            <p><strong>地址：</strong>新華路站：渝中區新華路 151 號；南站：南岸區上新街 4 號。</p>
+            <p><strong>怎麼去：</strong>先到新華路站搭索道過江，下站後步行或叫車到龍門浩老街、南濱路。</p>
+            <p><strong>導遊建議：</strong>單程就夠，把時間留給南岸看夜景。排隊長時可改搭地鐵/叫車過江。</p>
+          </article>
+
+          <article class="spot-card wide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Wulong_Karst_Three_Natural_Bridges.jpg/1280px-Wulong_Karst_Three_Natural_Bridges.jpg" alt="武隆天生三橋" />
+            <div>
+              <span class="pill">Day 3 全天</span>
+              <h3>武隆天生三橋</h3>
+              <p><strong>搜尋名稱：</strong>武隆天生三橋 / 武隆喀斯特旅遊區</p>
+              <p><strong>地址：</strong>重慶市武隆區仙女山街道一帶，景區入口通常從仙女山遊客中心接駁。</p>
+              <p><strong>怎麼去：</strong>最推薦 4-5 人包車或一日團，市區出發單程約 2.5-3.5 小時；自由行需高鐵/火車到武隆再轉景區交通，第一次去較折騰。</p>
+              <p><strong>穿搭：</strong>好走防滑鞋、輕便包、薄外套。景區階梯與濕滑路段多，不建議高跟鞋、拖鞋。</p>
+              <p><strong>附近吃：</strong>一日團多含簡餐；包車可請司機帶仙女山鎮家常菜，點烤魚、碗碗羊肉、土豆飯。</p>
+            </div>
+          </article>
+
+          <article class="spot-card">
+            <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80" alt="中國古鎮街道" />
+            <span class="pill">Day 4 早上</span>
+            <h3>磁器口古鎮</h3>
+            <p><strong>搜尋名稱：</strong>磁器口古鎮</p>
+            <p><strong>地址：</strong>重慶市沙坪壩區磁器口街道，靠近嘉陵江。</p>
+            <p><strong>怎麼去：</strong>搭軌道交通 1 號線到「磁器口站」步行；從解放碑叫車約 35-60 分鐘，塞車時地鐵更穩。</p>
+            <p><strong>吃什麼：</strong>陳麻花、古鎮雞雜、毛血旺、酸辣粉。早上 10 點前到最好逛。</p>
+          </article>
+
+          <article class="spot-card">
+            <img src="https://images.unsplash.com/photo-1512223792601-592a9809eed4?auto=format&fit=crop&w=1200&q=80" alt="茶館桌椅與茶杯" />
+            <span class="pill">Day 4 下午</span>
+            <h3>交通茶館 / 川美黃桷坪</h3>
+            <p><strong>搜尋名稱：</strong>交通茶館、四川美術學院黃桷坪校區</p>
+            <p><strong>地址：</strong>交通茶館在九龍坡區黃桷坪正街一帶。</p>
+            <p><strong>怎麼去：</strong>磁器口到黃桷坪較遠，建議叫車 35-60 分鐘；想省車程可改去羅中立美術館。</p>
+            <p><strong>體驗：</strong>喝蓋碗茶、看本地人打牌聊天。拍照要尊重店內客人，不要近距離拍人臉。</p>
+          </article>
+
+          <article class="spot-card">
+            <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1200&q=80" alt="美術館展牆與觀展者" />
+            <span class="pill">Day 4 替代</span>
+            <h3>羅中立美術館</h3>
+            <p><strong>搜尋名稱：</strong>四川美術學院美術館 / 羅中立美術館</p>
+            <p><strong>地址：</strong>重慶市沙坪壩區大學城南路 56 號，四川美術學院虎溪校區。</p>
+            <p><strong>怎麼去：</strong>搭軌道交通 1 號線到「尖頂坡站」後步行或短程叫車。</p>
+            <p><strong>注意：</strong>通常週一閉館，展覽與入場規則出發前查官方公告。</p>
+          </article>
+
+          <article class="spot-card wide">
+            <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=80" alt="重慶風格高樓與城市街區" />
+            <div>
+              <span class="pill">Day 5 上午</span>
+              <h3>山城步道 / 白象居</h3>
+              <p><strong>搜尋名稱：</strong>山城步道、白象居</p>
+              <p><strong>地址：</strong>都在渝中區老城核心，可和解放碑、湖廣會館、來福士串成半日。</p>
+              <p><strong>怎麼去：</strong>從解放碑叫車或步行前往；山城步道有上下坡，白象居是居民樓，請保持安靜，不要影響住戶。</p>
+              <p><strong>導遊建議：</strong>這天重點是慢走與收尾，不要再排遠距離跨區。中午到來福士或朝天門吃飯、買伴手禮後去機場。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="route" class="section">
+        <div class="section__head">
+          <p class="kicker">Itinerary</p>
+          <h2>5 天 4 夜完整路線</h2>
+          <p>以午前後抵達、最後一天午後離開設計。若你們是晚班機，Day 1 和 Day 5 可以對調一部分。</p>
+        </div>
+
+        <div class="timeline">
+          <article class="day">
+            <div class="day__meta"><span>Day 1</span><strong>抵達重慶，先被夜景收服</strong></div>
+            <div class="day__body">
+              <h3>解放碑 → 八一好吃街 → 洪崖洞 → 千廝門大橋</h3>
+              <p>
+                抵達後不要硬排遠點，先熟悉渝中半島。晚上從解放碑走到洪崖洞，最有「我到重慶了」的儀式感。
+              </p>
+              <ul>
+                <li>晚餐：八一好吃街先吃酸辣粉、烤苕皮、冰粉墊胃，再去吃火鍋。</li>
+                <li>拍照：洪崖洞內部人多，最推薦從千廝門大橋或嘉陵江對岸拍全景。</li>
+                <li>交通：飯店若在解放碑，這晚大多可步行；回程人多時直接滴滴。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="day">
+            <div class="day__meta"><span>Day 2</span><strong>山城魔幻地形一日</strong></div>
+            <div class="day__body">
+              <h3>李子壩 → 鵝嶺二廠 → 魁星樓 → 長江索道 → 龍門浩老街</h3>
+              <p>
+                這天是城市景觀精華。早上看輕軌穿樓，中午去鵝嶺二廠拍文青老廠房，傍晚搭長江索道過江，晚上在南岸看渝中半島。
+              </p>
+              <ul>
+                <li>午餐：李子壩梁山雞或附近小面，想輕鬆就到鵝嶺二廠咖啡店休息。</li>
+                <li>重點體驗：長江索道單程就夠，建議從新華路站過到上新街站。</li>
+                <li>女生友善節奏：下午排一段咖啡時間，不要連續爬坡三小時。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="day">
+            <div class="day__meta"><span>Day 3</span><strong>武隆喀斯特，重慶自然王牌</strong></div>
+            <div class="day__body">
+              <h3>天生三橋 → 龍水峽地縫或仙女山 → 回市區</h3>
+              <p>
+                如果只能選一個重慶近郊，選武隆。天生三橋是世界自然遺產「中國南方喀斯特」的一部分，尺度非常震撼。
+              </p>
+              <ul>
+                <li>省心方案：4-5 人包車或中文一日團，市區早上 07:00 左右出發。</li>
+                <li>體力版：天生三橋＋龍水峽地縫，步道多但景觀完整。</li>
+                <li>輕鬆版：天生三橋＋仙女山，拍照、草原感比較舒服。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="day">
+            <div class="day__meta"><span>Day 4</span><strong>古鎮、茶館、江湖菜</strong></div>
+            <div class="day__body">
+              <h3>磁器口 → 交通茶館 / 羅中立美術館 → 觀音橋 → 火鍋</h3>
+              <p>
+                早上去磁器口避開人潮，下午選「老重慶茶館」或「美術館拍照」，晚上到觀音橋吃飯逛街，感受本地生活商圈。
+              </p>
+              <ul>
+                <li>小吃：陳麻花、毛血旺、豆花飯、酸辣粉。</li>
+                <li>下午二選一：交通茶館比較生活感，羅中立美術館比較好拍。</li>
+                <li>晚餐：想吃江湖菜排楊記隆府；想吃火鍋排珮姐、周師兄或陶蘇。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="day">
+            <div class="day__meta"><span>Day 5</span><strong>慢走老街，買伴手禮</strong></div>
+            <div class="day__body">
+              <h3>山城步道 / 白象居 → 來福士 → 機場</h3>
+              <p>
+                最後一天不要排遠。山城步道看老城生活，白象居拍立體住宅，最後到來福士附近吃飯和買火鍋底料。
+              </p>
+              <ul>
+                <li>伴手禮：橋頭或德莊火鍋底料、陳麻花、怪味胡豆、合川桃片。</li>
+                <li>去機場：市區到江北機場抓 60-90 分鐘，尖峰或雨天再多留。</li>
+                <li>行李：可先寄飯店，最後回飯店叫車去機場最順。</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="food" class="section band">
+        <div class="section__head">
+          <p class="kicker">Food Map</p>
+          <h2>吃過這些，才像真正來過重慶</h2>
+          <p>餐廳分店多，實際地址用大眾點評/高德地圖以「距離飯店最近、評分穩定」為準。</p>
+        </div>
+
+        <div class="food-grid">
+          <article class="food-card">
+            <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=1200&q=80" alt="熱辣火鍋鍋底與食材" />
+            <h3>重慶老火鍋</h3>
+            <p>必點毛肚、鴨腸、黃喉、麻辣牛肉、貢菜、苕粉、小酥肉。第一次吃建議微辣或鴛鴦鍋，油碟放香油、蒜泥、香菜。</p>
+            <strong>推薦：珮姐老火鍋、周師兄、陶蘇老火鍋、朱光玉火鍋館</strong>
+            <span>人均：約 RMB 90-180</span>
+          </article>
+
+          <article class="food-card">
+            <img src="https://images.unsplash.com/photo-1626804475297-41608ea09aeb?auto=format&fit=crop&w=1200&q=80" alt="一碗麻辣麵食" />
+            <h3>小面 / 豌雜麵</h3>
+            <p>重慶人的早餐靈魂。點法可以說：微辣、乾溜、提黃、多青。豌雜麵比素小面更適合第一次吃的人。</p>
+            <strong>推薦：花市豌雜麵、胖妹麵莊、十八梯眼鏡麵</strong>
+            <span>人均：約 RMB 8-25</span>
+          </article>
+
+          <article class="food-card">
+            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1200&q=80" alt="香辣中式家常菜" />
+            <h3>江湖菜</h3>
+            <p>重慶的豪爽在江湖菜裡：辣子雞、泉水雞、毛血旺、酸菜魚、尖椒雞。比火鍋更適合多人點一桌。</p>
+            <strong>推薦：楊記隆府、山城二十二川菜館、馬房灣 66 號江湖菜</strong>
+            <span>人均：約 RMB 80-160</span>
+          </article>
+
+          <article class="food-card">
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1200&q=80" alt="街邊小吃拼盤" />
+            <h3>街頭小吃</h3>
+            <p>酸辣粉、烤苕皮、烤豆干、冰粉、熨斗糕、降龍爪爪、烤腦花。八一好吃街適合一次掃貨，但不要每樣都買大份。</p>
+            <strong>推薦：好又來酸辣粉、九村烤腦花、一隻酸奶牛、磁器口陳麻花</strong>
+            <span>人均：約 RMB 20-60</span>
+          </article>
+        </div>
+
+        <div class="nav-cards">
+          <article>
+            <h3>火鍋怎麼選</h3>
+            <p><strong>珮姐老火鍋：</strong>導航搜尋「珮姐老火鍋 解放碑」或「珮姐老火鍋 較場口」。適合第一次來，口味穩、分店多，排隊機率高。</p>
+            <p><strong>周師兄重慶火鍋：</strong>導航搜尋「周師兄 大刀腰片 解放碑」。招牌大刀腰片，適合想吃網紅但仍有重慶味的人。</p>
+            <p><strong>陶蘇老火鍋：</strong>導航搜尋「陶蘇老火鍋 解放碑/觀音橋」。環境較有市井感，適合想吃老重慶氛圍。</p>
+            <p><strong>朱光玉火鍋館：</strong>導航搜尋「朱光玉火鍋館 觀音橋/解放碑」。裝潢好拍，適合女生小團，但旺季建議提早取號。</p>
+          </article>
+          <article>
+            <h3>小吃怎麼吃</h3>
+            <p><strong>好又來酸辣粉：</strong>導航搜尋「好又來酸辣粉 八一路」。在解放碑八一好吃街一帶，適合 Day 1 當第一站。</p>
+            <p><strong>花市豌雜麵：</strong>導航搜尋「花市豌雜麵」。常見分店在解放碑/較場口周邊，早上吃最有感。</p>
+            <p><strong>九村烤腦花：</strong>導航搜尋「九村烤腦花」。不敢吃腦花也可點烤苕皮、烤豆干、小龍蝦類。</p>
+            <p><strong>一隻酸奶牛：</strong>重慶連鎖飲品，逛街看到就能買，火鍋後解辣很實用。</p>
+          </article>
+          <article>
+            <h3>江湖菜怎麼排</h3>
+            <p><strong>楊記隆府：</strong>導航搜尋「楊記隆府 解放碑/洪崖洞」。點辣子雞、毛血旺、民國霸王兔，適合多人分食。</p>
+            <p><strong>山城二十二川菜館：</strong>導航搜尋「山城二十二川菜館 解放碑」。景觀和菜品兼顧，適合想吃得舒服一點。</p>
+            <p><strong>馬房灣 66 號江湖菜：</strong>導航搜尋「馬房灣66號江湖菜」。位置較偏，適合 Day 4 有體力再去。</p>
+            <p><strong>點菜公式：</strong>一辣一酸一清爽，加一份主食。不要整桌都點爆辣，隔天行程會謝謝你們。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="stay" class="section">
+        <div class="section__head">
+          <p class="kicker">Stay</p>
+          <h2>住宿怎麼選</h2>
+          <p>4-5 位女生建議優先選交通方便、電梯與櫃台安全感高的飯店，不要為了江景住到太偏的民宿。</p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>區域</th>
+                <th>適合誰</th>
+                <th>優點</th>
+                <th>參考房價/晚</th>
+                <th>推薦型態</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>解放碑 / 較場口 / 小什字</td>
+                <td>第一次來、想晚歸安全</td>
+                <td>離洪崖洞、八一好吃街、長江索道近</td>
+                <td>RMB 450-1,600</td>
+                <td>Glenview ITC、JW Marriott、Westin、亞朵、全季</td>
+              </tr>
+              <tr>
+                <td>南濱路 / 上新街</td>
+                <td>想看江景夜景</td>
+                <td>拍渝中半島漂亮，夜晚氛圍好</td>
+                <td>RMB 500-1,800</td>
+                <td>江景飯店、設計型酒店</td>
+              </tr>
+              <tr>
+                <td>觀音橋</td>
+                <td>想吃飯逛街像本地人</td>
+                <td>商圈成熟、餐廳多、夜生活方便</td>
+                <td>RMB 350-1,300</td>
+                <td>Hyatt Regency、亞朵、桔子水晶</td>
+              </tr>
+              <tr>
+                <td>來福士 / 朝天門</td>
+                <td>想住新地標附近</td>
+                <td>江景、商場、碼頭方便</td>
+                <td>RMB 700-2,200</td>
+                <td>Ascott Raffles City、InterContinental Raffles City</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="hotel-picks">
+          <article>
+            <h3>安心方便首選：解放碑高星/商務飯店</h3>
+            <p><strong>推薦搜尋：</strong>重慶國貿格蘭維大酒店 Glenview ITC、重慶 JW 萬豪酒店、重慶解放碑威斯汀酒店。</p>
+            <p><strong>位置：</strong>解放碑 CBD、八一路、民族路、民生路一帶。</p>
+            <p><strong>適合：</strong>第一次去、晚歸、每天都想少轉車。4-5 位女生建議訂 2 間房，請飯店安排同樓層。</p>
+          </article>
+          <article>
+            <h3>江景質感：朝天門/來福士</h3>
+            <p><strong>推薦搜尋：</strong>重慶來福士洲際酒店、重慶雅詩閣來福士服務公寓。</p>
+            <p><strong>位置：</strong>朝天門、來福士廣場、兩江交匯附近。</p>
+            <p><strong>適合：</strong>想拍江景、房間質感優先、預算較高。缺點是去部分老城小巷可能要多叫車。</p>
+          </article>
+          <article>
+            <h3>逛街吃飯：觀音橋</h3>
+            <p><strong>推薦搜尋：</strong>重慶觀音橋凱悅酒店、亞朵酒店觀音橋、桔子水晶觀音橋。</p>
+            <p><strong>位置：</strong>觀音橋步行街、北城天街、九街周邊。</p>
+            <p><strong>適合：</strong>第二次來或想吃夜宵逛街。第一次來仍建議住解放碑，交通最直覺。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section band">
+        <div class="section__head">
+          <p class="kicker">Tickets</p>
+          <h2>景點價位與停留時間</h2>
+          <p>以下為常見成人價位區間或公開資訊整理，節假日、淡旺季和平台套票會變動，出發前以官方公眾號/購票平台為準。</p>
+        </div>
+        <div class="price-grid">
+          <article><strong>洪崖洞</strong><span>免費</span><p>建議 1-2 小時，晚上 19:30 後氛圍最好。</p></article>
+          <article><strong>長江索道</strong><span>約 RMB 20 單程 / 30 往返</span><p>排隊時間比搭乘時間長，單程體驗即可。</p></article>
+          <article><strong>李子壩觀景平台</strong><span>免費</span><p>建議 30-45 分鐘，順路接鵝嶺二廠。</p></article>
+          <article><strong>磁器口古鎮</strong><span>免費</span><p>建議早上去，避開午後團客。</p></article>
+          <article><strong>武隆天生三橋</strong><span>約 RMB 95-135+</span><p>常含環保車或電梯等組合，預留 2.5-3.5 小時。</p></article>
+          <article><strong>龍水峽地縫</strong><span>約 RMB 85-115+</span><p>步道潮濕，穿防滑鞋。</p></article>
+          <article><strong>仙女山</strong><span>約 RMB 50+</span><p>適合拍照與輕鬆版武隆路線。</p></article>
+          <article><strong>兩江夜遊</strong><span>約 RMB 120-220</span><p>不一定必搭，若預算夠可排 Day 1 或 Day 4。</p></article>
+        </div>
+      </section>
+
+      <section id="traffic" class="section">
+        <div class="section__head">
+          <p class="kicker">Transport</p>
+          <h2>交通方案</h2>
+        </div>
+        <div class="split">
+          <div>
+            <h3>機場到市區</h3>
+            <ul class="clean-list">
+              <li><strong>滴滴/計程車：</strong>江北機場到解放碑約 40-70 分鐘，RMB 60-120 左右，4-5 人加行李最省事。</li>
+              <li><strong>地鐵：</strong>機場搭軌道交通轉到小什字/較場口，便宜但拉行李轉乘較累。</li>
+              <li><strong>建議：</strong>抵達日直接叫車，回程視行李與尖峰決定。</li>
+            </ul>
+          </div>
+          <div>
+            <h3>市區移動</h3>
+            <ul class="clean-list">
+              <li><strong>地鐵：</strong>避塞車、便宜，李子壩和較場口動線很好用。</li>
+              <li><strong>滴滴：</strong>晚上、下雨、穿高跟鞋拍完照時救命。</li>
+              <li><strong>步行：</strong>導航距離 800 公尺不代表輕鬆，重慶的 800 公尺可能含很多坡與樓梯。</li>
+            </ul>
+          </div>
+          <div>
+            <h3>武隆交通</h3>
+            <ul class="clean-list">
+              <li><strong>一日團：</strong>每人約 RMB 280-500，通常含車、導遊、部分門票，最省心。</li>
+              <li><strong>包車：</strong>4-5 人約 RMB 900-1,500/車/天，彈性高，女生小團很適合。</li>
+              <li><strong>自由行：</strong>高鐵/火車＋景區交通可行，但轉乘多，不推薦第一次去。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="money" class="section band">
+        <div class="section__head">
+          <p class="kicker">Money</p>
+          <h2>換匯、支付與總預算</h2>
+        </div>
+        <div class="money-grid">
+          <article>
+            <h3>換匯策略</h3>
+            <p>
+              中國大陸日常支付以支付寶、微信支付為主。台灣出發建議先在台灣銀行或常用銀行換少量人民幣現金，每人 RMB 500-1,000 當備用即可。大額消費用支付寶/微信綁卡或信用卡。
+            </p>
+            <p>
+              匯率每天變，做預算可先用「RMB 1 約 TWD 4.4-4.6」粗估，出發前再看銀行即期賣出匯率。不要跟路邊或陌生人換錢。
+            </p>
+          </article>
+          <article>
+            <h3>支付準備</h3>
+            <p>
+              出發前完成支付寶與微信實名、綁定信用卡或簽帳金融卡；護照姓名要和帳戶資料一致。景區預約、滴滴、高德地圖、大眾點評都建議先裝好。
+            </p>
+            <p>
+              有些小店仍可收現金，但找零不一定方便。多人吃飯可由一人先付，再用台幣群組結算。
+            </p>
+          </article>
+        </div>
+
+        <div id="budget" class="budget-box">
+          <h3>每人預算估算，不含機票</h3>
+          <div class="budget-controls">
+            <label>
+              旅行風格
+              <select id="styleSelect">
+                <option value="balanced">舒服實用</option>
+                <option value="budget">精省</option>
+                <option value="premium">高質感</option>
+              </select>
+            </label>
+          </div>
+          <div class="budget-result" id="budgetResult" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section__head">
+          <p class="kicker">Checklist</p>
+          <h2>女生小團出發前清單</h2>
+        </div>
+        <div class="checklist">
+          <label><input type="checkbox" /> 支付寶、微信支付完成綁卡與實名</label>
+          <label><input type="checkbox" /> 高德地圖、滴滴、大眾點評、攜程/Trip.com 裝好</label>
+          <label><input type="checkbox" /> 走路鞋、防滑鞋、薄外套、腸胃藥、濕紙巾</label>
+          <label><input type="checkbox" /> 武隆當天不要穿拖鞋或太長裙子</label>
+          <label><input type="checkbox" /> 每天只排一個「非常想拍」的重點，其他留彈性</label>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        資料註記：票價、營業時間與飯店價格會隨季節調整，出發前請以官方公眾號、景區售票頁、飯店訂房平台與即時匯率為準。參考包含長江索道、洪崖洞、李子壩站、武隆喀斯特與重慶小面等公開資料。
+      </p>
+    </footer>
+
+    <script>
+const budgets = {
+  budget: [
+    ["住宿", "RMB 700-1,000", "商務連鎖或乾淨民宿，雙人分攤"],
+    ["餐飲", "RMB 650-900", "小吃＋一到兩餐火鍋/江湖菜"],
+    ["交通", "RMB 450-700", "地鐵為主，少量滴滴，武隆一日團"],
+    ["合計", "RMB 1,800-2,600", "約 TWD 8,000-12,000"]
+  ],
+  balanced: [
+    ["住宿", "RMB 1,000-1,800", "解放碑/較場口舒適飯店，兩人一房"],
+    ["餐飲", "RMB 900-1,300", "火鍋、江湖菜、小吃與咖啡都排"],
+    ["交通", "RMB 700-1,100", "市區滴滴＋地鐵，武隆一日團或包車分攤"],
+    ["合計", "RMB 2,600-4,200", "約 TWD 12,000-19,000"]
+  ],
+  premium: [
+    ["住宿", "RMB 1,800-3,200", "高星或江景飯店，位置與安全感優先"],
+    ["餐飲", "RMB 1,300-2,000", "熱門火鍋、江景餐廳、下午茶"],
+    ["交通", "RMB 1,100-1,800", "市區多叫車，武隆包車"],
+    ["合計", "RMB 4,200-7,000", "約 TWD 19,000-32,000"]
+  ]
+};
+
+const select = document.querySelector("#styleSelect");
+const result = document.querySelector("#budgetResult");
+
+function renderBudget(style) {
+  result.innerHTML = budgets[style]
+    .map(
+      ([name, price, note]) => `
+        <div class="budget-item">
+          <strong>${name}</strong>
+          <span>${price}</span>
+          <small>${note}</small>
+        </div>
+      `
+    )
+    .join("");
+}
+
+select.addEventListener("change", (event) => renderBudget(event.target.value));
+renderBudget(select.value);
+
+    </script>
+  </body>
 </html>
