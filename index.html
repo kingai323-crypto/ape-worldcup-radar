@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>重慶 5 天 4 夜女生小團導遊攻略</title>
+    <title>2026/7/26-7/30 重慶 5 天 4 夜｜朋友帶路版旅行攻略</title>
     <meta
       name="description"
       content="4-5 位女生第一次去重慶的完整行程網站：住宿、交通、景點票價、必吃火鍋小吃、換匯與預算。"
@@ -254,7 +254,9 @@ h3 {
 .food-grid,
 .price-grid,
 .nav-cards,
-.hotel-picks {
+.hotel-picks,
+.directory-grid,
+.radar-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
@@ -397,12 +399,14 @@ h3 {
 }
 
 .nav-cards,
-.hotel-picks {
+.hotel-picks,
+.directory-grid {
   margin-top: 22px;
 }
 
 .nav-cards article,
-.hotel-picks article {
+.hotel-picks article,
+.directory-card {
   padding: 22px;
   background: #fff;
   border: 1px solid var(--line);
@@ -411,14 +415,121 @@ h3 {
 }
 
 .nav-cards h3,
-.hotel-picks h3 {
+.hotel-picks h3,
+.directory-card h3 {
   color: var(--red);
 }
 
 .nav-cards p,
-.hotel-picks p {
+.hotel-picks p,
+.directory-card p {
   margin: 12px 0 0;
   color: #3d454b;
+}
+
+.directory-grid {
+  margin-bottom: 24px;
+}
+
+.directory-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.directory-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, var(--chili), var(--gold), var(--jade));
+}
+
+.directory-card.hot {
+  border-color: rgba(224, 91, 55, 0.45);
+}
+
+.directory-card dl {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 0;
+}
+
+.directory-card dl div {
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.directory-card dt {
+  color: var(--jade);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.directory-card dd {
+  margin: 3px 0 0;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.trend-section {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(251, 247, 239, 0.96)),
+    radial-gradient(circle at 15% 20%, rgba(224, 91, 55, 0.16), transparent 34%),
+    radial-gradient(circle at 88% 10%, rgba(38, 116, 104, 0.16), transparent 30%);
+}
+
+.radar-card {
+  position: relative;
+  min-height: 220px;
+  padding: 22px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.radar-card::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  bottom: -40px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(199, 146, 62, 0.14);
+}
+
+.radar-card span {
+  display: inline-flex;
+  margin-bottom: 14px;
+  padding: 5px 10px;
+  color: #fff;
+  background: var(--jade);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.radar-card.must span,
+.radar-card.eat span {
+  background: var(--chili);
+}
+
+.radar-card.soft span {
+  background: var(--muted);
+}
+
+.radar-card p {
+  color: #3d454b;
+}
+
+.radar-card strong {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin-top: 14px;
+  color: var(--red);
 }
 
 .table-wrap {
@@ -574,6 +685,8 @@ select {
   .price-grid,
   .nav-cards,
   .hotel-picks,
+  .directory-grid,
+  .radar-grid,
   .split,
   .money-grid,
   .budget-result,
@@ -637,10 +750,10 @@ select {
       </nav>
       <div class="hero__shade"></div>
       <section class="hero__content">
-        <p class="kicker">4-5 位女生｜5 天 4 夜｜第一次到重慶</p>
-        <h1>真正來過重慶的山城、火鍋、江景與煙火氣</h1>
+        <p class="kicker">2026/7/26（日）- 7/30（四）｜4-5 位女生｜夏天高溫版</p>
+        <h1>重慶不要只打卡，7 月底這樣玩才舒服</h1>
         <p>
-          這份行程把「好拍」和「好吃」放在同一條動線上：白天走山城階梯與輕軌穿樓，晚上看洪崖洞、南濱路與兩江夜景，中間穿插老火鍋、小面、江湖菜、茶館和武隆喀斯特。
+          如果我帶姐妹 7 月底去重慶，我不會把大家丟在大太陽底下硬走。我會把好拍、好吃、少走冤枉路放在同一條線上：早晚拍山城和江景，中午躲進商場、咖啡店、茶館或飯店休息。
         </p>
         <div class="hero__actions">
           <a class="button button--primary" href="#route">看 5 天路線</a>
@@ -652,14 +765,14 @@ select {
     <main>
       <section class="intro band">
         <div>
-          <h2>導遊總結</h2>
+          <h2>先說人話</h2>
           <p>
-            重慶不是靠單一景點取勝，而是靠城市本身的立體感：同一棟樓可以有不同「一樓」，地鐵會從樓裡穿過，夜景像貼著江岸長出來。第一次去，住解放碑，把渝中半島、南岸夜景、沙坪壩古鎮和武隆自然景觀串起來，體驗最完整。
+            重慶最迷人的不是某一個售票景區，而是整座城市很不講道理的立體感：同一棟樓可以有好幾個「一樓」，地鐵會從樓裡穿過，夜景像貼著江岸長出來。第一次去，住解放碑最省腦，把渝中半島、南岸夜景、沙坪壩古鎮和武隆串起來，五天剛剛好。
           </p>
         </div>
         <div class="quickfacts" aria-label="旅行概要">
-          <div><strong>推薦季節</strong><span>3-5 月、10-11 月</span></div>
-          <div><strong>夏季提醒</strong><span>7-9 月戶外排早晚</span></div>
+          <div><strong>出發日期</strong><span>2026/7/26（日）- 7/30（四）</span></div>
+          <div><strong>夏季打法</strong><span>早晚戶外，中午室內休息</span></div>
           <div><strong>住宿核心</strong><span>解放碑 / 較場口 / 小什字</span></div>
           <div><strong>移動策略</strong><span>地鐵＋滴滴，武隆包車或一日團</span></div>
         </div>
@@ -680,11 +793,94 @@ select {
         </figure>
       </section>
 
+      <section class="section trend-section">
+        <div class="section__head">
+          <p class="kicker">Must Go / Must Eat</p>
+          <h2>重慶必去必吃雷達：網路熱門，我幫你篩過</h2>
+          <p>我參考了旅遊平台、熱門攻略常見推薦和重慶本身代表性，再用 7 月底高溫和 4-5 位女生同行的角度篩選。不是所有網紅點都值得硬衝，下面這些才是最適合排進 5 天 4 夜的。</p>
+        </div>
+
+        <div class="radar-grid">
+          <article class="radar-card must">
+            <span>一定要去</span>
+            <h3>洪崖洞夜景</h3>
+            <p>重慶第一眼記憶點。不要白天去，不要只逛裡面，晚上拍外觀才是重點。</p>
+            <strong>排法：Day 1 晚上，解放碑吃完走過去。</strong>
+          </article>
+          <article class="radar-card must">
+            <span>一定要去</span>
+            <h3>李子壩輕軌穿樓</h3>
+            <p>這是重慶魔幻地形的代表，不用花錢，拍 30 分鐘就很夠。</p>
+            <strong>排法：Day 2 早上，趁還沒太熱。</strong>
+          </article>
+          <article class="radar-card must">
+            <span>一定要去</span>
+            <h3>武隆天生三橋</h3>
+            <p>如果想讓行程不只是在市區吃吃拍拍，武隆一定要排。景觀尺度和市區完全不同。</p>
+            <strong>排法：Day 3 包車/一日團，穿防滑鞋。</strong>
+          </article>
+          <article class="radar-card">
+            <span>順路必排</span>
+            <h3>十八梯＋山城巷</h3>
+            <p>比單純商圈更有山城老街味，但 7 月底不要正中午走。</p>
+            <strong>排法：Day 5 早上，走完去來福士。</strong>
+          </article>
+          <article class="radar-card">
+            <span>順路必排</span>
+            <h3>長江索道＋龍門浩</h3>
+            <p>索道本身很短，重點是過江後在南岸看渝中半島夜景。</p>
+            <strong>排法：Day 2 傍晚，排隊太長就改叫車。</strong>
+          </article>
+          <article class="radar-card">
+            <span>順路必排</span>
+            <h3>磁器口古鎮</h3>
+            <p>很熱門也很容易人擠人，所以要早去，重點是吃小吃和買伴手禮。</p>
+            <strong>排法：Day 4 早上，10 點前抵達最舒服。</strong>
+          </article>
+          <article class="radar-card eat">
+            <span>一定要吃</span>
+            <h3>重慶老火鍋</h3>
+            <p>不用挑戰特辣。微辣或鴛鴦鍋＋油碟，才能吃得久也不影響隔天。</p>
+            <strong>店家：珮姐、周師兄、陶蘇、朱光玉。</strong>
+          </article>
+          <article class="radar-card eat">
+            <span>一定要吃</span>
+            <h3>小面 / 豌雜麵</h3>
+            <p>重慶早餐靈魂。比飯店早餐更值得，豌雜麵對第一次吃的人最友善。</p>
+            <strong>店家：花市豌雜麵、胖妹麵莊。</strong>
+          </article>
+          <article class="radar-card eat">
+            <span>一定要吃</span>
+            <h3>江湖菜</h3>
+            <p>多人同行一定要吃一餐江湖菜，因為它比火鍋更能點出一桌重慶味。</p>
+            <strong>店家：楊記隆府、山城二十二、馬房灣 66 號。</strong>
+          </article>
+          <article class="radar-card soft">
+            <span>可去但別硬排</span>
+            <h3>皇冠大扶梯</h3>
+            <p>很有名，但體驗時間短。除非順路，否則不用特地跨區。</p>
+            <strong>排法：有空再加，不要壓縮武隆或夜景。</strong>
+          </article>
+          <article class="radar-card soft">
+            <span>可去但別硬排</span>
+            <h3>白象居</h3>
+            <p>很會出片，但它是居民樓。想去就安靜拍，不要打擾住戶。</p>
+            <strong>排法：Day 5 早上和山城步道擇一。</strong>
+          </article>
+          <article class="radar-card soft">
+            <span>可去但別硬排</span>
+            <h3>兩江夜遊</h3>
+            <p>預算夠可以坐，但不是必需。南濱路免費夜景已經很好看。</p>
+            <strong>排法：Day 1 或 Day 4，視體力決定。</strong>
+          </article>
+        </div>
+      </section>
+
       <section class="section" id="guide-map">
         <div class="section__head">
           <p class="kicker">Guide Map</p>
-          <h2>重點景點導遊卡：地址、交通、拍照與附近吃什麼</h2>
-          <p>導航時可直接複製「搜尋名稱」到高德地圖或百度地圖。地址可能因入口不同略有差異，現場以地圖定位為準。</p>
+          <h2>照著走不迷路：地址、交通、拍照與附近吃什麼</h2>
+          <p>這裡不是官方介紹，是給旅客用的走法。導航時直接複製「搜尋名稱」到高德地圖或百度地圖；入口很多的地方，以地圖定位和現場人流為準。</p>
         </div>
 
         <div class="spot-grid">
@@ -696,7 +892,7 @@ select {
               <p><strong>搜尋名稱：</strong>洪崖洞民俗風貌區</p>
               <p><strong>地址：</strong>重慶市渝中區嘉陵江濱江路一帶，靠近解放碑與千廝門大橋。</p>
               <p><strong>怎麼去：</strong>住解放碑可步行 10-20 分鐘；地鐵到「小什字站」或「臨江門站」後步行；晚上散場人潮大，回飯店建議叫車。</p>
-              <p><strong>導遊建議：</strong>不要只鑽進商場裡，重點是拍外觀。最佳機位在千廝門大橋人行道、嘉陵江對岸、洪崖洞 1 樓馬路對面。</p>
+              <p><strong>我的建議：</strong>不要只鑽進商場裡，洪崖洞最值得的是外觀夜景。最佳機位在千廝門大橋人行道、嘉陵江對岸、洪崖洞 1 樓馬路對面。</p>
               <p><strong>附近吃：</strong>八一好吃街、好又來酸辣粉、佩姐老火鍋解放碑周邊分店。</p>
             </div>
           </article>
@@ -728,7 +924,7 @@ select {
             <p><strong>搜尋名稱：</strong>長江索道新華路站、龍門浩老街</p>
             <p><strong>地址：</strong>新華路站：渝中區新華路 151 號；南站：南岸區上新街 4 號。</p>
             <p><strong>怎麼去：</strong>先到新華路站搭索道過江，下站後步行或叫車到龍門浩老街、南濱路。</p>
-            <p><strong>導遊建議：</strong>單程就夠，把時間留給南岸看夜景。排隊長時可改搭地鐵/叫車過江。</p>
+            <p><strong>我的建議：</strong>索道單程就夠，把時間留給南岸看夜景。排隊長時不要死等，改搭地鐵或叫車過江更聰明。</p>
           </article>
 
           <article class="spot-card wide">
@@ -782,7 +978,7 @@ select {
               <p><strong>搜尋名稱：</strong>山城步道、白象居</p>
               <p><strong>地址：</strong>都在渝中區老城核心，可和解放碑、湖廣會館、來福士串成半日。</p>
               <p><strong>怎麼去：</strong>從解放碑叫車或步行前往；山城步道有上下坡，白象居是居民樓，請保持安靜，不要影響住戶。</p>
-              <p><strong>導遊建議：</strong>這天重點是慢走與收尾，不要再排遠距離跨區。中午到來福士或朝天門吃飯、買伴手禮後去機場。</p>
+              <p><strong>我的建議：</strong>這天重點是慢走與收尾，不要再排遠距離跨區。中午到來福士或朝天門吃飯、買伴手禮後去機場。</p>
             </div>
           </article>
         </div>
@@ -791,17 +987,17 @@ select {
       <section id="route" class="section">
         <div class="section__head">
           <p class="kicker">Itinerary</p>
-          <h2>5 天 4 夜完整路線</h2>
-          <p>以午前後抵達、最後一天午後離開設計。若你們是晚班機，Day 1 和 Day 5 可以對調一部分。</p>
+          <h2>5 天 4 夜我會這樣帶你們走</h2>
+          <p>以午前後抵達、最後一天午後離開設計。晚班機也沒關係，把 Day 1 的夜景和 Day 5 的老城慢走交換就好。</p>
         </div>
 
         <div class="timeline">
           <article class="day">
-            <div class="day__meta"><span>Day 1</span><strong>抵達重慶，先被夜景收服</strong></div>
+            <div class="day__meta"><span>7/26（日）Day 1</span><strong>抵達重慶，先被夜景收服</strong></div>
             <div class="day__body">
-              <h3>解放碑 → 八一好吃街 → 洪崖洞 → 千廝門大橋</h3>
+              <h3>傍晚後出門：解放碑 → 八一好吃街 → 洪崖洞 → 千廝門大橋</h3>
               <p>
-                抵達後不要硬排遠點，先熟悉渝中半島。晚上從解放碑走到洪崖洞，最有「我到重慶了」的儀式感。
+                7 月底白天熱，抵達後先回飯店整理、補水、吹冷氣。傍晚後再從解放碑走到洪崖洞，這是最有「好，我真的到重慶了」的第一晚。
               </p>
               <ul>
                 <li>晚餐：八一好吃街先吃酸辣粉、烤苕皮、冰粉墊胃，再去吃火鍋。</li>
@@ -812,11 +1008,11 @@ select {
           </article>
 
           <article class="day">
-            <div class="day__meta"><span>Day 2</span><strong>山城魔幻地形一日</strong></div>
+            <div class="day__meta"><span>7/27（一）Day 2</span><strong>山城魔幻地形一日</strong></div>
             <div class="day__body">
-              <h3>李子壩 → 鵝嶺二廠 → 魁星樓 → 長江索道 → 龍門浩老街</h3>
+              <h3>早拍晚看：李子壩 → 鵝嶺二廠 → 午休 → 長江索道 → 龍門浩老街</h3>
               <p>
-                這天是城市景觀精華。早上看輕軌穿樓，中午去鵝嶺二廠拍文青老廠房，傍晚搭長江索道過江，晚上在南岸看渝中半島。
+                這天是城市景觀精華，也是最容易拍到朋友問「這在哪裡」的一天。早上看輕軌穿樓，中午不要硬曬，安排咖啡或回飯店休息；傍晚再搭索道過江看夜景。
               </p>
               <ul>
                 <li>午餐：李子壩梁山雞或附近小面，想輕鬆就到鵝嶺二廠咖啡店休息。</li>
@@ -827,11 +1023,11 @@ select {
           </article>
 
           <article class="day">
-            <div class="day__meta"><span>Day 3</span><strong>武隆喀斯特，重慶自然王牌</strong></div>
+            <div class="day__meta"><span>7/28（二）Day 3</span><strong>武隆喀斯特，重慶自然王牌</strong></div>
             <div class="day__body">
               <h3>天生三橋 → 龍水峽地縫或仙女山 → 回市區</h3>
               <p>
-                如果只能選一個重慶近郊，選武隆。天生三橋是世界自然遺產「中國南方喀斯特」的一部分，尺度非常震撼。
+                7 月底市區很熱，武隆反而適合放中間一天換氣。天生三橋不是小山小水，是那種走進去會突然安靜下來的巨大喀斯特峽谷。
               </p>
               <ul>
                 <li>省心方案：4-5 人包車或中文一日團，市區早上 07:00 左右出發。</li>
@@ -842,11 +1038,11 @@ select {
           </article>
 
           <article class="day">
-            <div class="day__meta"><span>Day 4</span><strong>古鎮、茶館、江湖菜</strong></div>
+            <div class="day__meta"><span>7/29（三）Day 4</span><strong>古鎮、茶館、江湖菜</strong></div>
             <div class="day__body">
-              <h3>磁器口 → 交通茶館 / 羅中立美術館 → 觀音橋 → 火鍋</h3>
+              <h3>早去古鎮：磁器口 → 午後室內 → 觀音橋 → 火鍋</h3>
               <p>
-                早上去磁器口避開人潮，下午選「老重慶茶館」或「美術館拍照」，晚上到觀音橋吃飯逛街，感受本地生活商圈。
+                早上去磁器口避開人潮和高溫，下午選老茶館、美術館或商場吹冷氣，晚上到觀音橋吃飯逛街。這天不要追求景點數量，重點是吃和逛得舒服。
               </p>
               <ul>
                 <li>小吃：陳麻花、毛血旺、豆花飯、酸辣粉。</li>
@@ -857,11 +1053,11 @@ select {
           </article>
 
           <article class="day">
-            <div class="day__meta"><span>Day 5</span><strong>慢走老街，買伴手禮</strong></div>
+            <div class="day__meta"><span>7/30（四）Day 5</span><strong>慢走老街，買伴手禮</strong></div>
             <div class="day__body">
-              <h3>山城步道 / 白象居 → 來福士 → 機場</h3>
+              <h3>早上慢走：山城步道 / 白象居 → 來福士 → 機場</h3>
               <p>
-                最後一天不要排遠。山城步道看老城生活，白象居拍立體住宅，最後到來福士附近吃飯和買火鍋底料。
+                最後一天不要排遠，也不要中午還在戶外硬走。早上拍老城，午餐後到來福士附近吃飯、買火鍋底料，再回飯店拿行李去機場。
               </p>
               <ul>
                 <li>伴手禮：橋頭或德莊火鍋底料、陳麻花、怪味胡豆、合川桃片。</li>
@@ -876,8 +1072,77 @@ select {
       <section id="food" class="section band">
         <div class="section__head">
           <p class="kicker">Food Map</p>
-          <h2>吃過這些，才像真正來過重慶</h2>
-          <p>餐廳分店多，實際地址用大眾點評/高德地圖以「距離飯店最近、評分穩定」為準。</p>
+          <h2>吃過這些，才像真的來過重慶</h2>
+          <p>餐廳分店多，別為了某一家店跨城奔波。用大眾點評/高德地圖找「離你最近、評分穩、排隊可接受」的分店，旅程會舒服很多。</p>
+        </div>
+
+        <div class="directory-grid">
+          <article class="directory-card hot">
+            <span class="pill">火鍋首選</span>
+            <h3>珮姐老火鍋</h3>
+            <p>第一次來重慶很適合排這家，味道穩、分店多、外地旅客也比較好上手。</p>
+            <dl>
+              <div><dt>導航搜尋</dt><dd>珮姐老火鍋 解放碑 / 較場口</dd></div>
+              <div><dt>建議安排</dt><dd>Day 1 洪崖洞夜景前後</dd></div>
+              <div><dt>人均</dt><dd>RMB 100-180</dd></div>
+              <div><dt>必點</dt><dd>毛肚、鴨腸、黃喉、麻辣牛肉、小酥肉</dd></div>
+            </dl>
+          </article>
+          <article class="directory-card">
+            <span class="pill">腰片招牌</span>
+            <h3>周師兄重慶火鍋</h3>
+            <p>招牌大刀腰片很有記憶點，適合想吃熱門店又想保留重慶火鍋感的人。</p>
+            <dl>
+              <div><dt>導航搜尋</dt><dd>周師兄 大刀腰片 解放碑</dd></div>
+              <div><dt>建議安排</dt><dd>Day 2 南岸夜景後</dd></div>
+              <div><dt>人均</dt><dd>RMB 110-190</dd></div>
+              <div><dt>提醒</dt><dd>熱門時段先線上取號，別餓到才出門</dd></div>
+            </dl>
+          </article>
+          <article class="directory-card">
+            <span class="pill">江湖菜</span>
+            <h3>楊記隆府</h3>
+            <p>比火鍋更適合 4-5 人點一桌。想吃辣子雞、毛血旺、霸王兔，這類店比小吃街更完整。</p>
+            <dl>
+              <div><dt>導航搜尋</dt><dd>楊記隆府 解放碑 / 洪崖洞</dd></div>
+              <div><dt>建議安排</dt><dd>Day 4 晚餐</dd></div>
+              <div><dt>人均</dt><dd>RMB 80-160</dd></div>
+              <div><dt>點菜</dt><dd>一辣一酸一清爽，加一份主食</dd></div>
+            </dl>
+          </article>
+          <article class="directory-card">
+            <span class="pill">小面早餐</span>
+            <h3>花市豌雜麵</h3>
+            <p>早上吃一碗豌雜麵，比飯店早餐更像重慶。第一次吃建議微辣、乾溜。</p>
+            <dl>
+              <div><dt>導航搜尋</dt><dd>花市豌雜麵 解放碑 / 較場口</dd></div>
+              <div><dt>建議安排</dt><dd>Day 2 出發去李子壩前</dd></div>
+              <div><dt>人均</dt><dd>RMB 10-25</dd></div>
+              <div><dt>點法</dt><dd>豌雜、微辣、乾溜、多青</dd></div>
+            </dl>
+          </article>
+          <article class="directory-card">
+            <span class="pill">酸辣粉</span>
+            <h3>好又來酸辣粉</h3>
+            <p>八一好吃街代表小吃，適合第一天抵達後先墊胃，酸、辣、麻一次到位。</p>
+            <dl>
+              <div><dt>導航搜尋</dt><dd>好又來酸辣粉 八一路</dd></div>
+              <div><dt>建議安排</dt><dd>Day 1 解放碑散步</dd></div>
+              <div><dt>人均</dt><dd>RMB 10-25</dd></div>
+              <div><dt>附近</dt><dd>八一好吃街、解放碑、洪崖洞</dd></div>
+            </dl>
+          </article>
+          <article class="directory-card">
+            <span class="pill">伴手禮</span>
+            <h3>磁器口陳麻花</h3>
+            <p>磁器口最經典的伴手禮之一，適合最後兩天買，甜鹹口味都可試吃後再決定。</p>
+            <dl>
+              <div><dt>導航搜尋</dt><dd>磁器口陳麻花 磁器口古鎮</dd></div>
+              <div><dt>建議安排</dt><dd>Day 4 磁器口</dd></div>
+              <div><dt>預算</dt><dd>RMB 20-80/袋起</dd></div>
+              <div><dt>提醒</dt><dd>買太多會重，先確認行李空間</dd></div>
+            </dl>
+          </article>
         </div>
 
         <div class="food-grid">
@@ -934,7 +1199,7 @@ select {
             <p><strong>楊記隆府：</strong>導航搜尋「楊記隆府 解放碑/洪崖洞」。點辣子雞、毛血旺、民國霸王兔，適合多人分食。</p>
             <p><strong>山城二十二川菜館：</strong>導航搜尋「山城二十二川菜館 解放碑」。景觀和菜品兼顧，適合想吃得舒服一點。</p>
             <p><strong>馬房灣 66 號江湖菜：</strong>導航搜尋「馬房灣66號江湖菜」。位置較偏，適合 Day 4 有體力再去。</p>
-            <p><strong>點菜公式：</strong>一辣一酸一清爽，加一份主食。不要整桌都點爆辣，隔天行程會謝謝你們。</p>
+            <p><strong>點菜公式：</strong>一辣一酸一清爽，加一份主食。不要整桌都點爆辣，隔天的胃和腿都會謝謝你們。</p>
           </article>
         </div>
       </section>
@@ -942,8 +1207,44 @@ select {
       <section id="stay" class="section">
         <div class="section__head">
           <p class="kicker">Stay</p>
-          <h2>住宿怎麼選</h2>
-          <p>4-5 位女生建議優先選交通方便、電梯與櫃台安全感高的飯店，不要為了江景住到太偏的民宿。</p>
+          <h2>住宿不要賭，位置比裝潢重要</h2>
+          <p>4-5 位女生我會優先選交通方便、電梯與櫃台安全感高的飯店。江景可以加分，但不要為了江景住到太偏，晚上回飯店會很累。</p>
+        </div>
+
+        <div class="directory-grid hotel-directory">
+          <article class="directory-card hot">
+            <span class="pill">最推薦區域</span>
+            <h3>解放碑 / 較場口</h3>
+            <p>第一次去重慶，住這裡最不容易後悔。晚上吃完火鍋、拍完洪崖洞，回飯店不用跨很遠。</p>
+            <dl>
+              <div><dt>推薦搜尋</dt><dd>Glenview ITC / JW Marriott / Westin 解放碑</dd></div>
+              <div><dt>適合</dt><dd>第一次去、晚歸、想省交通腦力</dd></div>
+              <div><dt>房價</dt><dd>RMB 450-1,600/晚</dd></div>
+              <div><dt>訂房備註</dt><dd>請飯店安排同樓層，4-5 人訂 2 間房最舒服</dd></div>
+            </dl>
+          </article>
+          <article class="directory-card">
+            <span class="pill">江景質感</span>
+            <h3>朝天門 / 來福士</h3>
+            <p>想要房間有江景、樓下有商場、最後一天買伴手禮方便，這區很適合。</p>
+            <dl>
+              <div><dt>推薦搜尋</dt><dd>重慶來福士洲際酒店 / 雅詩閣來福士</dd></div>
+              <div><dt>適合</dt><dd>預算較高、想住新地標</dd></div>
+              <div><dt>房價</dt><dd>RMB 700-2,200/晚</dd></div>
+              <div><dt>提醒</dt><dd>去老城小巷常要叫車，別只看江景</dd></div>
+            </dl>
+          </article>
+          <article class="directory-card">
+            <span class="pill">逛街夜生活</span>
+            <h3>觀音橋</h3>
+            <p>餐廳、商場、夜宵很多，更像本地人生活商圈。第一次來可住解放碑，第二次來再選觀音橋。</p>
+            <dl>
+              <div><dt>推薦搜尋</dt><dd>觀音橋凱悅 / 亞朵觀音橋 / 桔子水晶觀音橋</dd></div>
+              <div><dt>適合</dt><dd>想逛街、吃夜宵、晚上活動多</dd></div>
+              <div><dt>房價</dt><dd>RMB 350-1,300/晚</dd></div>
+              <div><dt>提醒</dt><dd>離洪崖洞不是步行距離，晚上要叫車</dd></div>
+            </dl>
+          </article>
         </div>
 
         <div class="table-wrap">
@@ -1015,8 +1316,8 @@ select {
       <section class="section band">
         <div class="section__head">
           <p class="kicker">Tickets</p>
-          <h2>景點價位與停留時間</h2>
-          <p>以下為常見成人價位區間或公開資訊整理，節假日、淡旺季和平台套票會變動，出發前以官方公眾號/購票平台為準。</p>
+          <h2>哪些要花錢，哪些免費就很值得</h2>
+          <p>重慶很多精彩地方其實免費。下面價格抓常見成人區間，節假日、淡旺季和平台套票會變，出發前再看官方公眾號或購票平台。</p>
         </div>
         <div class="price-grid">
           <article><strong>洪崖洞</strong><span>免費</span><p>建議 1-2 小時，晚上 19:30 後氛圍最好。</p></article>
@@ -1033,7 +1334,7 @@ select {
       <section id="traffic" class="section">
         <div class="section__head">
           <p class="kicker">Transport</p>
-          <h2>交通方案</h2>
+          <h2>交通怎麼走比較不崩潰</h2>
         </div>
         <div class="split">
           <div>
@@ -1066,7 +1367,7 @@ select {
       <section id="money" class="section band">
         <div class="section__head">
           <p class="kicker">Money</p>
-          <h2>換匯、支付與總預算</h2>
+          <h2>錢怎麼準備才不尷尬</h2>
         </div>
         <div class="money-grid">
           <article>
@@ -1122,7 +1423,7 @@ select {
 
     <footer class="footer">
       <p>
-        資料註記：票價、營業時間與飯店價格會隨季節調整，出發前請以官方公眾號、景區售票頁、飯店訂房平台與即時匯率為準。參考包含長江索道、洪崖洞、李子壩站、武隆喀斯特與重慶小面等公開資料。
+        旅人提醒：這份攻略是朋友帶路版，不是官方網站。票價、營業時間、飯店價格會變，出發前再用高德地圖、大眾點評、景區售票頁和訂房平台確認一次。
       </p>
     </footer>
 
@@ -1151,6 +1452,78 @@ const budgets = {
 const select = document.querySelector("#styleSelect");
 const result = document.querySelector("#budgetResult");
 
+const fallbackPalettes = [
+  ["#142027", "#e05b37", "#f5c56a"],
+  ["#263b55", "#267468", "#d7b56d"],
+  ["#1f3b33", "#76a65d", "#e9d8a6"],
+  ["#3a1f1f", "#b23a2f", "#f3a35c"],
+  ["#1d2733", "#5b8fb9", "#f0c987"],
+  ["#40291f", "#c7923e", "#f7e0b2"]
+];
+
+function fallbackSvg(label, index) {
+  const [bg, accent, glow] = fallbackPalettes[index % fallbackPalettes.length];
+  const safeLabel = (label || "重慶旅行").replace(/[<>&"]/g, "");
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="${safeLabel}">
+      <defs>
+        <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="${bg}"/>
+          <stop offset="0.58" stop-color="#243842"/>
+          <stop offset="1" stop-color="${accent}"/>
+        </linearGradient>
+        <radialGradient id="lamp" cx="72%" cy="22%" r="42%">
+          <stop offset="0" stop-color="${glow}" stop-opacity="0.85"/>
+          <stop offset="1" stop-color="${glow}" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1200" height="760" fill="url(#sky)"/>
+      <rect width="1200" height="760" fill="url(#lamp)"/>
+      <path d="M0 520 C160 430 250 470 390 395 C555 305 690 375 820 285 C960 190 1060 250 1200 145 L1200 760 L0 760 Z" fill="#111b20" opacity="0.72"/>
+      <path d="M0 610 C160 545 285 590 430 520 C570 450 710 530 855 450 C995 372 1080 410 1200 340 L1200 760 L0 760 Z" fill="#0b1114" opacity="0.82"/>
+      <g opacity="0.92">
+        <rect x="120" y="430" width="210" height="190" fill="#2d2b25"/>
+        <rect x="155" y="390" width="150" height="44" fill="${accent}"/>
+        <path d="M136 390 L230 342 L322 390 Z" fill="${glow}"/>
+        <rect x="382" y="360" width="260" height="260" fill="#302a27"/>
+        <path d="M365 360 L515 286 L665 360 Z" fill="${glow}"/>
+        <rect x="710" y="405" width="250" height="215" fill="#2a2f2d"/>
+        <path d="M690 405 L835 330 L985 405 Z" fill="${glow}"/>
+      </g>
+      <g fill="${glow}">
+        <circle cx="175" cy="470" r="7"/><circle cx="225" cy="470" r="7"/><circle cx="275" cy="470" r="7"/>
+        <circle cx="440" cy="420" r="8"/><circle cx="505" cy="420" r="8"/><circle cx="570" cy="420" r="8"/>
+        <circle cx="765" cy="470" r="7"/><circle cx="835" cy="470" r="7"/><circle cx="905" cy="470" r="7"/>
+      </g>
+      <path d="M76 656 H1124" stroke="${glow}" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+      <text x="72" y="104" fill="#fff" font-family="Arial, sans-serif" font-size="42" font-weight="700">Chongqing Guide</text>
+      <text x="72" y="158" fill="#fff4df" font-family="Arial, sans-serif" font-size="30" font-weight="700">${safeLabel}</text>
+    </svg>
+  `;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
+function installImageFallbacks() {
+  const images = Array.from(document.querySelectorAll("img"));
+  images.forEach((img, index) => {
+    const fallback = fallbackSvg(img.alt, index);
+    img.addEventListener(
+      "error",
+      () => {
+        img.src = fallback;
+        img.classList.add("fallback-art");
+      },
+      { once: true }
+    );
+    setTimeout(() => {
+      if (!img.complete || img.naturalWidth === 0) {
+        img.src = fallback;
+        img.classList.add("fallback-art");
+      }
+    }, 1800);
+  });
+}
+
 function renderBudget(style) {
   result.innerHTML = budgets[style]
     .map(
@@ -1167,6 +1540,7 @@ function renderBudget(style) {
 
 select.addEventListener("change", (event) => renderBudget(event.target.value));
 renderBudget(select.value);
+installImageFallbacks();
 
     </script>
   </body>
